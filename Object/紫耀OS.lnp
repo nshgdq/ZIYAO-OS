@@ -1,0 +1,12 @@
+".\Object\STARTUP.obj",
+".\Object\main.obj",
+".\Object\W25Qxx.obj",
+".\Object\HX8347D.obj",
+".\Object\Touch.obj",
+".\Object\ds1302.obj",
+".\Object\timer.obj",
+".\Object\GUI.obj",
+".\Object\18b20.obj",
+".\Object\usart.obj" 
+TO ".\Object\×ÏÒ«OS" 
+PRINT(".\Lst\×ÏÒ«OS.m51") RAMSIZE(256) 
