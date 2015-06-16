@@ -12,7 +12,6 @@
 #include "timer.h"
 #include "GUI.h"
 #include "18b20.h"
-sbit wien=P0^4;
 //函数声明
 
 
@@ -20,7 +19,6 @@ sbit wien=P0^4;
 void main()
 {
 //	u8 code setime[7]={0x04,0x08,0x23,0x01,0x06,0x01,0x15};
-	wien = 0;
 	LCD_Initializtion();	
 	font_init();		//字库初始化
 	TP_Init();
@@ -28,7 +26,6 @@ void main()
 	Timer0Init();
 //	Ds1302_Write_Time(setime);//设定系统时间
 	start_check();
-	wien = 1;
 	start_logo();
 //	while(1)
 //	{
