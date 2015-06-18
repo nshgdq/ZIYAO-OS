@@ -1,1 +1,1 @@
-"user\GUI\GUI.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\usart) DEBUG OBJECTEXTEND PRINT(.\Lst\GUI.lst) OBJECT(.\Object\GUI.obj)
+"user\GUI\GUI.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart) DEBUG OBJECTEXTEND PRINT(.\Lst\GUI.lst) OBJECT(.\Object\GUI.obj)

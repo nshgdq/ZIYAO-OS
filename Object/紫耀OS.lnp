@@ -7,6 +7,6 @@
 ".\Object\timer.obj",
 ".\Object\GUI.obj",
 ".\Object\18b20.obj",
-".\Object\usart.obj" 
+".\Object\uart.obj" 
 TO ".\Object\×ÏÒ«OS" 
 PRINT(".\Lst\×ÏÒ«OS.m51") RAMSIZE(256) 

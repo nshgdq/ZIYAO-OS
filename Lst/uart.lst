@@ -1,0 +1,57 @@
+C51 COMPILER V9.00   UART                                                                  06/18/2015 16:30:50 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN .\Object\uart.obj
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\uart\uart.c LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user
+                    -\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart) DEBUG OBJECTEXTEND PRINT(.\Lst\uar
+                    -t.lst) OBJECT(.\Object\uart.obj)
+
+line level    source
+
+   1          #include"uart.h"
+   2          #define S2RI 0x01       //串口2接收中断请求标志位
+   3          #define S2TI 0x02       //串口2发送中断请求标志位
+   4          unsigned char temp;
+   5          /****************串行口初始化函数****************/
+   6          void InitUART(bit bite)//9600/115200@32MHZ
+   7          {
+   8   1              AUXR &= 0xF7;           //波特率不倍速
+   9   1              S2CON = 0x50;           //8位数据,可变波特率
+  10   1              AUXR |= 0x04;           //独立波特率发生器时钟为Fosc,即1T
+  11   1              if(!bite)       BRT = 0x98;             //9600
+  12   1              if(bite) BRT = 0xf7;            //115200
+  13   1              AUXR |= 0x10;           //启动独立波特率发生器
+  14   1              EA =1;  //开总中断
+  15   1        IE2 =0x01;    //开串口2中断  ES2=1
+  16   1      }
+  17          void UART_SendOneByte(unsigned char c)
+  18          {
+  19   1          S2BUF = c;
+  20   1          while(!(S2CON&S2TI));  //若S2TI=0，在此等待
+  21   1          S2CON&=~S2TI;         //S2TI=0
+  22   1      }
+  23          /************串行口2中断处理函数*************/
+  24          void UART_Interrupt(void) interrupt 8
+  25          {
+  26   1              if(S2CON&S2RI)
+  27   1              {
+  28   2                      S2CON&=~S2RI;
+  29   2                      temp=S2BUF;
+  30   2                      UART_SendOneByte(temp);
+  31   2              } 
+  32   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

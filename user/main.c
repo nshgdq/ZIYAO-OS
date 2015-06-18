@@ -12,7 +12,7 @@
 #include "timer.h"
 #include "GUI.h"
 #include "18b20.h"
-#include "usart.h"
+#include "uart.h"
 //º¯ÊıÉùÃ÷
 
 
