@@ -9,10 +9,6 @@ Project File Date:  06/15/2015
 <h2>Output:</h2>
 Build target 'stc12c5a60s2'
 compiling main.c...
-compiling HX8347D.c...
-compiling Touch.c...
-compiling timer.c...
-compiling GUI.c...
 linking...
 *** WARNING L13: RECURSIVE CALL TO SEGMENT
     SEGMENT: ?PR?DESKTOP?GUI
@@ -32,8 +28,35 @@ linking...
 *** WARNING L13: RECURSIVE CALL TO SEGMENT
     SEGMENT: ?PR?DESKTOP?GUI
     CALLER:  ?PR?PICBOX?GUI
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?INITUART?USART
-Program Size: data=15.2 xdata=401 code=22888
+Program Size: data=15.1 xdata=401 code=22891
 creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 7 Warning(s).
+".\Object\×ÏÒ«OS" - 0 Error(s), 6 Warning(s).
+Build target 'stc12c5a60s2'
+compiling main.c...
+USER\MAIN.C(28): error C267: 'InitUART': requires ANSI-style prototype
+Target not created
+Build target 'stc12c5a60s2'
+compiling main.c...
+compiling usart.c...
+linking...
+*** WARNING L13: RECURSIVE CALL TO SEGMENT
+    SEGMENT: ?PR?DESKTOP?GUI
+    CALLER:  ?PR?SSTMTIME?GUI
+*** WARNING L13: RECURSIVE CALL TO SEGMENT
+    SEGMENT: ?PR?CALENDAR?GUI
+    CALLER:  ?PR?SSTMTIME?GUI
+*** WARNING L13: RECURSIVE CALL TO SEGMENT
+    SEGMENT: ?PR?DESKTOP?GUI
+    CALLER:  ?PR?_GUIDDO?GUI
+*** WARNING L13: RECURSIVE CALL TO SEGMENT
+    SEGMENT: ?PR?DESKTOP?GUI
+    CALLER:  ?PR?CALENDAR?GUI
+*** WARNING L13: RECURSIVE CALL TO SEGMENT
+    SEGMENT: ?PR?DESKTOP?GUI
+    CALLER:  ?PR?TEMPERT?GUI
+*** WARNING L13: RECURSIVE CALL TO SEGMENT
+    SEGMENT: ?PR?DESKTOP?GUI
+    CALLER:  ?PR?PICBOX?GUI
+Program Size: data=15.1 xdata=401 code=22893
+creating hex file from ".\Object\×ÏÒ«OS"...
+".\Object\×ÏÒ«OS" - 0 Error(s), 6 Warning(s).

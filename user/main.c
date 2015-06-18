@@ -12,6 +12,7 @@
 #include "timer.h"
 #include "GUI.h"
 #include "18b20.h"
+#include "usart.h"
 //函数声明
 
 
@@ -24,6 +25,7 @@ void main()
 	TP_Init();
 	Ds1302_Init();
 	Timer0Init();
+	InitUART(0);
 //	Ds1302_Write_Time(setime);//设定系统时间
 	start_check();
 	start_logo();
