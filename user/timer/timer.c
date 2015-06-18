@@ -2,9 +2,8 @@
 #include "hx8347d.h"
 #include "ds1302.h"
 #include "gui.h"
+#include "uart.h"
 u8 i;
-extern unsigned temp[20];
-extern bit flag;
 void Timer_Routine(void) interrupt 1
 {
 	TL0 = 0xAB;		

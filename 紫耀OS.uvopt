@@ -207,7 +207,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>5</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -263,12 +263,12 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>8</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>10</ColumnNumber>
+      <ColumnNumber>16</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>12</CurrentLine>
+      <CurrentLine>5</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\user\timer\timer.c</PathWithFileName>
       <FilenameWithoutPath>timer.c</FilenameWithoutPath>
@@ -305,12 +305,12 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>0</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>2</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>9</TopLine>
-      <CurrentLine>34</CurrentLine>
+      <CurrentLine>29</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\user\uart\uart.c</PathWithFileName>
       <FilenameWithoutPath>uart.c</FilenameWithoutPath>
@@ -320,7 +320,7 @@
   <AlienFiles>
     <PathWithFilename>D:\用户目录\Desktop\ZIYAO-OS\USER\UART\UART.H</PathWithFilename>
     <TopLine>1</TopLine>
-    <CurrentLine>5</CurrentLine>
+    <CurrentLine>8</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1778,15 +1778,15 @@
         </Doc>
         <Doc>
           <Name>.\USER\UART\UART.H</Name>
-          <ColumnNumber>40</ColumnNumber>
+          <ColumnNumber>16</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>5</CurrentLine>
+          <CurrentLine>8</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\user\uart\uart.c</Name>
-          <ColumnNumber>2</ColumnNumber>
+          <ColumnNumber>0</ColumnNumber>
           <TopLine>9</TopLine>
-          <CurrentLine>34</CurrentLine>
+          <CurrentLine>29</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\USER\TOUCH\TOUCH.H</Name>
@@ -1796,9 +1796,9 @@
         </Doc>
         <Doc>
           <Name>.\user\timer\timer.c</Name>
-          <ColumnNumber>10</ColumnNumber>
+          <ColumnNumber>16</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>12</CurrentLine>
+          <CurrentLine>5</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\USER\GUI\GUI.H</Name>

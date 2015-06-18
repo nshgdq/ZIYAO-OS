@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   UART                                                                  06/18/2015 18:24:36 PAGE 1   
+C51 COMPILER V9.00   UART                                                                  06/18/2015 19:37:42 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE UART
@@ -13,6 +13,7 @@ line level    source
    2          #define S2RI 0x01       //串口2接收中断请求标志位
    3          #define S2TI 0x02       //串口2发送中断请求标志位
    4          unsigned char temp[20];
+*** WARNING C231 IN LINE 4 OF USER\UART\UART.C: 'temp': redefinition
    5          bit flag=0;
    6          unsigned char *p=temp;
    7          /****************串行口初始化函数****************/
@@ -33,25 +34,36 @@ line level    source
   22   1          while(!(S2CON&S2TI));  //若S2TI=0，在此等待
   23   1          S2CON&=~S2TI;         //S2TI=0
   24   1      }
-  25          /************串行口2中断处理函数*************/
-  26          void UART_Interrupt(void) interrupt 8
-  27          {
-  28   1              if(flag==0) p=temp;
-  29   1              if(S2CON&S2RI)
-  30   1              {
-  31   2                      flag=1;
-  32   2                      S2CON&=~S2RI;
-  33   2                      *p=S2BUF;
-  34   2      //              UART_SendOneByte(*p);
-  35   2                      p++;
-  36   2                      *p=0;
-  37   2              } 
-  38   1      }
+  25          void UART_SendStr(unsigned char *str)
+  26          {
+  27   1              while(str!=0)
+  28   1              {
+  29   2                      UART_SendOneByte(str);
+*** WARNING C214 IN LINE 29 OF USER\UART\UART.C: 'Argument': conversion: pointer to non-pointer
+  30   2                      str++;  
+  31   2              }
+  32   1      }
+  33          /************串行口2中断处理函数*************/
+  34          void UART_Interrupt(void) interrupt 8
+  35          {
+  36   1              if(flag==0) p=temp;
+  37   1              if(S2CON&S2RI)
+  38   1              {
+  39   2                      flag=1;
+  40   2                      S2CON&=~S2RI;
+  41   2                      *p=S2BUF;
+  42   2      //              UART_SendOneByte(*p);
+  43   2                      p++;
+  44   2                      *p=0;
+  45   2              } 
+  46   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    149    ----
+   CODE SIZE        =    168    ----
    CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.00   UART                                                                  06/18/2015 19:37:42 PAGE 2   
+
    XDATA SIZE       =     23    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
@@ -60,4 +72,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

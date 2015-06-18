@@ -22,6 +22,14 @@ void UART_SendOneByte(unsigned char c)
     while(!(S2CON&S2TI));  //若S2TI=0，在此等待
     S2CON&=~S2TI;	  //S2TI=0
 }
+void UART_SendStr(unsigned char *str)
+{
+	while(str!=0)
+	{
+		UART_SendOneByte(str);
+		str++;	
+	}
+}
 /************串行口2中断处理函数*************/
 void UART_Interrupt(void) interrupt 8
 {
