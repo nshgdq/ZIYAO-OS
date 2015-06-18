@@ -42,6 +42,7 @@ void desktop()
 	show_picture(160,239,70,65,0x0061A894);
 //	LCD_DrawBox(160,239,70,68,0x2586);//d9
 	clock();
+	TR0=1;
 	while(1)
 	{
 		x=0;y=0;

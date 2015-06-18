@@ -1,14 +1,22 @@
 #include "timer.h"
 #include "hx8347d.h"
 #include "ds1302.h"
+#include "gui.h"
 u8 i;
+extern unsigned temp[20];
+extern bit flag;
 void Timer_Routine(void) interrupt 1
 {
 	TL0 = 0xAB;		
 	TH0 = 0x2F;	
-	if(i==0xff)
+	if(i>=0x5f)
 	{
 		i=0;
+		if(flag==1)
+		{
+			flag=0;
+			GUI_Text(0, 0,temp,Red,0xffff);
+		}
 	}
 	i++;
 }

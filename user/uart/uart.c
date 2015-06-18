@@ -1,7 +1,9 @@
 #include"uart.h"
 #define S2RI 0x01	//串口2接收中断请求标志位
 #define S2TI 0x02	//串口2发送中断请求标志位
-unsigned char temp;
+unsigned char temp[20];
+bit flag=0;
+unsigned char *p=temp;
 /****************串行口初始化函数****************/
 void InitUART(bit bite)//9600/115200@32MHZ
 {
@@ -23,10 +25,14 @@ void UART_SendOneByte(unsigned char c)
 /************串行口2中断处理函数*************/
 void UART_Interrupt(void) interrupt 8
 {
+	if(flag==0) p=temp;
 	if(S2CON&S2RI)
 	{
+		flag=1;
 		S2CON&=~S2RI;
-		temp=S2BUF;
-		UART_SendOneByte(temp);
+		*p=S2BUF;
+//		UART_SendOneByte(*p);
+		p++;
+		*p=0;
 	} 
 }

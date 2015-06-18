@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   TIMER                                                                 06/18/2015 16:30:47 PAGE 1   
+C51 COMPILER V9.00   TIMER                                                                 06/18/2015 18:41:56 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE TIMER
@@ -12,31 +12,40 @@ line level    source
    1          #include "timer.h"
    2          #include "hx8347d.h"
    3          #include "ds1302.h"
-   4          u8 i;
-   5          void Timer_Routine(void) interrupt 1
-   6          {
-   7   1              TL0 = 0xAB;             
-   8   1              TH0 = 0x2F;     
-   9   1              if(i==0xff)
-  10   1              {
-  11   2                      i=0;
-  12   2              }
-  13   1              i++;
-  14   1      }
-  15          
-  16          void Timer0Init(void)           //20ms@32MHz
-  17          {
-  18   1              TMOD |= 0x01;   
-  19   1              TL0 = 0xAB;             
-  20   1              TH0 = 0x2F;                     
-  21   1              ET0 = 1 ;
-  22   1              EA = 1;
-  23   1              TR0 = 0;        
-  24   1      }
+   4          #include "gui.h"
+   5          u8 i;
+   6          extern unsigned temp[20];
+   7          extern bit flag;
+   8          void Timer_Routine(void) interrupt 1
+   9          {
+  10   1              TL0 = 0xAB;             
+  11   1              TH0 = 0x2F;     
+  12   1              if(i>=0x5f)
+  13   1              {
+  14   2                      i=0;
+  15   2                      if(flag==1)
+  16   2                      {
+  17   3                              flag=0;
+  18   3                              GUI_Text(0, 0,temp,Red,0xffff);
+*** WARNING C182 IN LINE 18 OF USER\TIMER\TIMER.C: pointer to different objects
+  19   3                      }
+  20   2              }
+  21   1              i++;
+  22   1      }
+  23          
+  24          void Timer0Init(void)           //20ms@32MHz
+  25          {
+  26   1              TMOD |= 0x01;   
+  27   1              TL0 = 0xAB;             
+  28   1              TH0 = 0x2F;                     
+  29   1              ET0 = 1 ;
+  30   1              EA = 1;
+  31   1              TR0 = 0;        
+  32   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     54    ----
+   CODE SIZE        =    129    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----
@@ -46,4 +55,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
