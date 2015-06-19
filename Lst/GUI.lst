@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   GUI                                                                   06/19/2015 14:37:50 PAGE 1   
+C51 COMPILER V9.00   GUI                                                                   06/19/2015 15:54:48 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE GUI
@@ -62,7 +62,7 @@ line level    source
   51   1              {
   52   2                      x=0;y=0;
   53   2                      if(i==0x0bff) {clock();i=0;}
-C51 COMPILER V9.00   GUI                                                                   06/19/2015 14:37:50 PAGE 2   
+C51 COMPILER V9.00   GUI                                                                   06/19/2015 15:54:48 PAGE 2   
 
   54   2                      i++;
   55   2              Get_Click(&x,&y);
@@ -126,7 +126,7 @@ line level    source
  113   1              Show_Str(0,48,"****时钟检测****",16,Green,Black);
  114   1              Show_Str(0,64,"读取时间中...",16,Red,White);
  115   1              gettime(time);
-C51 COMPILER V9.00   GUI                                                                   06/19/2015 14:37:50 PAGE 3   
+C51 COMPILER V9.00   GUI                                                                   06/19/2015 15:54:48 PAGE 3   
 
  116   1              Show_Str(0,80,time,16,Red,White);
  117   1              delay_ms(0xff);
@@ -149,257 +149,263 @@ line level    source
  134   1      }
  135          void Get_Click(u16 *x,u16 *y)
  136          {
- 137   1              if(ATC){ATC=0;AT_DO(temp);}
- 138   1              TP_Read_XY2(x,y); 
- 139   1              //TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
- 140   1              *x=*x/15.03-14.85;*y=*y/10.81-17.52;
+ 137   1              TP_Read_XY2(x,y); 
+ 138   1              //TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
+ 139   1              *x=*x/15.03-14.85;*y=*y/10.81-17.52;
+ 140   1              if(ATC){ATC=0;AT_DO(temp);}
  141   1      }
- 142          void delay_ms(u16 ms)    
- 143          { 
- 144   1              uint16_t i,j; 
- 145   1              for( i = 0; i < ms; i++ )
- 146   1              { 
- 147   2                      for( j = 0; j < 1000; j++ );
- 148   2              }
- 149   1      } 
- 150          void clock()
- 151          {
- 152   1              gettime(time);
- 153   1              time[16]='\0';
- 154   1              GUI_Text(200,0,time+11,Black,White);
- 155   1      }
- 156          /*********************
- 157          日历
- 158          *********************/
- 159          void calendar()
- 160          {
- 161   1              u16 i=0;
- 162   1              gettime(time);
- 163   1              time[7]='\0';
- 164   1              LCD_Clear(0x051d);
- 165   1              LCD_DrawBox(60,60,120,20,Yellow);
- 166   1              LCD_DrawBox(60,80,120,104,White);
- 167   1              GUI_Text(61,61,time,Red,Nocolor);
- 168   1              Show_Str(150,61,"周",16,Red,Nocolor);
- 169   1              GUI_Text(166,61,time+20,Red,Nocolor);
- 170   1              time[10]='\0';
- 171   1              Show_Str(105,110,time+8,32,Red,Nocolor);
- 172   1              guidshow();
- 173   1              while(1)
- 174   1              {
- 175   2                      if(i==0xbff||i==0)
- 176   2                      {
- 177   3                              gettime(time);
-C51 COMPILER V9.00   GUI                                                                   06/19/2015 14:37:50 PAGE 4   
+ 142          void Get_Click1(u16 *x,u16 *y)
+ 143          {
+ 144   1              TP_Read_XY2(x,y); 
+ 145   1              //TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
+ 146   1              *x=*x/15.03-14.85;*y=*y/10.81-17.52;
+ 147   1      }
+ 148          void delay_ms(u16 ms)    
+ 149          { 
+ 150   1              uint16_t i,j; 
+ 151   1              for( i = 0; i < ms; i++ )
+ 152   1              { 
+ 153   2                      for( j = 0; j < 1000; j++ );
+ 154   2              }
+ 155   1      } 
+ 156          void clock()
+ 157          {
+ 158   1              gettime(time);
+ 159   1              time[16]='\0';
+ 160   1              GUI_Text(200,0,time+11,Black,White);
+ 161   1      }
+ 162          /*********************
+ 163          日历
+ 164          *********************/
+ 165          void calendar()
+ 166          {
+ 167   1              u16 i=0;
+ 168   1              gettime(time);
+ 169   1              time[7]='\0';
+ 170   1              LCD_Clear(0x051d);
+ 171   1              LCD_DrawBox(60,60,120,20,Yellow);
+ 172   1              LCD_DrawBox(60,80,120,104,White);
+ 173   1              GUI_Text(61,61,time,Red,Nocolor);
+ 174   1              Show_Str(150,61,"周",16,Red,Nocolor);
+ 175   1              GUI_Text(166,61,time+20,Red,Nocolor);
+ 176   1              time[10]='\0';
+ 177   1              Show_Str(105,110,time+8,32,Red,Nocolor);
+C51 COMPILER V9.00   GUI                                                                   06/19/2015 15:54:48 PAGE 4   
 
- 178   3                              time[16]='\0';
- 179   3                              GUI_Text(100,150,time+11,Red,White);
- 180   3                              i=1;
- 181   3                      }
- 182   2                      i++;
- 183   2                      Get_Click(&x,&y);
- 184   2                      if(y>288&&y<320) guiddo(desktop,sstmtime,x);
- 185   2              }
- 186   1      }
- 187          /**************
- 188          设定系统时间
- 189          ***************/
- 190          void sstmtime()
- 191          {
- 192   1              u8 setime[7]={0,0,0,0,0,0,0},i=1;
- 193   1              gettime(time);
- 194   1              LCD_Clear(0x051d);
- 195   1              Show_Str(24,20,"设定系统时间",32,White,Nocolor);
- 196   1              GUI_Text(40,128,time,Red,White);
- 197   1              LCD_DrawBox(100,105,40,20,0xc618);
- 198   1              Show_Str(115,108,"▲",16,Black,Nocolor);
- 199   1              LCD_DrawEBox(100,105,40,20,Blue);
- 200   1              LCD_DrawBox(100,148,40,20,0xc618);
- 201   1              Show_Str(115,153,"▼",16,Black,Nocolor);
- 202   1              LCD_DrawEBox(100,148,40,20,Blue);
- 203   1              LCD_DrawBox(40,180,40,20,0xc618);
- 204   1              GUI_Text(42,182,"Next",Black,Nocolor);
- 205   1              LCD_DrawEBox(40,180,40,20,Blue);
- 206   1              LCD_DrawBox(170,180,40,20,0xc618);
- 207   1              GUI_Text(185,182,"Ok",Black,Nocolor);
- 208   1              LCD_DrawEBox(170,180,40,20,Blue);
- 209   1              guidshow();
- 210   1              time[4]=time[7]=time[10]=time[13]=time[16]=time[19]=0;
- 211   1              while(1)
- 212   1              {
- 213   2                      switch(i)
- 214   2                      {
- 215   3                              case 1:GUI_Text(40,128,time,Green,Black);GUI_Text(40+8*20,128,time+20,Red,White);break;
- 216   3                              case 2:GUI_Text(40+8*5,128,time+5,Green,Black);GUI_Text(40,128,time,Red,White);break;
- 217   3                              case 3:GUI_Text(40+8*8,128,time+8,Green,Black);GUI_Text(40+8*5,128,time+5,Red,White);break;
- 218   3                              case 4:GUI_Text(40+8*11,128,time+11,Green,Black);GUI_Text(40+8*8,128,time+8,Red,White);break;
- 219   3                              case 5:GUI_Text(40+8*14,128,time+14,Green,Black);GUI_Text(40+8*11,128,time+11,Red,White);break;
- 220   3                              case 6:GUI_Text(40+8*17,128,time+17,Green,Black);GUI_Text(40+8*14,128,time+14,Red,White);break;
- 221   3                              case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
- 222   3                      }
- 223   2                      Get_Click(&x,&y);
- 224   2                      if(y>288&&y<320) guiddo(calendar,desktop,x);//导航栏
- 225   2                      if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next 键操作
- 226   2                      if((x>=150&&x<=190)&&(y>=180&&y<=200))  //Ok 键操作
- 227   2                      {
- 228   3                              setime[0]=((time[17]-'0')<<4)|(time[18]-'0');
- 229   3                              setime[1]=((time[14]-'0')<<4)|(time[15]-'0');
- 230   3                              setime[2]=((time[11]-'0')<<4)|(time[12]-'0');
- 231   3                              setime[3]=((time[8]-'0')<<4)|(time[9]-'0');
- 232   3                              setime[4]=((time[5]-'0')<<4)|(time[6]-'0');
- 233   3                              setime[5]=time[20]-'0';
- 234   3                              setime[6]=((time[2]-'0')<<4)|(time[3]-'0');
- 235   3                              Ds1302_Write_Time(setime);//设定系统时间
- 236   3                              alert("已设定系统时间！",0x051d);
- 237   3                              while(!PEN);
- 238   3                      }       
- 239   2                      if((x>=100&&x<=140)&&(y>=105&&y<=125))  //▲ 键操作
-C51 COMPILER V9.00   GUI                                                                   06/19/2015 14:37:50 PAGE 5   
+ 178   1              guidshow();
+ 179   1              while(1)
+ 180   1              {
+ 181   2                      if(i==0xbff||i==0)
+ 182   2                      {
+ 183   3                              gettime(time);
+ 184   3                              time[16]='\0';
+ 185   3                              GUI_Text(100,150,time+11,Red,White);
+ 186   3                              i=1;
+ 187   3                      }
+ 188   2                      i++;
+ 189   2                      Get_Click(&x,&y);
+ 190   2                      if(y>288&&y<320) guiddo(desktop,sstmtime,x);
+ 191   2              }
+ 192   1      }
+ 193          /**************
+ 194          设定系统时间
+ 195          ***************/
+ 196          void sstmtime()
+ 197          {
+ 198   1              u8 setime[7]={0,0,0,0,0,0,0},i=1;
+ 199   1              gettime(time);
+ 200   1              LCD_Clear(0x051d);
+ 201   1              Show_Str(24,20,"设定系统时间",32,White,Nocolor);
+ 202   1              GUI_Text(40,128,time,Red,White);
+ 203   1              LCD_DrawBox(100,105,40,20,0xc618);
+ 204   1              Show_Str(115,108,"▲",16,Black,Nocolor);
+ 205   1              LCD_DrawEBox(100,105,40,20,Blue);
+ 206   1              LCD_DrawBox(100,148,40,20,0xc618);
+ 207   1              Show_Str(115,153,"▼",16,Black,Nocolor);
+ 208   1              LCD_DrawEBox(100,148,40,20,Blue);
+ 209   1              LCD_DrawBox(40,180,40,20,0xc618);
+ 210   1              GUI_Text(42,182,"Next",Black,Nocolor);
+ 211   1              LCD_DrawEBox(40,180,40,20,Blue);
+ 212   1              LCD_DrawBox(170,180,40,20,0xc618);
+ 213   1              GUI_Text(185,182,"Ok",Black,Nocolor);
+ 214   1              LCD_DrawEBox(170,180,40,20,Blue);
+ 215   1              guidshow();
+ 216   1              time[4]=time[7]=time[10]=time[13]=time[16]=time[19]=0;
+ 217   1              while(1)
+ 218   1              {
+ 219   2                      switch(i)
+ 220   2                      {
+ 221   3                              case 1:GUI_Text(40,128,time,Green,Black);GUI_Text(40+8*20,128,time+20,Red,White);break;
+ 222   3                              case 2:GUI_Text(40+8*5,128,time+5,Green,Black);GUI_Text(40,128,time,Red,White);break;
+ 223   3                              case 3:GUI_Text(40+8*8,128,time+8,Green,Black);GUI_Text(40+8*5,128,time+5,Red,White);break;
+ 224   3                              case 4:GUI_Text(40+8*11,128,time+11,Green,Black);GUI_Text(40+8*8,128,time+8,Red,White);break;
+ 225   3                              case 5:GUI_Text(40+8*14,128,time+14,Green,Black);GUI_Text(40+8*11,128,time+11,Red,White);break;
+ 226   3                              case 6:GUI_Text(40+8*17,128,time+17,Green,Black);GUI_Text(40+8*14,128,time+14,Red,White);break;
+ 227   3                              case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
+ 228   3                      }
+ 229   2                      Get_Click1(&x,&y);
+ 230   2                      if(y>288&&y<320){guiddo(calendar,desktop,x);}//导航栏
+ 231   2                      if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next 键操作
+ 232   2                      if((x>=150&&x<=190)&&(y>=180&&y<=200))  //Ok 键操作
+ 233   2                      {
+ 234   3                              setime[0]=((time[17]-'0')<<4)|(time[18]-'0');
+ 235   3                              setime[1]=((time[14]-'0')<<4)|(time[15]-'0');
+ 236   3                              setime[2]=((time[11]-'0')<<4)|(time[12]-'0');
+ 237   3                              setime[3]=((time[8]-'0')<<4)|(time[9]-'0');
+ 238   3                              setime[4]=((time[5]-'0')<<4)|(time[6]-'0');
+ 239   3                              setime[5]=time[20]-'0';
+C51 COMPILER V9.00   GUI                                                                   06/19/2015 15:54:48 PAGE 5   
 
- 240   2                      {
- 241   3                              switch(i)
- 242   3                              {
- 243   4                                      case 1:time[3]++;if(time[3]>'9') {time[3]='0';time[2]++;}if(time[2]>'9') time[2]='0';break;
- 244   4                                      case 2:time[6]++;if(time[6]>'2'&&time[5]=='1') {time[6]='1';time[5]='0';}if(time[6]>'9') {time[5]++;ti
+ 240   3                              setime[6]=((time[2]-'0')<<4)|(time[3]-'0');
+ 241   3                              Ds1302_Write_Time(setime);//设定系统时间
+ 242   3                              alert("已设定系统时间！",0x051d);
+ 243   3                              while(!PEN);
+ 244   3                      }       
+ 245   2                      if((x>=100&&x<=140)&&(y>=105&&y<=125))  //▲ 键操作
+ 246   2                      {
+ 247   3                              switch(i)
+ 248   3                              {
+ 249   4                                      case 1:time[3]++;if(time[3]>'9') {time[3]='0';time[2]++;}if(time[2]>'9') time[2]='0';break;
+ 250   4                                      case 2:time[6]++;if(time[6]>'2'&&time[5]=='1') {time[6]='1';time[5]='0';}if(time[6]>'9') {time[5]++;ti
              -me[6]='0';}break;
- 245   4                                      case 3:time[9]++;if(time[9]>'1'&&time[8]=='3') {time[9]='1';time[8]='0';}if(time[9]>'9') {time[8]++;ti
+ 251   4                                      case 3:time[9]++;if(time[9]>'1'&&time[8]=='3') {time[9]='1';time[8]='0';}if(time[9]>'9') {time[8]++;ti
              -me[9]='0';}break;
- 246   4                                      case 4:time[12]++;if(time[12]>'3'&&time[11]=='2') {time[12]='0';time[11]='0';}if(time[12]>'9') {time[1
+ 252   4                                      case 4:time[12]++;if(time[12]>'3'&&time[11]=='2') {time[12]='0';time[11]='0';}if(time[12]>'9') {time[1
              -1]++;time[12]='0';}break;
- 247   4                                      case 5:time[15]++;if(time[15]>'9'&&time[14]=='5') {time[15]='0';time[14]='0';}if(time[15]>'9') {time[1
+ 253   4                                      case 5:time[15]++;if(time[15]>'9'&&time[14]=='5') {time[15]='0';time[14]='0';}if(time[15]>'9') {time[1
              -4]++;time[15]='0';}break;
- 248   4                                      case 6:time[18]++;if(time[18]>'9'&&time[17]=='5') {time[18]='0';time[17]='0';}if(time[18]>'9') {time[1
+ 254   4                                      case 6:time[18]++;if(time[18]>'9'&&time[17]=='5') {time[18]='0';time[17]='0';}if(time[18]>'9') {time[1
              -7]++;time[18]='0';}break;
- 249   4                                      case 7:time[20]++;if(time[20]>'7') time[20]='1';
- 250   4                              }
- 251   3                              while(!PEN);
- 252   3                      }       
- 253   2                      if((x>=100&&x<=140)&&(y>=148&&y<=168))  //▼ 键操作
- 254   2                      {
- 255   3                              switch(i)
- 256   3                              {
- 257   4                                      case 1:if(time[3]=='0'&&time[2]=='0') {time[3]='9';time[2]='9';} if(time[3]=='0'&&time[2]!='0') {time[
+ 255   4                                      case 7:time[20]++;if(time[20]>'7') time[20]='1';
+ 256   4                              }
+ 257   3                              while(!PEN);
+ 258   3                      }       
+ 259   2                      if((x>=100&&x<=140)&&(y>=148&&y<=168))  //▼ 键操作
+ 260   2                      {
+ 261   3                              switch(i)
+ 262   3                              {
+ 263   4                                      case 1:if(time[3]=='0'&&time[2]=='0') {time[3]='9';time[2]='9';} if(time[3]=='0'&&time[2]!='0') {time[
              -3]='9'+1;time[2]--;} time[3]--;break;
- 258   4                                      case 2:if(time[6]=='1'&&time[5]=='0') {time[6]='2'+1;time[5]='1';} if(time[6]=='0'&&time[5]!='0') {tim
+ 264   4                                      case 2:if(time[6]=='1'&&time[5]=='0') {time[6]='2'+1;time[5]='1';} if(time[6]=='0'&&time[5]!='0') {tim
              -e[6]='9'+1;time[5]--;} time[6]--;break;
- 259   4                                      case 3:if(time[9]=='1'&&time[8]=='0') {time[9]='1'+1;time[8]='3';} if(time[9]=='0'&&time[8]!='0') {tim
+ 265   4                                      case 3:if(time[9]=='1'&&time[8]=='0') {time[9]='1'+1;time[8]='3';} if(time[9]=='0'&&time[8]!='0') {tim
              -e[9]='9'+1;time[8]--;} time[9]--;break;
- 260   4                                      case 4:if(time[12]=='0'&&time[11]=='0') {time[12]='3'+1;time[11]='2';} if(time[12]=='0'&&time[11]!='0'
+ 266   4                                      case 4:if(time[12]=='0'&&time[11]=='0') {time[12]='3'+1;time[11]='2';} if(time[12]=='0'&&time[11]!='0'
              -) {time[12]='9'+1;time[11]--;} time[12]--;break;
- 261   4                                      case 5:if(time[15]=='0'&&time[14]=='0') {time[15]='9'+1;time[14]='5';} if(time[15]=='0'&&time[14]!='0'
+ 267   4                                      case 5:if(time[15]=='0'&&time[14]=='0') {time[15]='9'+1;time[14]='5';} if(time[15]=='0'&&time[14]!='0'
              -) {time[15]='9'+1;time[14]--;} time[15]--;break;
- 262   4                                      case 6:if(time[18]=='0'&&time[17]=='0') {time[18]='9'+1;time[17]='5';} if(time[18]=='0'&&time[17]!='0'
+ 268   4                                      case 6:if(time[18]=='0'&&time[17]=='0') {time[18]='9'+1;time[17]='5';} if(time[18]=='0'&&time[17]!='0'
              -) {time[18]='9'+1;time[17]--;} time[18]--;break;
- 263   4                                      case 7:if(time[20]=='1')time[20]='7'+1;time[20]--;
- 264   4                              }
- 265   3                              
- 266   3                              while(!PEN);
- 267   3                      }
- 268   2                      if (i>7) i=1;
- 269   2              }
- 270   1      }
- 271          /*********************
- 272          导航栏构造及执行
- 273          **********************/
- 274          void guidshow()
- 275          {
- 276   1              LCD_DrawLine( 0, 288, 240, 288,White );
- 277   1              Show_Str(20,288,"←",32,White,Nocolor);
- 278   1              Show_Str(104,288,"■",32,0xa254,Nocolor);
- 279   1              LCD_DrawLine( 108, 304, 131,304, White );
- 280   1              LCD_DrawLine( 120, 293, 120,315, White );
- 281   1              LCD_DrawLine( 80, 288, 80,320, White );
- 282   1              LCD_DrawLine( 160, 288, 160,320, White );
- 283   1              Show_Str(187,288,"〓",32,White,Nocolor);
- 284   1      }
- 285          /*********************
- 286          导航栏执行
- 287          参数：pback 返回键点击调用函数的指针
- 288          pmenu 菜单键点击调用函数的指针
- 289          **********************/
- 290          void guiddo(void (*pback)(void),void (*pmenu)(void),x)
-C51 COMPILER V9.00   GUI                                                                   06/19/2015 14:37:50 PAGE 6   
+ 269   4                                      case 7:if(time[20]=='1')time[20]='7'+1;time[20]--;
+ 270   4                              }
+ 271   3                              
+ 272   3                              while(!PEN);
+ 273   3                      }
+ 274   2                      if (i>7) i=1;
+ 275   2              }
+ 276   1      }
+ 277          /*********************
+ 278          导航栏构造及执行
+ 279          **********************/
+ 280          void guidshow()
+ 281          {
+ 282   1              LCD_DrawLine( 0, 288, 240, 288,White );
+ 283   1              Show_Str(20,288,"←",32,White,Nocolor);
+ 284   1              Show_Str(104,288,"■",32,0xa254,Nocolor);
+ 285   1              LCD_DrawLine( 108, 304, 131,304, White );
+ 286   1              LCD_DrawLine( 120, 293, 120,315, White );
+ 287   1              LCD_DrawLine( 80, 288, 80,320, White );
+ 288   1              LCD_DrawLine( 160, 288, 160,320, White );
+ 289   1              Show_Str(187,288,"〓",32,White,Nocolor);
+ 290   1      }
+C51 COMPILER V9.00   GUI                                                                   06/19/2015 15:54:48 PAGE 6   
 
- 291          {
- 292   1              if(x<80&&x>0) {Show_Str(20,288,"←",32,White,Blue);pback();}
- 293   1              if(x>80&&x<160) {Show_Str(104,288,"■",32,0xa254,Blue);LCD_DrawLine( 108, 304, 131,304, White );
- 294   2                      LCD_DrawLine( 120, 293, 120,315, White );LCD_DrawLine( 80, 288, 80,320, White );desktop();}
- 295   1              if(x>160&&x<240){ Show_Str(187,288,"〓",32,White,Blue);pmenu();}
- 296   1      }
- 297          /**********************
- 298          温度
- 299          **********************/
- 300          void tempert()
- 301          {
- 302   1              u16 i=0;
- 303   1              u8 temper[7];
- 304   1              LCD_Clear(0x051d);
- 305   1              LCD_DrawBox(45,60,152,50,Blue);
- 306   1              LCD_DrawEBox(55,70,132,30,Red);
- 307   1              guidshow();
- 308   1              while(1)
- 309   1              {
- 310   2                      if(i==0xff||i==0)
- 311   2                      {
- 312   3                              ReadTemperature(temper);
- 313   3                              Show_Str(56,78,"当前温度：",16,Red,Nocolor);
- 314   3                              GUI_Text(128,78,temper,Red,White);
- 315   3                              i=1;
- 316   3                      }
- 317   2                      i++;
- 318   2                      Get_Click(&x,&y);
- 319   2                      if(y>288&&y<320) guiddo(desktop,desktop,x);
- 320   2              }
- 321   1      }
- 322          /****************************************************
- 323          画板
- 324          ***************************************************/
- 325          void picbox()
- 326          {
- 327   1              u16 color=Red;
- 328   1              LCD_Clear(0x051d);
- 329   1              LCD_DrawBox(0,0,240,288,White);
- 330   1              LCD_DrawBox(0,264,240,24,0x051d);
- 331   1              LCD_DrawBox(0,264,24,24,White);
- 332   1              LCD_DrawBox(24,264,24,24,Black);
- 333   1              LCD_DrawBox(48,264,24,24,Grey);
- 334   1              LCD_DrawBox(72,264,24,24,Blue);
- 335   1              LCD_DrawBox(96,264,24,24,Red);
- 336   1              LCD_DrawBox(120,264,24,24,Magenta);
- 337   1              LCD_DrawBox(144,264,24,24,Green);
- 338   1              LCD_DrawBox(168,264,24,24,Cyan);
- 339   1              LCD_DrawBox(192,264,24,24,Yellow);
- 340   1              LCD_DrawBox(216,264,24,24,0xb723);
- 341   1              guidshow();
- 342   1              while(1)
- 343   1              {
- 344   2                      Get_Click(&x,&y);
- 345   2                      if((y>0&&y<264)) TP_Draw_Big_Point(x,y,color);
- 346   2                      if(y>288&&y<320) guiddo(desktop,desktop,x);
- 347   2                      if(y>264&&y<288) 
- 348   2                              switch((u8)(x/24))
- 349   2                              {
- 350   3                                      case 0:color=White;  break;
- 351   3                                      case 1:color=Black; break;
- 352   3                                      case 2:color=Grey;   break;
-C51 COMPILER V9.00   GUI                                                                   06/19/2015 14:37:50 PAGE 7   
+ 291          /*********************
+ 292          导航栏执行
+ 293          参数：pback 返回键点击调用函数的指针
+ 294          pmenu 菜单键点击调用函数的指针
+ 295          **********************/
+ 296          void guiddo(void (*pback)(void),void (*pmenu)(void),x)
+ 297          {
+ 298   1              if(x<80&&x>0) {Show_Str(20,288,"←",32,White,Blue);pback();}
+ 299   1              if(x>80&&x<160) {Show_Str(104,288,"■",32,0xa254,Blue);LCD_DrawLine( 108, 304, 131,304, White );
+ 300   2                      LCD_DrawLine( 120, 293, 120,315, White );LCD_DrawLine( 80, 288, 80,320, White );desktop();}
+ 301   1              if(x>160&&x<240){ Show_Str(187,288,"〓",32,White,Blue);pmenu();}
+ 302   1      }
+ 303          /**********************
+ 304          温度
+ 305          **********************/
+ 306          void tempert()
+ 307          {
+ 308   1              u16 i=0;
+ 309   1              u8 temper[7];
+ 310   1              LCD_Clear(0x051d);
+ 311   1              LCD_DrawBox(45,60,152,50,Blue);
+ 312   1              LCD_DrawEBox(55,70,132,30,Red);
+ 313   1              guidshow();
+ 314   1              while(1)
+ 315   1              {
+ 316   2                      if(i==0xff||i==0)
+ 317   2                      {
+ 318   3                              ReadTemperature(temper);
+ 319   3                              Show_Str(56,78,"当前温度：",16,Red,Nocolor);
+ 320   3                              GUI_Text(128,78,temper,Red,White);
+ 321   3                              i=1;
+ 322   3                      }
+ 323   2                      i++;
+ 324   2                      Get_Click(&x,&y);
+ 325   2                      if(y>288&&y<320) guiddo(desktop,desktop,x);
+ 326   2              }
+ 327   1      }
+ 328          /****************************************************
+ 329          画板
+ 330          ***************************************************/
+ 331          void picbox()
+ 332          {
+ 333   1              u16 color=Red;
+ 334   1              LCD_Clear(0x051d);
+ 335   1              LCD_DrawBox(0,0,240,288,White);
+ 336   1              LCD_DrawBox(0,264,240,24,0x051d);
+ 337   1              LCD_DrawBox(0,264,24,24,White);
+ 338   1              LCD_DrawBox(24,264,24,24,Black);
+ 339   1              LCD_DrawBox(48,264,24,24,Grey);
+ 340   1              LCD_DrawBox(72,264,24,24,Blue);
+ 341   1              LCD_DrawBox(96,264,24,24,Red);
+ 342   1              LCD_DrawBox(120,264,24,24,Magenta);
+ 343   1              LCD_DrawBox(144,264,24,24,Green);
+ 344   1              LCD_DrawBox(168,264,24,24,Cyan);
+ 345   1              LCD_DrawBox(192,264,24,24,Yellow);
+ 346   1              LCD_DrawBox(216,264,24,24,0xb723);
+ 347   1              guidshow();
+ 348   1              while(1)
+ 349   1              {
+ 350   2                      Get_Click(&x,&y);
+ 351   2                      if((y>0&&y<264)) TP_Draw_Big_Point(x,y,color);
+ 352   2                      if(y>288&&y<320) guiddo(desktop,desktop,x);
+C51 COMPILER V9.00   GUI                                                                   06/19/2015 15:54:48 PAGE 7   
 
- 353   3                                      case 3:color=Blue;   break;
- 354   3                                      case 4:color=Red;    break;
- 355   3                                      case 5:color=Magenta;break;
- 356   3                                      case 6:color=Green;  break;
- 357   3                                      case 7:color=Cyan;   break;
- 358   3                                      case 8:color=Yellow; break;
- 359   3                                      case 9:color=0xb723;break;
- 360   3                              }
- 361   2              }
- 362   1      }
+ 353   2                      if(y>264&&y<288) 
+ 354   2                              switch((u8)(x/24))
+ 355   2                              {
+ 356   3                                      case 0:color=White;  break;
+ 357   3                                      case 1:color=Black; break;
+ 358   3                                      case 2:color=Grey;   break;
+ 359   3                                      case 3:color=Blue;   break;
+ 360   3                                      case 4:color=Red;    break;
+ 361   3                                      case 5:color=Magenta;break;
+ 362   3                                      case 6:color=Green;  break;
+ 363   3                                      case 7:color=Cyan;   break;
+ 364   3                                      case 8:color=Yellow; break;
+ 365   3                                      case 9:color=0xb723;break;
+ 366   3                              }
+ 367   2              }
+ 368   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   6184    ----
+   CODE SIZE        =   6373    ----
    CONSTANT SIZE    =    367    ----
-   XDATA SIZE       =     26      49
+   XDATA SIZE       =     26      55
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

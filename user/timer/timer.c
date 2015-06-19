@@ -10,16 +10,11 @@ u8 i;
 extern bit ATC;
 void Timer_Routine(void) interrupt 1
 {
-	TF0=0;
 	TL0 = 0xAB;		
 	TH0 = 0x2F;	
 	if(i>=0x5f)
 	{
 		i=0;
-		W25Qxx_CS=1;
-		CE=0;
-		TCS=1;
-		Delay1ms();
 		if(flag==1)
 		{
 			flag=0;

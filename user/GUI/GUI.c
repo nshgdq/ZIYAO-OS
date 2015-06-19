@@ -134,7 +134,13 @@ void alert(char *s,u16 bcolor)
 }
 void Get_Click(u16 *x,u16 *y)
 {
+	TP_Read_XY2(x,y); 
+	//TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
+	*x=*x/15.03-14.85;*y=*y/10.81-17.52;
 	if(ATC){ATC=0;AT_DO(temp);}
+}
+void Get_Click1(u16 *x,u16 *y)
+{
 	TP_Read_XY2(x,y); 
 	//TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
 	*x=*x/15.03-14.85;*y=*y/10.81-17.52;
@@ -220,8 +226,8 @@ void sstmtime()
 			case 6:GUI_Text(40+8*17,128,time+17,Green,Black);GUI_Text(40+8*14,128,time+14,Red,White);break;
 			case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
 		}
-		Get_Click(&x,&y);
-		if(y>288&&y<320) guiddo(calendar,desktop,x);//µ¼º½À¸
+		Get_Click1(&x,&y);
+		if(y>288&&y<320){guiddo(calendar,desktop,x);}//µ¼º½À¸
 		if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next ¼ü²Ù×÷
 		if((x>=150&&x<=190)&&(y>=180&&y<=200))	//Ok ¼ü²Ù×÷
 		{
