@@ -321,6 +321,7 @@ void tempert()
 			i=1;
 		}
 		i++;
+		if(i>0xff) i=0;
 		Get_Click(&x,&y);
 		if(y>288&&y<320) guiddo(desktop,desktop,x);
 	}

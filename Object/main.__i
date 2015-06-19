@@ -1,1 +1,1 @@
-"user\main.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd) BL51 test.obj RECURSIONS (100) DEBUG OBJECTEXTEND PRINT(.\Lst\main.lst) OBJECT(.\Object\main.obj)
+"user\main.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd) DEBUG OBJECTEXTEND PRINT(.\Lst\main.lst) OBJECT(.\Object\main.obj)

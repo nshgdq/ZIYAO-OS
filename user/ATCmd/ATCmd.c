@@ -1,7 +1,13 @@
 #include "ATCmd.h"
 #include "gui.h"
+#include "ds1302.h"
+#include "uart.h"
+#include "18b20.h"
 #include<string.h>
-#define ATNUM 5		//AT指令的数量
+#define ATNUM 7		//AT指令的数量
+//私有函数
+void stime();
+void stempert();
 /**************************
 AT指令的类型的结构体		
 第一成员为指令串 (不超过10个字符，含\0)
@@ -18,7 +24,9 @@ at_cmd code at[ATNUM]=			//AT指令列表
 	{"startch",start_check},
 	{"picbox",picbox},
 	{"tempert",tempert},
-	{"calendar",calendar}
+	{"calendar",calendar},
+	{"stime",stime},
+	{"stempert",stempert},
 };
 /******************************
 函数名：AT_DO
@@ -43,4 +51,26 @@ bit IsATCmd(u8 *str)
 {
 	if(*str=='A'&&*(str+1)=='T') return 1;
 	return 0;
+}
+/*************************
+函数名:stime
+功能获取当前时间并从串口
+发送回上位机
+**************************/
+void stime()
+{
+	extern u8 time[22];
+	gettime(time);
+	UART_SendStr(time);
+}
+/*************************
+函数名:stempert
+功能获取当前时间并从串口
+发送回上位机
+**************************/
+void stempert()
+{
+	u8 temper[7];
+	ReadTemperature(temper);
+	UART_SendStr(temper);
 }

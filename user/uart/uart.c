@@ -24,9 +24,9 @@ void UART_SendOneByte(unsigned char c)
 }
 void UART_SendStr(unsigned char *str)
 {
-	while(str!=0)
+	while(*str!=0)
 	{
-		UART_SendOneByte(str);
+		UART_SendOneByte(*str);
 		str++;	
 	}
 }
