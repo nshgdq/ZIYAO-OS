@@ -11,7 +11,8 @@ extern bit ATC;
 void Timer_Routine(void) interrupt 1
 {
 	TL0 = 0xAB;		
-	TH0 = 0x2F;	
+	TH0 = 0x2F;
+	TCS = 1;	
 	if(i>=0x5f)
 	{
 		i=0;
