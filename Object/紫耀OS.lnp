@@ -11,3 +11,4 @@
 ".\Object\ATCmd.obj" 
 TO ".\Object\вор╚OS" 
 PRINT(".\Lst\вор╚OS.m51") RAMSIZE(256) 
+RECURSIONS (100) 

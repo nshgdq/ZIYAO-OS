@@ -7,6 +7,7 @@ void gettime(u8 *buf);
 void Ds1302_Write_Time(unsigned char *buf);
 void Ds1302_Read_Time(unsigned char *buf);
 void Ds1302_Init(void);
+void Delay1ms();
 //接口定义
 sbit CE=P2^7;
 sbit SCLK=P0^1;

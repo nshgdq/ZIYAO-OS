@@ -8,12 +8,16 @@
 #include "GUI.h"
 #include "type_51.h"
 #include "18b20.h"
+#include "ATCmd.h"
 u8 time[22]={0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 u16 x,y;
+bit ATC=0;
+extern unsigned char temp[20];
 void desktop()
 {
 	u16 i=0;
 	desktop:
+	TR0=0;
 	LCD_Clear(White);
 	show_picture(10,20,145,67,0x00600CA0);
 //	LCD_DrawBox(10,20,145,68,0xfe41);//d1
@@ -130,6 +134,7 @@ void alert(char *s,u16 bcolor)
 }
 void Get_Click(u16 *x,u16 *y)
 {
+	if(ATC){ATC=0;AT_DO(temp);}
 	TP_Read_XY2(x,y); 
 	//TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
 	*x=*x/15.03-14.85;*y=*y/10.81-17.52;

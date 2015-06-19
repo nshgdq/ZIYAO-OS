@@ -7,6 +7,7 @@
 #include "ds1302.h"
 #include "touch.h"
 u8 i;
+extern bit ATC;
 void Timer_Routine(void) interrupt 1
 {
 	TF0=0;
@@ -18,11 +19,13 @@ void Timer_Routine(void) interrupt 1
 		W25Qxx_CS=1;
 		CE=0;
 		TCS=1;
+		Delay1ms();
 		if(flag==1)
 		{
 			flag=0;
-			if(IsATCmd(temp)) AT_DO(temp);
-			GUI_Text(0, 0,temp,Red,0xffff);
+			if(IsATCmd(temp)) ATC=1;
+			alert(temp,0xffff);
+			temp[0]=0;
 		}
 	}
 	i++;
