@@ -1,1 +1,1 @@
-"user\LCD\HX8347D.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart) DEBUG OBJECTEXTEND PRINT(.\Lst\HX8347D.lst) OBJECT(.\Object\HX8347D.obj)
+"user\LCD\HX8347D.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd) DEBUG OBJECTEXTEND PRINT(.\Lst\HX8347D.lst) OBJECT(.\Object\HX8347D.obj)

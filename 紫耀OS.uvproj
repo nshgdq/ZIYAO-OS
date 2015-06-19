@@ -294,7 +294,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart</IncludePath>
+              <IncludePath>.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -405,6 +405,11 @@
               <FileName>uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\uart\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>ATCmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\ATCmd\ATCmd.c</FilePath>
             </File>
           </Files>
         </Group>

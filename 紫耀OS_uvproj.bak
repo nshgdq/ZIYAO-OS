@@ -156,7 +156,7 @@
         <Utilities>
           <Flash1>
             <UseTargetDll>0</UseTargetDll>
-            <UseExternalTool>0</UseExternalTool>
+            <UseExternalTool>1</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>0</UpdateFlashBeforeDebugging>
             <Capability>0</Capability>
@@ -294,7 +294,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\usart</IncludePath>
+              <IncludePath>.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -400,6 +400,16 @@
               <FileName>18b20.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\ds18b20\18b20.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\uart\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>ATCmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\ATCmd\ATCmd.c</FilePath>
             </File>
           </Files>
         </Group>

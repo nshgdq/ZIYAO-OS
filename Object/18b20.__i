@@ -1,1 +1,1 @@
-"user\ds18b20\18b20.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart) DEBUG OBJECTEXTEND PRINT(.\Lst\18b20.lst) OBJECT(.\Object\18b20.obj)
+"user\ds18b20\18b20.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd) DEBUG OBJECTEXTEND PRINT(.\Lst\18b20.lst) OBJECT(.\Object\18b20.obj)
