@@ -11,4 +11,5 @@
 ".\Object\ATCmd.obj" 
 TO ".\Object\×ÏÒ«OS" 
 PRINT(".\Lst\×ÏÒ«OS.m51") RAMSIZE(256) 
+DISABLEWARNING (13,15) 
 RECURSIONS (100) 

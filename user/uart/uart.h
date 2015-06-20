@@ -4,6 +4,5 @@
 void InitUART(bit);
 void UART_SendOneByte(unsigned char c);
 void UART_SendStr(unsigned char *str);
-extern unsigned temp[20];
 extern bit flag;
 #endif

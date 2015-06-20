@@ -9,6 +9,7 @@
 void stime();
 void stempert();
 void link();
+void ATErr();
 //******************
 /**************************
 AT指令的类型的结构体		
@@ -40,9 +41,10 @@ void AT_DO(u8 *at_str)
 {
 	u8 i;
 	at_str=at_str+3;//清除指令头3个字符"AT+"
-	for(i=0;i<ATNUM;i++)
+	for(i=0;i<=ATNUM;i++)
 	{
-		if(strcmp(at_str,at[i].at_name)==0) at[i].at_fun();
+		if(i==ATNUM) {ATErr();break;}
+		if(strcmp(at_str,at[i].at_name)==0) {at[i].at_fun();break;}
 	}
 }
 /***********************************
@@ -76,7 +78,7 @@ void stempert()
 {
 	u8 temper[7];
 	ReadTemperature(temper);
-	UART_SendStr(temper);
+	UART_SendStr(temper+1);
 	UART_SendStr("\n");
 }
 /*************************
@@ -87,4 +89,13 @@ void stempert()
 void link()
 {
 	UART_SendStr("OK\n");
+}
+/*************************
+函数名:ATErr
+功能:查AT表没有找到指令
+报错！
+**************************/
+void ATErr()
+{
+	UART_SendStr("Not found!\n");
 }

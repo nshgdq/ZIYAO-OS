@@ -8,6 +8,7 @@
 #include "touch.h"
 u8 i;
 extern bit ATC;
+extern unsigned temp[20];
 void Timer_Routine(void) interrupt 1
 {
 	TL0 = 0xAB;		

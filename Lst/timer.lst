@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   TIMER                                                                 06/20/2015 11:49:44 PAGE 1   
+C51 COMPILER V9.00   TIMER                                                                 06/20/2015 12:44:14 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE TIMER
@@ -19,36 +19,37 @@ line level    source
    8          #include "touch.h"
    9          u8 i;
   10          extern bit ATC;
-  11          void Timer_Routine(void) interrupt 1
-  12          {
-  13   1              TL0 = 0xAB;             
-  14   1              TH0 = 0x2F;
-  15   1              TCS = 1;        
-  16   1              if(i>=0x5f)
-  17   1              {
-  18   2                      i=0;
-  19   2                      if(flag==1)
-  20   2                      {
-  21   3                              flag=0;
-  22   3                              if(IsATCmd(temp)) ATC=1;
-*** WARNING C182 IN LINE 22 OF USER\TIMER\TIMER.C: pointer to different objects
-  23   3                              else alert(temp,0xffff);
+  11          extern unsigned temp[20];
+  12          void Timer_Routine(void) interrupt 1
+  13          {
+  14   1              TL0 = 0xAB;             
+  15   1              TH0 = 0x2F;
+  16   1              TCS = 1;        
+  17   1              if(i>=0x5f)
+  18   1              {
+  19   2                      i=0;
+  20   2                      if(flag==1)
+  21   2                      {
+  22   3                              flag=0;
+  23   3                              if(IsATCmd(temp)) ATC=1;
 *** WARNING C182 IN LINE 23 OF USER\TIMER\TIMER.C: pointer to different objects
-  24   3                              temp[0]=0;
-  25   3                      }
-  26   2              }
-  27   1              i++;
-  28   1      }
-  29          
-  30          void Timer0Init(void)           //20ms@32MHz
-  31          {
-  32   1              TMOD |= 0x01;   
-  33   1              TL0 = 0xAB;             
-  34   1              TH0 = 0x2F;                     
-  35   1              ET0 = 1 ;
-  36   1              EA = 1;
-  37   1              TR0 = 0;        
-  38   1      }
+  24   3                              else alert(temp,0xffff);
+*** WARNING C182 IN LINE 24 OF USER\TIMER\TIMER.C: pointer to different objects
+  25   3                              temp[0]=0;
+  26   3                      }
+  27   2              }
+  28   1              i++;
+  29   1      }
+  30          
+  31          void Timer0Init(void)           //20ms@32MHz
+  32          {
+  33   1              TMOD |= 0x01;   
+  34   1              TL0 = 0xAB;             
+  35   1              TH0 = 0x2F;                     
+  36   1              ET0 = 1 ;
+  37   1              EA = 1;
+  38   1              TR0 = 0;        
+  39   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

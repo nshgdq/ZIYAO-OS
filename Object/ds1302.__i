@@ -1,1 +1,0 @@
-"user\ds1302\ds1302.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd) DEBUG OBJECTEXTEND PRINT(.\Lst\ds1302.lst) OBJECT(.\Object\ds1302.obj)
