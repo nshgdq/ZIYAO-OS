@@ -4,10 +4,12 @@
 #include "uart.h"
 #include "18b20.h"
 #include<string.h>
-#define ATNUM 7		//AT指令的数量
+#define ATNUM 8		//AT指令的数量
 //私有函数
 void stime();
 void stempert();
+void link();
+//******************
 /**************************
 AT指令的类型的结构体		
 第一成员为指令串 (不超过10个字符，含\0)
@@ -20,6 +22,7 @@ typedef struct
 }at_cmd;
 at_cmd code at[ATNUM]=			//AT指令列表
 {
+	{"link",link},
 	{"desktop",desktop},
 	{"startch",start_check},
 	{"picbox",picbox},
@@ -54,7 +57,7 @@ bit IsATCmd(u8 *str)
 }
 /*************************
 函数名:stime
-功能获取当前时间并从串口
+功能:获取当前时间并从串口
 发送回上位机
 **************************/
 void stime()
@@ -62,10 +65,11 @@ void stime()
 	extern u8 time[22];
 	gettime(time);
 	UART_SendStr(time);
+	UART_SendStr("\n");
 }
 /*************************
 函数名:stempert
-功能获取当前时间并从串口
+功能:获取当前温度并从串口
 发送回上位机
 **************************/
 void stempert()
@@ -73,4 +77,14 @@ void stempert()
 	u8 temper[7];
 	ReadTemperature(temper);
 	UART_SendStr(temper);
+	UART_SendStr("\n");
+}
+/*************************
+函数名:link
+功能:检查串口连接，
+已连接返回OK
+**************************/
+void link()
+{
+	UART_SendStr("OK\n");
 }

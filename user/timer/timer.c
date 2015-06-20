@@ -20,7 +20,7 @@ void Timer_Routine(void) interrupt 1
 		{
 			flag=0;
 			if(IsATCmd(temp)) ATC=1;
-			alert(temp,0xffff);
+			else alert(temp,0xffff);
 			temp[0]=0;
 		}
 	}
