@@ -1,11 +1,11 @@
-C51 COMPILER V9.00   GUI                                                                   06/20/2015 12:44:14 PAGE 1   
+C51 COMPILER V9.00   GUI                                                                   06/22/2015 11:49:33 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE GUI
 OBJECT MODULE PLACED IN .\Object\GUI.obj
 COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\GUI\GUI.c LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\T
-                    -OUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd) DEBUG OBJECTEXTEND PRIN
-                    -T(.\Lst\GUI.lst) OBJECT(.\Object\GUI.obj)
+                    -OUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd;.\user\led) DEBUG OBJECT
+                    -EXTEND PRINT(.\Lst\GUI.lst) OBJECT(.\Object\GUI.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   51   1              {
   52   2                      x=0;y=0;
   53   2                      if(i==0x0bff) {clock();i=0;}
-C51 COMPILER V9.00   GUI                                                                   06/20/2015 12:44:14 PAGE 2   
+C51 COMPILER V9.00   GUI                                                                   06/22/2015 11:49:33 PAGE 2   
 
   54   2                      i++;
   55   2              Get_Click(&x,&y);
@@ -126,7 +126,7 @@ line level    source
  113   1              Show_Str(0,48,"****时钟检测****",16,Green,Black);
  114   1              Show_Str(0,64,"读取时间中...",16,Red,White);
  115   1              gettime(time);
-C51 COMPILER V9.00   GUI                                                                   06/20/2015 12:44:14 PAGE 3   
+C51 COMPILER V9.00   GUI                                                                   06/22/2015 11:49:33 PAGE 3   
 
  116   1              Show_Str(0,80,time,16,Red,White);
  117   1              delay_ms(0xff);
@@ -190,7 +190,7 @@ line level    source
  175   1              GUI_Text(166,61,time+20,Red,Nocolor);
  176   1              time[10]='\0';
  177   1              Show_Str(105,110,time+8,32,Red,Nocolor);
-C51 COMPILER V9.00   GUI                                                                   06/20/2015 12:44:14 PAGE 4   
+C51 COMPILER V9.00   GUI                                                                   06/22/2015 11:49:33 PAGE 4   
 
  178   1              guidshow();
  179   1              while(1)
@@ -254,7 +254,7 @@ line level    source
  237   3                              setime[3]=((time[8]-'0')<<4)|(time[9]-'0');
  238   3                              setime[4]=((time[5]-'0')<<4)|(time[6]-'0');
  239   3                              setime[5]=time[20]-'0';
-C51 COMPILER V9.00   GUI                                                                   06/20/2015 12:44:14 PAGE 5   
+C51 COMPILER V9.00   GUI                                                                   06/22/2015 11:49:33 PAGE 5   
 
  240   3                              setime[6]=((time[2]-'0')<<4)|(time[3]-'0');
  241   3                              Ds1302_Write_Time(setime);//设定系统时间
@@ -318,7 +318,7 @@ line level    source
  288   1              LCD_DrawLine( 160, 288, 160,320, White );
  289   1              Show_Str(187,288,"〓",32,White,Nocolor);
  290   1      }
-C51 COMPILER V9.00   GUI                                                                   06/20/2015 12:44:14 PAGE 6   
+C51 COMPILER V9.00   GUI                                                                   06/22/2015 11:49:33 PAGE 6   
 
  291          /*********************
  292          导航栏执行
@@ -382,7 +382,7 @@ line level    source
  350   1              {
  351   2                      Get_Click(&x,&y);
  352   2                      if((y>0&&y<264)) TP_Draw_Big_Point(x,y,color);
-C51 COMPILER V9.00   GUI                                                                   06/20/2015 12:44:14 PAGE 7   
+C51 COMPILER V9.00   GUI                                                                   06/22/2015 11:49:33 PAGE 7   
 
  353   2                      if(y>288&&y<320) guiddo(desktop,desktop,x);
  354   2                      if(y>264&&y<288) 

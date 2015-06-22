@@ -318,7 +318,7 @@
             <DataOverlaying>1</DataOverlaying>
             <OverlayString></OverlayString>
             <MiscControls>RECURSIONS (100)</MiscControls>
-            <DisableWarningNumbers></DisableWarningNumbers>
+            <DisableWarningNumbers>13,15</DisableWarningNumbers>
             <LinkerCmdFile></LinkerCmdFile>
             <Assign></Assign>
             <ReserveString></ReserveString>

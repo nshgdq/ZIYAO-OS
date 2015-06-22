@@ -1,11 +1,11 @@
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 1   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE HX8347D
 OBJECT MODULE PLACED IN .\Object\HX8347D.obj
 COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\LCD\HX8347D.c LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\us
-                    -er\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd) DEBUG OBJECTEXTEND 
-                    -PRINT(.\Lst\HX8347D.lst) OBJECT(.\Object\HX8347D.obj)
+                    -er\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd;.\user\led) DEBUG OB
+                    -JECTEXTEND PRINT(.\Lst\HX8347D.lst) OBJECT(.\Object\HX8347D.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   51          * Description    : Prepare to write to the LCD RAM.
   52          * Input          : None
   53          * Output         : None
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 2   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 2   
 
   54          * Return         : None
   55          * Attention              : None
@@ -126,7 +126,7 @@ line level    source
  113          *******************************************************************************/
  114          static void delay_ms(uint16_t ms)    
  115          { 
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 3   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 3   
 
  116   1              uint16_t i,j; 
  117   1              for( i = 0; i < ms; i++ )
@@ -190,7 +190,7 @@ line level    source
  175   2                      LCD_WriteReg(0x51,0x2F);                                                    
  176   2                      LCD_WriteReg(0x52,0x2D);                                                     
  177   2                      LCD_WriteReg(0x53,0x3E);                                                    
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 4   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 4   
 
  178   2                      LCD_WriteReg(0x54,0x3F);                                                     
  179   2                      LCD_WriteReg(0x55,0x3F);                                                     
@@ -254,7 +254,7 @@ line level    source
  236          
  237          /*******************************************************************************
  238          * Function Name  : LCD_Clear
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 5   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 5   
 
  239          * Description    : 将屏幕填充成指定的颜色，如清屏，则填充 0xffff
  240          * Input          : - Color: Screen Color
@@ -318,7 +318,7 @@ line level    source
  298   2              }
  299   1              LCD_SetCursor(Xpos,Ypos);
  300   1          LCD_WriteRAM_Prepare();
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 6   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 6   
 
  301   1          LCD_WriteRAM(point>>8);
  302   1              LCD_WriteRAM(point);
@@ -382,7 +382,7 @@ line level    source
  360   1          {
  361   2                  temp = 2 * dy - dx;               /* 计算下个点的位置 */         
  362   2              while( x0 != x1 )
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 7   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 7   
 
  363   2              {
  364   3                      LCD_SetPoint(x0,y0,color);    /* 画起点 */ 
@@ -446,7 +446,7 @@ line level    source
  422   2                      temp=asc2_1608[num][t];;  //调用字体数组
  423   2                      for(t1=0;t1<8;t1++)
  424   2                      {                           
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 8   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 8   
 
  425   3                              if(temp&0x80)
  426   3                                      LCD_SetPoint(x,y,p_color);//在指定位置打指定颜色的点
@@ -510,7 +510,7 @@ line level    source
  484          **ReadAddr为图片存储在flash中的起始位置地址
  485          *************************************************/
  486          void show_picture(u16 x,u16 y,u16 width,u16 high,u32 ReadAddr)
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 9   
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 9   
 
  487          {
  488   1              u8 temp1=0x00,temp2=0x00;
@@ -574,7 +574,7 @@ line level    source
  546   1              LCD_DrawLine(x,y+high,x+width,y+high,color);
  547   1              LCD_DrawLine(x+1,y+high-1,x+width-1,y+high-1,color);
  548   1              LCD_DrawLine(x+width,y,x+width,y+high,color);
-C51 COMPILER V9.00   HX8347D                                                               06/20/2015 12:44:14 PAGE 10  
+C51 COMPILER V9.00   HX8347D                                                               06/22/2015 11:49:32 PAGE 10  
 
  549   1              LCD_DrawLine(x+width-1,y+1,x+width-1,y+high-1,color);
  550   1      }

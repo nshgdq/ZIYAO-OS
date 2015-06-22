@@ -1,0 +1,1 @@
+"user\W25Qxx\W25Qxx.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd;.\user\led) DEBUG OBJECTEXTEND PRINT(.\Lst\W25Qxx.lst) OBJECT(.\Object\W25Qxx.obj)

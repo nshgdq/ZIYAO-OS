@@ -294,7 +294,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd</IncludePath>
+              <IncludePath>.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd;.\user\led</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -410,6 +410,11 @@
               <FileName>ATCmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\ATCmd\ATCmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\led\led.c</FilePath>
             </File>
           </Files>
         </Group>

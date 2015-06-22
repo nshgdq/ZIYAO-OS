@@ -4,435 +4,56 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 D:\ÓÃ»§Ä¿Â¼\Desktop\ZIYAO-OS\×ÏÒ«OS.uvproj
-Project File Date:  06/19/2015
+Project File Date:  06/22/2015
 
 <h2>Output:</h2>
 Build target 'stc12c5a60s2'
-linking...
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?CO?ATCMD
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?PICBOX?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?PICBOX?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?_GUIDDO?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?TEMPERT?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?TEMPERT?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?CALENDAR?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?SSTMTIME?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?CALENDAR?GUI
-    CALLER:  ?PR?SSTMTIME?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?CALENDAR?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?CO?ATCMD
-    CALLER:  ?PR?STEMPERT?ATCMD
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_ALERT?GUI
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_SHOW_STR?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_SHOW_ASCII?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_W25QXX_READ?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_LCD_SETPOINT?HX8347D
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_SHOW_FONT?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_HZMAT?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_LCD_DRAWBOX?HX8347D
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 19 Warning(s).
-Build target 'stc12c5a60s2'
-linking...
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?CO?ATCMD
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?PICBOX?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?PICBOX?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?_GUIDDO?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?TEMPERT?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?TEMPERT?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?CALENDAR?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?SSTMTIME?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?CALENDAR?GUI
-    CALLER:  ?PR?SSTMTIME?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?CALENDAR?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?CO?ATCMD
-    CALLER:  ?PR?STEMPERT?ATCMD
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 11 Warning(s).
-Build target 'stc12c5a60s2'
-linking...
-BL51 BANKED LINKER/LOCATER V6.22 - SN: K1RMC-CUSEWC
-COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
-".\Object\STARTUP.obj",
-".\Object\main.obj",
-".\Object\W25Qxx.obj",
-".\Object\HX8347D.obj",
-".\Object\Touch.obj",
-".\Object\ds1302.obj",
-".\Object\timer.obj",
-".\Object\GUI.obj",
-".\Object\18b20.obj",
-".\Object\uart.obj",
-".\Object\ATCmd.obj" 
-TO ".\Object\×ÏÒ«OS" 
-PRINT(".\Lst\×ÏÒ«OS.m51") RAMSIZE(256) 
-DISABLEWARNING (15 13) 
-RECURSIONS (100) 
-*** FATAL ERROR L201: INVALID COMMAND LINE SYNTAX
-    POS: 325
-    ject\×ÏÒ«OS PRINT (.\Lst\×ÏÒ«OS.m51) RAMSIZE (256) DISABLEWARNING (15 #
-Target not created
-Build target 'stc12c5a60s2'
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-linking...
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?CO?ATCMD
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?PICBOX?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?PICBOX?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?_GUIDDO?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?TEMPERT?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?TEMPERT?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_CLICK?GUI
-    CALLER:  ?PR?CALENDAR?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?SSTMTIME?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?CALENDAR?GUI
-    CALLER:  ?PR?SSTMTIME?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?PR?DESKTOP?GUI
-    CALLER:  ?PR?CALENDAR?GUI
-*** WARNING L13: RECURSIVE CALL TO SEGMENT
-    SEGMENT: ?CO?ATCMD
-    CALLER:  ?PR?STEMPERT?ATCMD
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_ALERT?GUI
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_SHOW_STR?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_SHOW_ASCII?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_W25QXX_READ?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_LCD_SETPOINT?HX8347D
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_SHOW_FONT?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_GET_HZMAT?W25QXX
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-*** WARNING L15: MULTIPLE CALL TO SEGMENT
-    SEGMENT: ?PR?_LCD_DRAWBOX?HX8347D
-    CALLER1: ?C_C51STARTUP
-    CALLER2: ?PR?TIMER_ROUTINE?TIMER
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 19 Warning(s).
-Build target 'stc12c5a60s2'
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-assembling STARTUP.A51...
 compiling main.c...
-compiling W25Qxx.c...
-compiling HX8347D.c...
-compiling Touch.c...
-compiling ds1302.c...
-compiling timer.c...
-USER\TIMER\TIMER.C(22): warning C182: pointer to different objects
-USER\TIMER\TIMER.C(23): warning C182: pointer to different objects
-compiling GUI.c...
-compiling 18b20.c...
-compiling uart.c...
-USER\UART\UART.C(4): warning C231: 'temp': redefinition
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 3 Warning(s).
-Build target 'stc12c5a60s2'
-assembling STARTUP.A51...
-compiling main.c...
-compiling W25Qxx.c...
-compiling HX8347D.c...
-compiling Touch.c...
-compiling ds1302.c...
-compiling timer.c...
-USER\TIMER\TIMER.C(11): warning C231: 'temp': redefinition
-compiling GUI.c...
-compiling 18b20.c...
-compiling uart.c...
-USER\UART\UART.C(4): warning C231: 'temp': redefinition
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24016
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 2 Warning(s).
-Build target 'stc12c5a60s2'
-compiling timer.c...
-USER\TIMER\TIMER.C(13): warning C231: 'temp': redefinition
-linking...
-Program Size: data=15.3 xdata=754 code=24016
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 1 Warning(s).
-Build target 'stc12c5a60s2'
-compiling timer.c...
-USER\TIMER\TIMER.C(22): warning C182: pointer to different objects
-USER\TIMER\TIMER.C(23): warning C182: pointer to different objects
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 2 Warning(s).
-Build target 'stc12c5a60s2'
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-assembling STARTUP.A51...
-compiling main.c...
-compiling W25Qxx.c...
-compiling HX8347D.c...
-compiling Touch.c...
-compiling ds1302.c...
-compiling timer.c...
-USER\TIMER\TIMER.C(22): warning C182: pointer to different objects
-USER\TIMER\TIMER.C(23): warning C182: pointer to different objects
-compiling GUI.c...
-compiling 18b20.c...
-compiling uart.c...
-USER\UART\UART.C(4): warning C231: 'temp': redefinition
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 3 Warning(s).
-Build target 'stc12c5a60s2'
-compiling main.c...
-compiling timer.c...
-USER\TIMER\TIMER.C(23): warning C182: pointer to different objects
-USER\TIMER\TIMER.C(24): warning C182: pointer to different objects
-compiling uart.c...
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 2 Warning(s).
-Build target 'stc12c5a60s2'
-assembling STARTUP.A51...
-compiling main.c...
-compiling W25Qxx.c...
-compiling HX8347D.c...
-compiling Touch.c...
-compiling ds1302.c...
-compiling timer.c...
-USER\TIMER\TIMER.C(23): warning C182: pointer to different objects
-USER\TIMER\TIMER.C(24): warning C182: pointer to different objects
-compiling GUI.c...
-compiling 18b20.c...
-compiling uart.c...
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 2 Warning(s).
-Build target 'stc12c5a60s2'
-linking...
-Program Size: data=15.3 xdata=754 code=24018
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-USER\ATCMD\ATCMD.C(46): warning C276: constant in condition expression
-USER\ATCMD\ATCMD.C(101): error C202: 'temp': undefined identifier
-Target not created
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-USER\ATCMD\ATCMD.C(101): error C202: 'temp': undefined identifier
-Target not created
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=751 code=23547
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-linking...
-Program Size: data=15.3 xdata=751 code=23547
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=751 code=23552
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=751 code=23550
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ATERR?ATCMD
-Program Size: data=15.3 xdata=754 code=24048
+    SEGMENT: ?PR?FONT_INIT?W25QXX
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_INITIALIZTION?HX8347D
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DS1302_INIT?DS1302
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIMER0INIT?TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?START_LOGO?GUI
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITUART?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_REDLED?LED
+Program Size: data=15.6 xdata=659 code=24085
 creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 1 Warning(s).
+".\Object\×ÏÒ«OS" - 0 Error(s), 7 Warning(s).
 Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=751 code=23550
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=751 code=23550
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
+compiling main.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?ATERR?ATCMD
-Program Size: data=15.3 xdata=754 code=24048
+    SEGMENT: ?PR?FONT_INIT?W25QXX
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_INITIALIZTION?HX8347D
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DS1302_INIT?DS1302
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIMER0INIT?TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?START_LOGO?GUI
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITUART?UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_REDLED?LED
+Program Size: data=15.6 xdata=659 code=24092
 creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 1 Warning(s).
+".\Object\×ÏÒ«OS" - 0 Error(s), 7 Warning(s).
 Build target 'stc12c5a60s2'
-compiling ATCmd.c...
+compiling main.c...
 linking...
-Program Size: data=15.3 xdata=754 code=24043
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETLED?LED
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_REDLED?LED
+Program Size: data=15.4 xdata=754 code=24107
 creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24033
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24043
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24048
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24049
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24050
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24049
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
-Build target 'stc12c5a60s2'
-compiling ATCmd.c...
-linking...
-Program Size: data=15.3 xdata=754 code=24049
-creating hex file from ".\Object\×ÏÒ«OS"...
-".\Object\×ÏÒ«OS" - 0 Error(s), 0 Warning(s).
+".\Object\×ÏÒ«OS" - 0 Error(s), 2 Warning(s).
