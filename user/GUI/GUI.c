@@ -124,6 +124,18 @@ void start_check()
 	ReadTemperature(temper);
 	Show_Str(0,128,"当前温度：",16,Green,Nocolor);
 	GUI_Text(80,128,temper,Red,White);
+	Show_Str(0,144,"****LED检测****",16,Green,Black);
+	LED1=0;
+	Show_Str(0,160,"LED1 亮",16,Red,White);
+	delay_ms(0x5ff);
+	LED2=0;
+	Show_Str(0,160,"LED2 亮",16,Red,White);
+	delay_ms(0x5ff);
+	LED3=0;
+	Show_Str(0,160,"LED3 亮",16,Red,White);
+	delay_ms(0x5ff);
+	InitLed();
+	Show_Str(0,160,"LED  关",16,Red,White);
 	delay_ms(0xfff);
 }
 void alert(char *s,u16 bcolor)

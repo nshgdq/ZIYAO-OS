@@ -3,13 +3,18 @@
 #include "ds1302.h"
 #include "uart.h"
 #include "18b20.h"
+#include "led.h"
 #include<string.h>
-#define ATNUM 8		//AT指令的数量
+#define ATNUM 12		//AT指令的数量
 //私有函数
 void stime();
 void stempert();
 void link();
 void ATErr();
+void SWLED1();
+void SWLED2();
+void SWLED3();
+void OFFLed();
 //******************
 /**************************
 AT指令的类型的结构体		
@@ -31,6 +36,10 @@ at_cmd code at[ATNUM]=			//AT指令列表
 	{"calendar",calendar},
 	{"stime",stime},
 	{"stempert",stempert},
+	{"swled1",SWLED1},
+	{"swled2",SWLED2},
+	{"swled3",SWLED3},
+	{"offled",OFFLed}
 };
 /******************************
 函数名：AT_DO
@@ -98,4 +107,26 @@ void link()
 void ATErr()
 {
 	UART_SendStr("Not found!\n");
+}
+/*************************
+函数名:LED
+功能:改变LED状态
+*************************/
+void SWLED1()
+{
+	SetLed(1,!RedLed(1));
+}
+void SWLED2()
+{
+	SetLed(2,!RedLed(2));
+}
+void SWLED3()
+{
+	SetLed(3,!RedLed(3));
+}
+void OFFLed()
+{
+	SetLed(1,1);
+	SetLed(2,1);
+	SetLed(3,1);
 }

@@ -183,8 +183,8 @@
       <Focus>0</Focus>
       <ColumnNumber>11</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>12</TopLine>
-      <CurrentLine>27</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\user\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -267,8 +267,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>24</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\user\timer\timer.c</PathWithFileName>
       <FilenameWithoutPath>timer.c</FilenameWithoutPath>
@@ -279,10 +279,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>14</ColumnNumber>
+      <ColumnNumber>38</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>385</TopLine>
-      <CurrentLine>408</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\user\GUI\GUI.c</PathWithFileName>
       <FilenameWithoutPath>GUI.c</FilenameWithoutPath>
@@ -321,10 +321,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>22</ColumnNumber>
+      <ColumnNumber>16</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>8</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\user\ATCmd\ATCmd.c</PathWithFileName>
       <FilenameWithoutPath>ATCmd.c</FilenameWithoutPath>
@@ -335,119 +335,15 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>18</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\user\led\led.c</PathWithFileName>
       <FilenameWithoutPath>led.c</FilenameWithoutPath>
     </File>
   </Group>
-
-  <AlienFiles>
-    <PathWithFilename>D:\用户目录\Desktop\ZIYAO-OS\USER\LED\LED.H</PathWithFilename>
-    <TopLine>1</TopLine>
-    <CurrentLine>13</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>D:\用户目录\Desktop\ZIYAO-OS\USER\GUI\GUI.H</PathWithFilename>
-    <TopLine>1</TopLine>
-    <CurrentLine>17</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>D:\用户目录\Desktop\ZIYAO-OS\USER\LCD\HX8347D.H</PathWithFilename>
-    <TopLine>49</TopLine>
-    <CurrentLine>72</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>D:\用户目录\Desktop\ZIYAO-OS\USER\LCD\FONT.H</PathWithFilename>
-    <TopLine>99</TopLine>
-    <CurrentLine>99</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
 
   <WinLayout>
     <sActiveDebugView>Default</sActiveDebugView>
@@ -1790,49 +1686,19 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>2</ActiveTab>
+      <ActiveTab>0</ActiveTab>
       <Documents>
         <Doc>
-          <Name>.\user\main.c</Name>
-          <ColumnNumber>11</ColumnNumber>
-          <TopLine>12</TopLine>
-          <CurrentLine>27</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\USER\LED\LED.H</Name>
-          <ColumnNumber>5</ColumnNumber>
+          <Name>.\user\ATCmd\ATCmd.c</Name>
+          <ColumnNumber>16</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>13</CurrentLine>
+          <CurrentLine>8</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\user\GUI\GUI.c</Name>
-          <ColumnNumber>14</ColumnNumber>
-          <TopLine>385</TopLine>
-          <CurrentLine>408</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\USER\GUI\GUI.H</Name>
-          <ColumnNumber>11</ColumnNumber>
+          <Name>.\user\led\led.c</Name>
+          <ColumnNumber>20</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>17</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\user\timer\timer.c</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>24</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\USER\LCD\HX8347D.H</Name>
-          <ColumnNumber>5</ColumnNumber>
-          <TopLine>49</TopLine>
-          <CurrentLine>72</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>USER\LCD\FONT.H</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>99</TopLine>
-          <CurrentLine>99</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>
