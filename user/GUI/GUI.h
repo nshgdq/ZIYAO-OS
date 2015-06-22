@@ -14,4 +14,5 @@ void guiddo(void (*pback)(void),void (*pmenu)(void),x);
 void tempert();
 void sstmtime();
 void picbox();
+void led();
 #endif
