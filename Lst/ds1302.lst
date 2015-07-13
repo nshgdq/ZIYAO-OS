@@ -1,148 +1,147 @@
-C51 COMPILER V9.00   DS1302                                                                06/22/2015 11:49:33 PAGE 1   
+C51 COMPILER V9.00   DS1302                                                                07/13/2015 15:35:09 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE DS1302
 OBJECT MODULE PLACED IN .\Object\ds1302.obj
-COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\ds1302\ds1302.c LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\
-                    -user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd;.\user\led) DEBUG 
-                    -OBJECTEXTEND PRINT(.\Lst\ds1302.lst) OBJECT(.\Object\ds1302.obj)
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\ds1302\ds1302.c LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND
+                    - PRINT(.\Lst\ds1302.lst) TABS(2) OBJECT(.\Object\ds1302.obj)
 
 line level    source
 
    1          #include "INTRINS.H"
    2          #include "ds1302.h"
-   3          void Delay1ms()         //@32MHz
+   3          void Delay1ms()   //@32MHz
    4          {
-   5   1              unsigned char i, j;
+   5   1        unsigned char i, j;
    6   1      
-   7   1              i = 32;
-   8   1              j = 29;
-   9   1              do
-  10   1              {
-  11   2                      while (--j);
-  12   2              } while (--i);
+   7   1        i = 32;
+   8   1        j = 29;
+   9   1        do
+  10   1        {
+  11   2          while (--j);
+  12   2        } while (--i);
   13   1      }
   14          
   15          void gettime(u8 *buf)
   16          {
-  17   1              u8 temp[7];
-  18   1              Ds1302_Read_Time(temp);
-  19   1              buf[0]='2'; //年
-  20   1              buf[1]='0';
-  21   1              buf[2]=(temp[6]>>4)+'0';
-  22   1              buf[3]=(temp[6]&0x0f)+'0';
-  23   1              buf[4]='/';
-  24   1              buf[5]=(temp[4]>>4)+'0';//月
-  25   1              buf[6]=(temp[4]&0x0f)+'0';
-  26   1              buf[7]='/';
-  27   1              buf[8]=(temp[3]>>4)+'0';//日
-  28   1              buf[9]=(temp[3]&0x0f)+'0';
-  29   1              buf[10]='/';
-  30   1              buf[11]=(temp[2]>>4)+'0';//时
-  31   1              buf[12]=(temp[2]&0x0f)+'0';
-  32   1              buf[13]=':';
-  33   1              buf[14]=(temp[1]>>4)+'0';//分
-  34   1              buf[15]=(temp[1]&0x0f)+'0';
-  35   1              buf[16]=':';
-  36   1              buf[17]=(temp[0]>>4)+'0';//秒
-  37   1              buf[18]=(temp[0]&0x0f)+'0';
-  38   1              buf[19]='/';
-  39   1              buf[20]=(temp[5]&0x0f)+'0';//周
-  40   1              buf[21]='\0';
+  17   1        u8 temp[7];
+  18   1        Ds1302_Read_Time(temp);
+  19   1        buf[0]='2'; //年
+  20   1        buf[1]='0';
+  21   1        buf[2]=(temp[6]>>4)+'0';
+  22   1        buf[3]=(temp[6]&0x0f)+'0';
+  23   1        buf[4]='/';
+  24   1        buf[5]=(temp[4]>>4)+'0';//月
+  25   1        buf[6]=(temp[4]&0x0f)+'0';
+  26   1        buf[7]='/';
+  27   1        buf[8]=(temp[3]>>4)+'0';//日
+  28   1        buf[9]=(temp[3]&0x0f)+'0';
+  29   1        buf[10]='/';
+  30   1        buf[11]=(temp[2]>>4)+'0';//时
+  31   1        buf[12]=(temp[2]&0x0f)+'0';
+  32   1        buf[13]=':';
+  33   1        buf[14]=(temp[1]>>4)+'0';//分
+  34   1        buf[15]=(temp[1]&0x0f)+'0';
+  35   1        buf[16]=':';
+  36   1        buf[17]=(temp[0]>>4)+'0';//秒
+  37   1        buf[18]=(temp[0]&0x0f)+'0';
+  38   1        buf[19]='/';
+  39   1        buf[20]=(temp[5]&0x0f)+'0';//周
+  40   1        buf[21]='\0';
   41   1      }
-  42          void delay40us()                //@32MHz
+  42          void delay40us()    //@32MHz
   43          {
-  44   1              unsigned char i, j;
+  44   1        unsigned char i, j;
   45   1      
-  46   1              i = 2;
-  47   1              j = 59;
-  48   1              do
-  49   1              {
-  50   2                      while (--j);
-  51   2              } while (--i);
+  46   1        i = 2;
+  47   1        j = 59;
+  48   1        do
+  49   1        {
+  50   2          while (--j);
+  51   2        } while (--i);
   52   1      }
   53          /**************************************
-C51 COMPILER V9.00   DS1302                                                                06/22/2015 11:49:33 PAGE 2   
-
   54          往DS1302的某个地址写入数据
+C51 COMPILER V9.00   DS1302                                                                07/13/2015 15:35:09 PAGE 2   
+
   55          **************************************/
   56          void Write1302 (unsigned char addr,unsigned char dat)
   57                { 
   58   1             unsigned char i,temp; 
-  59   1             CE=0;                            //CE 引脚为低， 数据传送中止 
-  60   1                                      Delay1ms();
+  59   1             CE=0;        //CE 引脚为低， 数据传送中止 
+  60   1              Delay1ms();
   61   1             SCLK=0;                       //清零时钟总线 
-  62   1                                      Delay1ms();
+  62   1              Delay1ms();
   63   1             CE = 1;                       //CE 引脚为高，逻辑控制有效 
-  64   1              Delay1ms();                  //后加的
+  64   1        Delay1ms();                  //后加的
   65   1             for ( i=8; i>0; i-- )         //循环8次移位发送地址  
   66   1             {      
-  67   2                    SCLK = 0;                                   //sclk上升沿触发
-  68   2                                                              Delay1ms();
+  67   2                    SCLK = 0;           //sclk上升沿触发
+  68   2                    Delay1ms();
   69   2                    temp = addr; 
   70   2                    DIO = (bit)(temp&0x01);    //每次传输低字节 
-  71   2                                                              Delay1ms();
+  71   2                    Delay1ms();
   72   2                    addr >>= 1;                //右移一位 
-  73   2                                Delay1ms();                            //后加的
+  73   2              Delay1ms();        //后加的
   74   2                    SCLK = 1; 
-  75   2                               Delay1ms();                             //后加的
+  75   2             Delay1ms();         //后加的
   76   2             } 
   77   1      //发送数据 
   78   1             for ( i=8; i>0; i-- ) 
   79   1             {      
   80   2                    SCLK = 0; 
-  81   2                                                              Delay1ms();
+  81   2                    Delay1ms();
   82   2                    temp = dat; 
   83   2                    DIO = (bit)(temp&0x01);  
-  84   2                                                              Delay1ms();                      
+  84   2                    Delay1ms();            
   85   2                    dat >>= 1;                    
-  86   2                                Delay1ms();                            //后加的
+  86   2              Delay1ms();        //后加的
   87   2                    SCLK = 1; 
-  88   2                                Delay1ms();                            //后加的
+  88   2              Delay1ms();        //后加的
   89   2             } 
   90   1                    CE = 0;          
-  91   1                                } 
-  92                                                                                  
+  91   1              } 
+  92                              
   93          /**************************************
   94          读DS1302某地址的的数据
   95          **************************************/
   96          unsigned char Read1302 ( unsigned char addr ) 
   97          { 
-  98   1             unsigned char i,temp;    //      ,dat1,dat2
+  98   1             unsigned char i,temp;  //  ,dat1,dat2
   99   1             CE=0;  
- 100   1                                      Delay1ms();
+ 100   1              Delay1ms();
  101   1             SCLK=0; 
- 102   1                                      Delay1ms();
+ 102   1              Delay1ms();
  103   1             CE = 1;   
- 104   1                                Delay1ms();                            //后加的
+ 104   1              Delay1ms();        //后加的
  105   1             //发送地址 
- 106   1              for ( i=8; i>0; i-- )             //循环8次移位 
+ 106   1        for ( i=8; i>0; i-- )             //循环8次移位 
  107   1             {      
  108   2                    SCLK = 0; 
- 109   2                                                              Delay1ms();
+ 109   2                    Delay1ms();
  110   2      //              temp = addr; 
  111   2                    DIO = (bit)(addr&0x01);    //每次传输低字节 
- 112   2                                                              Delay1ms();
+ 112   2                    Delay1ms();
  113   2                    addr >>= 1;                //右移一位 
- 114   2                                Delay1ms();                            //后加的
- 115   2                    SCLK = 1;                                  //发送地址时SCLK上升沿触发
-C51 COMPILER V9.00   DS1302                                                                06/22/2015 11:49:33 PAGE 3   
+ 114   2              Delay1ms();        //后加的
+ 115   2                    SCLK = 1;          //发送地址时SCLK上升沿触发
+ 116   2              Delay1ms();        //后加的
+C51 COMPILER V9.00   DS1302                                                                07/13/2015 15:35:09 PAGE 3   
 
- 116   2                                Delay1ms();                            //后加的
  117   2             } 
- 118   1             //读取数据                                                                
+ 118   1             //读取数据                  
  119   1             for ( i=8; i>0; i-- ) 
  120   1             { 
  121   2                    SCLK = 1; 
- 122   2                                       Delay1ms();
- 123   2                      temp = temp >> 1;
- 124   2                                Delay1ms();                            //后加的
- 125   2                    SCLK = 0;                              //读取数据时SCLK下降沿触发
- 126   2                                Delay1ms();                            //后加的
- 127   2                      if (DIO){temp |= 0x80;}   else{temp &= 0x7F;}
+ 122   2               Delay1ms();
+ 123   2          temp = temp >> 1;
+ 124   2              Delay1ms();        //后加的
+ 125   2                    SCLK = 0;            //读取数据时SCLK下降沿触发
+ 126   2              Delay1ms();        //后加的
+ 127   2          if (DIO){temp |= 0x80;}   else{temp &= 0x7F;}
  128   2             }      
  129   1             CE=0; 
- 130   1                               Delay1ms();
+ 130   1             Delay1ms();
  131   1             return (temp); 
  132   1      } 
  133          /**************************************
@@ -150,59 +149,59 @@ line level    source
  135          **************************************/
  136          void Ds1302_Write_Time(unsigned char *buf)   
  137          {
- 138   1              Write1302(0x8e,0x00);                   //关闭写保护 
- 139   1              delay40us();
- 140   1              Write1302(0x80,buf[0]); //秒
- 141   1              delay40us();
- 142   1              Write1302(0x82,buf[1]);//分
- 143   1              delay40us();
- 144   1              Write1302(0x84,buf[2]);//时
- 145   1              delay40us();
- 146   1              Write1302(0x86,buf[3]);//日
- 147   1              delay40us();
- 148   1              Write1302(0x88,buf[4]);//月
- 149   1              delay40us();
- 150   1              Write1302(0x8a,buf[5]);//周
- 151   1              delay40us();
- 152   1              Write1302(0x8c,buf[6]);//年
- 153   1              delay40us();
- 154   1              Write1302(0x8e,0x80);                   //打开写保护 
- 155   1              
+ 138   1        Write1302(0x8e,0x00);     //关闭写保护 
+ 139   1        delay40us();
+ 140   1        Write1302(0x80,buf[0]); //秒
+ 141   1        delay40us();
+ 142   1        Write1302(0x82,buf[1]);//分
+ 143   1        delay40us();
+ 144   1        Write1302(0x84,buf[2]);//时
+ 145   1        delay40us();
+ 146   1        Write1302(0x86,buf[3]);//日
+ 147   1        delay40us();
+ 148   1        Write1302(0x88,buf[4]);//月
+ 149   1        delay40us();
+ 150   1        Write1302(0x8a,buf[5]);//周
+ 151   1        delay40us();
+ 152   1        Write1302(0x8c,buf[6]);//年
+ 153   1        delay40us();
+ 154   1        Write1302(0x8e,0x80);     //打开写保护 
+ 155   1        
  156   1      }
  157          
  158          /**************************************
  159                     读取当前时间
  160          **************************************/
- 161          void Ds1302_Read_Time(unsigned char *buf)               
+ 161          void Ds1302_Read_Time(unsigned char *buf)   
  162          { 
- 163   1              Read1302(0x00);
- 164   1              delay40us();
- 165   1              buf[6]=Read1302(0x8d);//年
- 166   1              delay40us();
- 167   1              Read1302(0x00);
- 168   1              delay40us();
- 169   1              buf[5]=Read1302(0x8b);//周
- 170   1              delay40us();
- 171   1              Read1302(0x00);
- 172   1              delay40us();
- 173   1              buf[4]=Read1302(0x89);//月
- 174   1              Read1302(0x00);
- 175   1              delay40us();
- 176   1              buf[3]=Read1302(0x87);//日
- 177   1              delay40us();
-C51 COMPILER V9.00   DS1302                                                                06/22/2015 11:49:33 PAGE 4   
+ 163   1        Read1302(0x00);
+ 164   1        delay40us();
+ 165   1        buf[6]=Read1302(0x8d);//年
+ 166   1        delay40us();
+ 167   1        Read1302(0x00);
+ 168   1        delay40us();
+ 169   1        buf[5]=Read1302(0x8b);//周
+ 170   1        delay40us();
+ 171   1        Read1302(0x00);
+ 172   1        delay40us();
+ 173   1        buf[4]=Read1302(0x89);//月
+ 174   1        Read1302(0x00);
+ 175   1        delay40us();
+ 176   1        buf[3]=Read1302(0x87);//日
+ 177   1        delay40us();
+ 178   1        Read1302(0x00);
+C51 COMPILER V9.00   DS1302                                                                07/13/2015 15:35:09 PAGE 4   
 
- 178   1              Read1302(0x00);
- 179   1              delay40us();
- 180   1              buf[2]=Read1302(0x85);//时
- 181   1              delay40us();
- 182   1              Read1302(0x00);
- 183   1              delay40us();
- 184   1              buf[1]=Read1302(0x83);//分
- 185   1              delay40us();
- 186   1              Read1302(0x00);
- 187   1              delay40us();
- 188   1              buf[0]=Read1302(0x81);//秒
+ 179   1        delay40us();
+ 180   1        buf[2]=Read1302(0x85);//时
+ 181   1        delay40us();
+ 182   1        Read1302(0x00);
+ 183   1        delay40us();
+ 184   1        buf[1]=Read1302(0x83);//分
+ 185   1        delay40us();
+ 186   1        Read1302(0x00);
+ 187   1        delay40us();
+ 188   1        buf[0]=Read1302(0x81);//秒
  189   1      }
  190          
  191          /**************************************

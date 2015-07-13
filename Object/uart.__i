@@ -1,1 +1,1 @@
-"user\uart\uart.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd;.\user\led) DEBUG OBJECTEXTEND PRINT(.\Lst\uart.lst) OBJECT(.\Object\uart.obj)
+"user\uart\uart.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\uart.lst) TABS (2) OBJECT(.\Object\uart.obj)

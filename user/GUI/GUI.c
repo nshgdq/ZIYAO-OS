@@ -10,6 +10,7 @@
 #include "18b20.h"
 #include "ATCmd.h"
 #include "led.h"
+#include "audio.h"
 u8 time[22]={0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 u16 x,y;
 bit ATC=0;
@@ -136,6 +137,10 @@ void start_check()
 	delay_ms(0x5ff);
 	InitLed();
 	Show_Str(0,160,"LED  ¹Ø",16,Red,White);
+	delay_ms(0x5ff);
+	Show_Str(0,176,"****·äÃùÆ÷²âÊÔ****",16,Green,Black);
+	Show_Str(0,192,"¾¯¸æ3Éù",16,Red,White);
+	beep(3);
 	delay_ms(0xfff);
 }
 void alert(char *s,u16 bcolor)

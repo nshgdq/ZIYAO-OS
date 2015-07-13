@@ -9,7 +9,8 @@
 ".\Object\18b20.obj",
 ".\Object\uart.obj",
 ".\Object\ATCmd.obj",
-".\Object\led.obj" 
+".\Object\led.obj",
+".\Object\audio.obj" 
 TO ".\Object\×ÏÒ«OS" 
 PRINT(".\Lst\×ÏÒ«OS.m51") RAMSIZE(256) 
 DISABLEWARNING (13,15) 

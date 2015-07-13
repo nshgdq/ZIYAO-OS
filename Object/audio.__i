@@ -1,0 +1,1 @@
+"user\audio\audio.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\audio.lst) TABS (2) OBJECT(.\Object\audio.obj)

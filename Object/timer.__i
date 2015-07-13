@@ -1,1 +1,1 @@
-"user\timer\timer.c" LARGE BROWSE INCDIR(.\user\LCD;.\user\W25Qxx;.\user;.\user\TOUCH;.\user\flash;.\user\ds1302;.\user\timer;.\user\GUI;.\user\ds18b20;.\user\uart;.\user\ATCmd;.\user\led) DEBUG OBJECTEXTEND PRINT(.\Lst\timer.lst) OBJECT(.\Object\timer.obj)
+"user\timer\timer.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\timer.lst) TABS (2) OBJECT(.\Object\timer.obj)
