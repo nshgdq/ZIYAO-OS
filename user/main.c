@@ -7,7 +7,7 @@
 #include "ds1302.h"
 #include <string.h>
 #include "timer.h"
-#include "GUI.h"
+#include "app.h"
 #include "18b20.h"
 #include "uart.h"
 #include "led.h"

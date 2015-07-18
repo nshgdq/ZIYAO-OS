@@ -1,5 +1,5 @@
 ".\Object\STARTUP.obj",
-".\Object\GUI.obj",
+".\Object\app.obj",
 ".\Object\18b20.obj",
 ".\Object\ATCmd.obj",
 ".\Object\audio.obj",

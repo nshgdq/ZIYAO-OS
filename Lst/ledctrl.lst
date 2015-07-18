@@ -1,0 +1,73 @@
+C51 COMPILER V9.52.0.0   LEDCTRL                                                           07/18/2015 10:05:45 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE LEDCTRL
+OBJECT MODULE PLACED IN .\Object\ledctrl.obj
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\App\ledctrl.c LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND P
+                    -RINT(.\Lst\ledctrl.lst) TABS(2) OBJECT(.\Object\ledctrl.obj)
+
+line level    source
+
+   1          #include "app.h"
+   2          #include "Touch.h"
+   3          #include "led.h"
+   4          extern u16 x,y;
+   5          /*****
+   6          LED
+   7          *****/
+   8          void led()
+   9          {
+  10   1        unsigned char ctr=0;
+  11   1        LCD_Clear(0x051d);
+  12   1        Show_Str(65,10,"LED控制",32,White,Nocolor);
+  13   1        guidshow();
+  14   1        GUI_Text(30,50,"LED1",White,Nocolor);
+  15   1        GUI_Text(30,120,"LED2",White,Nocolor);
+  16   1        GUI_Text(30,190,"LED3",White,Nocolor);
+  17   1        while(1)
+  18   1        {
+  19   2          if(RedLed(1)){
+  20   3            LCD_DrawBox(70,50,150,60,Blue);
+  21   3            Show_Str(30,76,"关",16,Blue,0x051d);  
+  22   3          }else{
+  23   3            LCD_DrawBox(70,50,150,60,Green);
+  24   3            Show_Str(30,76,"开",16,Red,0x051d);
+  25   3          }
+  26   2          if(RedLed(2)){
+  27   3            LCD_DrawBox(70,120,150,60,Blue);
+  28   3            Show_Str(30,146,"关",16,Blue,0x051d);
+  29   3          }else {
+  30   3            LCD_DrawBox(70,120,150,60,Red);
+  31   3            Show_Str(30,146,"开",16,Red,0x051d);
+  32   3          }
+  33   2          if(RedLed(3)){
+  34   3            LCD_DrawBox(70,190,150,60,Blue);
+  35   3            Show_Str(30,216,"关",16,Blue,0x051d);
+  36   3          }else {
+  37   3            LCD_DrawBox(70,190,150,60,Yellow);  
+  38   3            Show_Str(30,216,"开",16,Red,0x051d);
+  39   3          }
+  40   2          Get_Click(&x,&y);
+  41   2          while(!PEN);
+  42   2          if(y>288&&y<320) guiddo(desktop,desktop,x);
+  43   2          if((x>30&&x<210)&&(y>50&&y<110)) SetLed(1,!RedLed(1));
+  44   2          if((x>30&&x<210)&&(y>120&&y<180)) SetLed(2,!RedLed(2));
+  45   2          if((x>30&&x<210)&&(y>190&&y<250)) SetLed(3,!RedLed(3));
+  46   2        }
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    794    ----
+   CONSTANT SIZE    =     29    ----
+   XDATA SIZE       =   ----       1
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.52.0.0   LEDCTRL                                                           07/18/2015 10:05:45 PAGE 2   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

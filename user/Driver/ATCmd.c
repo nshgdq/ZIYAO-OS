@@ -1,5 +1,5 @@
 #include "ATCmd.h"
-#include "gui.h"
+#include "app.h"
 #include "ds1302.h"
 #include "uart.h"
 #include "18b20.h"

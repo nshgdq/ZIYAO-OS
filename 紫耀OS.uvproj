@@ -362,9 +362,9 @@
           <GroupName>App</GroupName>
           <Files>
             <File>
-              <FileName>GUI.c</FileName>
+              <FileName>app.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\App\GUI.c</FilePath>
+              <FilePath>.\user\App\app.c</FilePath>
             </File>
           </Files>
         </Group>

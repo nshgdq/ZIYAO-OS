@@ -1,0 +1,480 @@
+C51 COMPILER V9.52.0.0   APP                                                               07/18/2015 10:07:31 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE APP
+OBJECT MODULE PLACED IN .\Object\app.obj
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\App\app.c LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT
+                    -(.\Lst\app.lst) TABS(2) OBJECT(.\Object\app.obj)
+
+line level    source
+
+   1          #include<stc12c5a60s2.h>
+   2          #include "w25qxx.h" 
+   3          #include "type_51.h"
+   4          #include "Touch.h"
+   5          #include "ds1302.h"
+   6          #include <string.h>
+   7          #include "timer.h"
+   8          #include "app.h"
+   9          #include "type_51.h"
+  10          #include "18b20.h"
+  11          #include "ATCmd.h"
+  12          #include "led.h"
+  13          #include "audio.h"
+  14          u8 time[22]={0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+  15          u16 x,y;
+  16          bit ATC=0;
+  17          extern unsigned char temp[20];
+  18          void desktop()
+  19          {
+  20   1        u16 i=0;
+  21   1        desktop:
+  22   1        TR0=0;
+  23   1        LCD_Clear(White);
+  24   1        show_picture(10,20,145,67,0x00600CA0);
+  25   1      //  LCD_DrawBox(10,20,145,68,0xfe41);//d1
+  26   1        Show_Str(10,71,"??",16,0xffff,Nocolor);
+  27   1        show_picture(160,20,70,67,0x00605886);
+  28   1      //  LCD_DrawBox(160,20,70,68,0x051d);//d2
+  29   1        Show_Str(160,71,"??",16,0xffff,0x1111);
+  30   1        show_picture(10,93,70,68,0x00607D2A);
+  31   1      //  LCD_DrawBox(10,93,70,68,0x3a39);//d3
+  32   1        Show_Str(10,145,"??",16,0xffff,Nocolor);
+  33   1        show_picture(85,93,70,68,0x0060A25A);
+  34   1      //  LCD_DrawBox(85,93,70,68,0xff80);//d4
+  35   1        Show_Str(85,145,"??",16,0xffff,Nocolor);
+  36   1        show_picture(160,93,70,68,0x0060C78A);
+  37   1      //  LCD_DrawBox(160,93,70,68,0xa254);//d5
+  38   1        Show_Str(160,145,"????",16,0xffff,Nocolor);
+  39   1        show_picture(10,166,70,68,0x0060ECBA);
+  40   1      //  LCD_DrawBox(10,166,70,68,0x78ef);//d6
+  41   1        Show_Str(10,218,"??",16,0xffff,Nocolor);
+  42   1        show_picture(85,166,145,68,0x006111EA);
+  43   1        Show_Str(85,218,"????",16,0xffff,Nocolor);
+  44   1      //  LCD_DrawBox(85,166,145,68,0x8802);//d7
+  45   1        show_picture(10,239,145,65,0x00615EF2);
+  46   1        Show_Str(10,288,"SPI??",16,0xffff,Nocolor);
+  47   1      //  LCD_DrawBox(10,239,145,68,0xbbca);//d8
+  48   1        show_picture(160,239,70,65,0x0061A894);
+  49   1        Show_Str(160,288,"LED",16,0xffff,Nocolor);
+  50   1      //  LCD_DrawBox(160,239,70,68,0x2586);//d9
+  51   1        clock();
+  52   1        TR0=1;
+  53   1        while(1)
+  54   1        {
+C51 COMPILER V9.52.0.0   APP                                                               07/18/2015 10:07:31 PAGE 2   
+
+  55   2          x=0;y=0;
+  56   2          if(i==0x0bff) {clock();i=0;}
+  57   2          i++;
+  58   2        Get_Click(&x,&y);
+  59   2        if(x>=10&&x<=80) x=1;if(x>=85&&x<=155) x=2;if(x>=160&&x<=220) x=3;
+  60   2        if(y>=30&&y<=88) y=1;if(y>=93&&y<=161) y=2;
+  61   2        if(y>=166&&y<=234) y=3;if(y>=239&&y<=307) y=4;
+  62   2        switch(y)
+  63   2        {
+  64   3          case 1: switch(x)
+  65   3                  {
+  66   4                    case 1:calendar();break;
+  67   4                    case 2:calendar();break;
+  68   4                    case 3:tempert();break;
+  69   4                  }
+  70   3                  break;
+  71   3          case 2:switch(x)
+  72   3                  {
+  73   4                    case 1:alert("???????!",White);break;
+  74   4                    case 2:alert("???????!",White);break;
+  75   4                    case 3:start_check();goto desktop;break;
+  76   4                  }
+  77   3                  break;
+  78   3          case 3:switch(x)
+  79   3                  {
+  80   4                    case 1:picbox();break;
+  81   4                    case 2:alert("???????!",White);break;
+  82   4                    case 3:alert("???????!",White);break;
+  83   4                  }
+  84   3                  break;
+  85   3          case 4:switch(x)
+  86   3                  {
+  87   4                    case 1:alert("SPI?????",White);break;
+  88   4                    case 2:alert("SPI?????",White);break;
+  89   4                    case 3:led();break;
+  90   4                  }
+  91   3                  break;
+  92   3        }
+  93   2      }
+  94   1      }
+  95          void start_logo()
+  96          {
+  97   1        LCD_Clear(White);
+  98   1        show_picture(60,73,140,174,(u32)0x5f4e50);
+  99   1        delay_ms(0xfff);
+ 100   1      }
+ 101          void start_check()
+ 102          {
+ 103   1        u8 temper[7];
+ 104   1        LCD_Clear(Black);
+ 105   1        GUI_Text(0,0,"Hardware Check Running",Green,Black);
+ 106   1        GUI_Text(0,16,"*******Flash Check*******",Green,Black);
+ 107   1        switch(W25Qxx_ReadID())
+ 108   1        {
+ 109   2          case W25Q80:Show_Str(0,32,"W25Q80",16,Red,White);break;
+ 110   2          case W25Q16:Show_Str(0,32,"W25Q16",16,Red,White);break;
+ 111   2          case W25Q32:Show_Str(0,32,"W25Q32",16,Red,White);break;
+ 112   2          case W25Q64:Show_Str(0,32,"W25Q64",16,Red,White);break; 
+ 113   2          default:GUI_Text(0,32,"Flash Error",Red,White);delay_ms(0xfff);break;
+ 114   2        }
+ 115   1        delay_ms(0xff);
+ 116   1        Show_Str(0,48,"****????****",16,Green,Black);
+C51 COMPILER V9.52.0.0   APP                                                               07/18/2015 10:07:31 PAGE 3   
+
+ 117   1        Show_Str(0,64,"?????...",16,Red,White);
+ 118   1        gettime(time);
+ 119   1        Show_Str(0,80,time,16,Red,White);
+ 120   1        delay_ms(0xff);
+ 121   1        Show_Str(0,96,"****????****",16,Green,Black);
+ 122   1        Show_Str(0,112,"?????...",16,Red,White);
+ 123   1        ReadTemperature(temper);
+ 124   1        delay_ms(0x7ff);
+ 125   1        ReadTemperature(temper);
+ 126   1        Show_Str(0,128,"????:",16,Green,Nocolor);
+ 127   1        GUI_Text(80,128,temper,Red,White);
+ 128   1        Show_Str(0,144,"****LED??****",16,Green,Black);
+ 129   1        LED1=0;
+ 130   1        Show_Str(0,160,"LED1 ?",16,Red,White);
+ 131   1        delay_ms(0x5ff);
+ 132   1        LED2=0;
+ 133   1        Show_Str(0,160,"LED2 ?",16,Red,White);
+ 134   1        delay_ms(0x5ff);
+ 135   1        LED3=0;
+ 136   1        Show_Str(0,160,"LED3 ?",16,Red,White);
+ 137   1        delay_ms(0x5ff);
+ 138   1        InitLed();
+ 139   1        Show_Str(0,160,"LED  ?",16,Red,White);
+ 140   1        delay_ms(0x5ff);
+ 141   1        Show_Str(0,176,"****?????****",16,Green,Black);
+ 142   1        Show_Str(0,192,"??3?",16,Red,White);
+ 143   1        beep(3);
+ 144   1        delay_ms(0xfff);
+ 145   1      }
+ 146          void alert(char *s,u16 bcolor)
+ 147          {
+ 148   1        u8 len;
+ 149   1        Show_Str(0,0,s,16,Red,bcolor);
+ 150   1        delay_ms(0x7ff);
+ 151   1        len=(u8)strlen(s)*8;
+ 152   1        LCD_DrawBox(0,0,len,16,bcolor);
+ 153   1      }
+ 154          void Get_Click(u16 *x,u16 *y)
+ 155          {
+ 156   1        TP_Read_XY2(x,y); 
+ 157   1        //TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
+ 158   1        *x=*x/15.03-14.85;*y=*y/10.81-17.52;
+ 159   1        if(ATC){ATC=0;AT_DO(temp);}
+ 160   1      }
+ 161          void Get_Click1(u16 *x,u16 *y)
+ 162          {
+ 163   1        TP_Read_XY2(x,y); 
+ 164   1        //TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
+ 165   1        *x=*x/15.03-14.85;*y=*y/10.81-17.52;
+ 166   1      }
+ 167          void delay_ms(u16 ms)    
+ 168          { 
+ 169   1        uint16_t i,j; 
+ 170   1        for( i = 0; i < ms; i++ )
+ 171   1        { 
+ 172   2          for( j = 0; j < 1000; j++ );
+ 173   2        }
+ 174   1      } 
+ 175          void clock()
+ 176          {
+ 177   1        gettime(time);
+ 178   1        time[16]='\0';
+C51 COMPILER V9.52.0.0   APP                                                               07/18/2015 10:07:31 PAGE 4   
+
+ 179   1        GUI_Text(200,0,time+11,Black,White);
+ 180   1      }
+ 181          /*********************
+ 182          ??
+ 183          *********************/
+ 184          void calendar()
+ 185          {
+ 186   1        u16 i=0;
+ 187   1        gettime(time);
+ 188   1        time[7]='\0';
+ 189   1        LCD_Clear(0x051d);
+ 190   1        LCD_DrawBox(60,60,120,20,Yellow);
+ 191   1        LCD_DrawBox(60,80,120,104,White);
+ 192   1        GUI_Text(61,61,time,Red,Nocolor);
+ 193   1        Show_Str(150,61,"?",16,Red,Nocolor);
+ 194   1        GUI_Text(166,61,time+20,Red,Nocolor);
+ 195   1        time[10]='\0';
+ 196   1        Show_Str(105,110,time+8,32,Red,Nocolor);
+ 197   1        guidshow();
+ 198   1        while(1)
+ 199   1        {
+ 200   2          if(i==0xbff||i==0)
+ 201   2          {
+ 202   3            gettime(time);
+ 203   3            time[16]='\0';
+ 204   3            GUI_Text(100,150,time+11,Red,White);
+ 205   3            i=1;
+ 206   3          }
+ 207   2          i++;
+ 208   2          Get_Click(&x,&y);
+ 209   2          if(y>288&&y<320) guiddo(desktop,sstmtime,x);
+ 210   2        }
+ 211   1      }
+ 212          /**************
+ 213          ??????
+ 214          ***************/
+ 215          void sstmtime()
+ 216          {
+ 217   1        u8 setime[7]={0,0,0,0,0,0,0},i=1;
+ 218   1        gettime(time);
+ 219   1        LCD_Clear(0x051d);
+ 220   1        Show_Str(24,20,"??????",32,White,Nocolor);
+ 221   1        GUI_Text(40,128,time,Red,White);
+ 222   1        LCD_DrawBox(100,105,40,20,0xc618);
+ 223   1        Show_Str(115,108,"?",16,Black,Nocolor);
+ 224   1        LCD_DrawEBox(100,105,40,20,Blue);
+ 225   1        LCD_DrawBox(100,148,40,20,0xc618);
+ 226   1        Show_Str(115,153,"?",16,Black,Nocolor);
+ 227   1        LCD_DrawEBox(100,148,40,20,Blue);
+ 228   1        LCD_DrawBox(40,180,40,20,0xc618);
+ 229   1        GUI_Text(42,182,"Next",Black,Nocolor);
+ 230   1        LCD_DrawEBox(40,180,40,20,Blue);
+ 231   1        LCD_DrawBox(170,180,40,20,0xc618);
+ 232   1        GUI_Text(185,182,"Ok",Black,Nocolor);
+ 233   1        LCD_DrawEBox(170,180,40,20,Blue);
+ 234   1        guidshow();
+ 235   1        time[4]=time[7]=time[10]=time[13]=time[16]=time[19]=0;
+ 236   1        while(1)
+ 237   1        {
+ 238   2          switch(i)
+ 239   2          {
+ 240   3            case 1:GUI_Text(40,128,time,Green,Black);GUI_Text(40+8*20,128,time+20,Red,White);break;
+C51 COMPILER V9.52.0.0   APP                                                               07/18/2015 10:07:31 PAGE 5   
+
+ 241   3            case 2:GUI_Text(40+8*5,128,time+5,Green,Black);GUI_Text(40,128,time,Red,White);break;
+ 242   3            case 3:GUI_Text(40+8*8,128,time+8,Green,Black);GUI_Text(40+8*5,128,time+5,Red,White);break;
+ 243   3            case 4:GUI_Text(40+8*11,128,time+11,Green,Black);GUI_Text(40+8*8,128,time+8,Red,White);break;
+ 244   3            case 5:GUI_Text(40+8*14,128,time+14,Green,Black);GUI_Text(40+8*11,128,time+11,Red,White);break;
+ 245   3            case 6:GUI_Text(40+8*17,128,time+17,Green,Black);GUI_Text(40+8*14,128,time+14,Red,White);break;
+ 246   3            case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
+ 247   3          }
+ 248   2          Get_Click1(&x,&y);
+ 249   2          if(y>288&&y<320){guiddo(calendar,desktop,x);}//???
+ 250   2          if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next ???
+ 251   2          if((x>=150&&x<=190)&&(y>=180&&y<=200))  //Ok ???
+ 252   2          {
+ 253   3            setime[0]=((time[17]-'0')<<4)|(time[18]-'0');
+ 254   3            setime[1]=((time[14]-'0')<<4)|(time[15]-'0');
+ 255   3            setime[2]=((time[11]-'0')<<4)|(time[12]-'0');
+ 256   3            setime[3]=((time[8]-'0')<<4)|(time[9]-'0');
+ 257   3            setime[4]=((time[5]-'0')<<4)|(time[6]-'0');
+ 258   3            setime[5]=time[20]-'0';
+ 259   3            setime[6]=((time[2]-'0')<<4)|(time[3]-'0');
+ 260   3            Ds1302_Write_Time(setime);//??????
+ 261   3            alert("???????!",0x051d);
+ 262   3            while(!PEN);
+ 263   3          } 
+ 264   2          if((x>=100&&x<=140)&&(y>=105&&y<=125))  //? ???
+ 265   2          {
+ 266   3            switch(i)
+ 267   3            {
+ 268   4              case 1:time[3]++;if(time[3]>'9') {time[3]='0';time[2]++;}if(time[2]>'9') time[2]='0';break;
+ 269   4              case 2:time[6]++;if(time[6]>'2'&&time[5]=='1') {time[6]='1';time[5]='0';}if(time[6]>'9') {time[5]++;ti
+             -me[6]='0';}break;
+ 270   4              case 3:time[9]++;if(time[9]>'1'&&time[8]=='3') {time[9]='1';time[8]='0';}if(time[9]>'9') {time[8]++;ti
+             -me[9]='0';}break;
+ 271   4              case 4:time[12]++;if(time[12]>'3'&&time[11]=='2') {time[12]='0';time[11]='0';}if(time[12]>'9') {time[1
+             -1]++;time[12]='0';}break;
+ 272   4              case 5:time[15]++;if(time[15]>'9'&&time[14]=='5') {time[15]='0';time[14]='0';}if(time[15]>'9') {time[1
+             -4]++;time[15]='0';}break;
+ 273   4              case 6:time[18]++;if(time[18]>'9'&&time[17]=='5') {time[18]='0';time[17]='0';}if(time[18]>'9') {time[1
+             -7]++;time[18]='0';}break;
+ 274   4              case 7:time[20]++;if(time[20]>'7') time[20]='1';
+ 275   4            }
+ 276   3            while(!PEN);
+ 277   3          } 
+ 278   2          if((x>=100&&x<=140)&&(y>=148&&y<=168))  //? ???
+ 279   2          {
+ 280   3            switch(i)
+ 281   3            {
+ 282   4              case 1:if(time[3]=='0'&&time[2]=='0') {time[3]='9';time[2]='9';} if(time[3]=='0'&&time[2]!='0') {time[
+             -3]='9'+1;time[2]--;} time[3]--;break;
+ 283   4              case 2:if(time[6]=='1'&&time[5]=='0') {time[6]='2'+1;time[5]='1';} if(time[6]=='0'&&time[5]!='0') {tim
+             -e[6]='9'+1;time[5]--;} time[6]--;break;
+ 284   4              case 3:if(time[9]=='1'&&time[8]=='0') {time[9]='1'+1;time[8]='3';} if(time[9]=='0'&&time[8]!='0') {tim
+             -e[9]='9'+1;time[8]--;} time[9]--;break;
+ 285   4              case 4:if(time[12]=='0'&&time[11]=='0') {time[12]='3'+1;time[11]='2';} if(time[12]=='0'&&time[11]!='0'
+             -) {time[12]='9'+1;time[11]--;} time[12]--;break;
+ 286   4              case 5:if(time[15]=='0'&&time[14]=='0') {time[15]='9'+1;time[14]='5';} if(time[15]=='0'&&time[14]!='0'
+             -) {time[15]='9'+1;time[14]--;} time[15]--;break;
+ 287   4              case 6:if(time[18]=='0'&&time[17]=='0') {time[18]='9'+1;time[17]='5';} if(time[18]=='0'&&time[17]!='0'
+             -) {time[18]='9'+1;time[17]--;} time[18]--;break;
+ 288   4              case 7:if(time[20]=='1')time[20]='7'+1;time[20]--;
+ 289   4            }
+ 290   3            
+ 291   3            while(!PEN);
+C51 COMPILER V9.52.0.0   APP                                                               07/18/2015 10:07:31 PAGE 6   
+
+ 292   3          }
+ 293   2          if (i>7) i=1;
+ 294   2        }
+ 295   1      }
+ 296          /*********************
+ 297          ????????
+ 298          **********************/
+ 299          void guidshow()
+ 300          {
+ 301   1        LCD_DrawLine( 0, 288, 240, 288,White );
+ 302   1        Show_Str(20,288,"?",32,White,Nocolor);
+ 303   1        Show_Str(104,288,"¦",32,0xa254,Nocolor);
+ 304   1        LCD_DrawLine( 108, 304, 131,304, White );
+ 305   1        LCD_DrawLine( 120, 293, 120,315, White );
+ 306   1        LCD_DrawLine( 80, 288, 80,320, White );
+ 307   1        LCD_DrawLine( 160, 288, 160,320, White );
+ 308   1        Show_Str(187,288,"?",32,White,Nocolor);
+ 309   1      }
+ 310          /*********************
+ 311          ?????
+ 312          ??:pback ????????????
+ 313          pmenu ????????????
+ 314          **********************/
+ 315          void guiddo(void (*pback)(void),void (*pmenu)(void),x)
+ 316          {
+ 317   1        if(x<80&&x>0) {Show_Str(20,288,"?",32,White,Blue);pback();}
+ 318   1        if(x>80&&x<160) {Show_Str(104,288,"¦",32,0xa254,Blue);LCD_DrawLine( 108, 304, 131,304, White );
+ 319   2          LCD_DrawLine( 120, 293, 120,315, White );LCD_DrawLine( 80, 288, 80,320, White );desktop();}
+ 320   1        if(x>160&&x<240){ Show_Str(187,288,"?",32,White,Blue);pmenu();}
+ 321   1      }
+ 322          /**********************
+ 323          ??
+ 324          **********************/
+ 325          void tempert()
+ 326          {
+ 327   1        u16 i=0;
+ 328   1        u8 temper[7];
+ 329   1        LCD_Clear(0x051d);
+ 330   1        LCD_DrawBox(45,60,152,50,Blue);
+ 331   1        LCD_DrawEBox(55,70,132,30,Red);
+ 332   1        guidshow();
+ 333   1        while(1)
+ 334   1        {
+ 335   2          if(i==0xff||i==0)
+ 336   2          {
+ 337   3            ReadTemperature(temper);
+ 338   3            Show_Str(56,78,"????:",16,Red,Nocolor);
+ 339   3            GUI_Text(128,78,temper,Red,White);
+ 340   3            i=1;
+ 341   3          }
+ 342   2          i++;
+ 343   2          if(i>0xff) i=0;
+ 344   2          Get_Click(&x,&y);
+ 345   2          if(y>288&&y<320) guiddo(desktop,desktop,x);
+ 346   2        }
+ 347   1      }
+ 348          /****************************************************
+ 349          ??
+ 350          ***************************************************/
+ 351          void picbox()
+ 352          {
+ 353   1        u16 color=Red;
+C51 COMPILER V9.52.0.0   APP                                                               07/18/2015 10:07:31 PAGE 7   
+
+ 354   1        LCD_Clear(0x051d);
+ 355   1        LCD_DrawBox(0,0,240,288,White);
+ 356   1        LCD_DrawBox(0,264,240,24,0x051d);
+ 357   1        LCD_DrawBox(0,264,24,24,White);
+ 358   1        LCD_DrawBox(24,264,24,24,Black);
+ 359   1        LCD_DrawBox(48,264,24,24,Grey);
+ 360   1        LCD_DrawBox(72,264,24,24,Blue);
+ 361   1        LCD_DrawBox(96,264,24,24,Red);
+ 362   1        LCD_DrawBox(120,264,24,24,Magenta);
+ 363   1        LCD_DrawBox(144,264,24,24,Green);
+ 364   1        LCD_DrawBox(168,264,24,24,Cyan);
+ 365   1        LCD_DrawBox(192,264,24,24,Yellow);
+ 366   1        LCD_DrawBox(216,264,24,24,0xb723);
+ 367   1        guidshow();
+ 368   1        while(1)
+ 369   1        {
+ 370   2          Get_Click(&x,&y);
+ 371   2          if((y>0&&y<264)) TP_Draw_Big_Point(x,y,color);
+ 372   2          if(y>288&&y<320) guiddo(desktop,desktop,x);
+ 373   2          if(y>264&&y<288) 
+ 374   2            switch((u8)(x/24))
+ 375   2            {
+ 376   3              case 0:color=White;  break;
+ 377   3              case 1:color=Black; break;
+ 378   3              case 2:color=Grey;   break;
+ 379   3              case 3:color=Blue;   break;
+ 380   3              case 4:color=Red;    break;
+ 381   3              case 5:color=Magenta;break;
+ 382   3              case 6:color=Green;  break;
+ 383   3              case 7:color=Cyan;   break;
+ 384   3              case 8:color=Yellow; break;
+ 385   3              case 9:color=0xb723;break;
+ 386   3            }
+ 387   2        }
+ 388   1      }
+ 389          /*****
+ 390          LED
+ 391          *****/
+ 392          void led()
+ 393          {
+ 394   1        unsigned char ctr=0;
+ 395   1        LCD_Clear(0x051d);
+ 396   1        Show_Str(65,10,"LED??",32,White,Nocolor);
+ 397   1        guidshow();
+ 398   1        GUI_Text(30,50,"LED1",White,Nocolor);
+ 399   1        GUI_Text(30,120,"LED2",White,Nocolor);
+ 400   1        GUI_Text(30,190,"LED3",White,Nocolor);
+ 401   1        while(1)
+ 402   1        {
+ 403   2          if(RedLed(1)){
+ 404   3            LCD_DrawBox(70,50,150,60,Blue);
+ 405   3            Show_Str(30,76,"?",16,Blue,0x051d); 
+ 406   3          }else{
+ 407   3            LCD_DrawBox(70,50,150,60,Green);
+ 408   3            Show_Str(30,76,"?",16,Red,0x051d);
+ 409   3          }
+ 410   2          if(RedLed(2)){
+ 411   3            LCD_DrawBox(70,120,150,60,Blue);
+ 412   3            Show_Str(30,146,"?",16,Blue,0x051d);
+ 413   3          }else {
+ 414   3            LCD_DrawBox(70,120,150,60,Red);
+ 415   3            Show_Str(30,146,"?",16,Red,0x051d);
+C51 COMPILER V9.52.0.0   APP                                                               07/18/2015 10:07:31 PAGE 8   
+
+ 416   3          }
+ 417   2          if(RedLed(3)){
+ 418   3            LCD_DrawBox(70,190,150,60,Blue);
+ 419   3            Show_Str(30,216,"?",16,Blue,0x051d);
+ 420   3          }else {
+ 421   3            LCD_DrawBox(70,190,150,60,Yellow);  
+ 422   3            Show_Str(30,216,"?",16,Red,0x051d);
+ 423   3          }
+ 424   2          Get_Click(&x,&y);
+ 425   2          while(!PEN);
+ 426   2          if(y>288&&y<320) guiddo(desktop,desktop,x);
+ 427   2          if((x>30&&x<210)&&(y>50&&y<110)) SetLed(1,!RedLed(1));
+ 428   2          if((x>30&&x<210)&&(y>120&&y<180)) SetLed(2,!RedLed(2));
+ 429   2          if((x>30&&x<210)&&(y>190&&y<250)) SetLed(3,!RedLed(3));
+ 430   2        }
+ 431   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   7440    ----
+   CONSTANT SIZE    =    259    ----
+   XDATA SIZE       =     26      56
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

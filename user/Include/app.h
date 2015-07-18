@@ -1,6 +1,7 @@
-#ifndef _GUI_H
-#define _GUI_H
+#ifndef _APP_H
+#define _APP_H
 #include "stc12c5a60s2.h"
+#include "type_51.h"
 void delay_ms(u16 ms);
 void start_check();
 void start_logo();

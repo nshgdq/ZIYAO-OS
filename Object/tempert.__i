@@ -1,0 +1,1 @@
+"user\App\tempert.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\tempert.lst) TABS (2) OBJECT(.\Object\tempert.obj)

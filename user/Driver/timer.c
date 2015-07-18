@@ -1,6 +1,6 @@
 #include "timer.h"
 #include "hx8347d.h"
-#include "gui.h"
+#include "app.h"
 #include "uart.h"
 #include "atcmd.h"
 #include "w25qxx.h"

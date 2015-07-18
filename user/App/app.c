@@ -5,7 +5,7 @@
 #include "ds1302.h"
 #include <string.h>
 #include "timer.h"
-#include "GUI.h"
+#include "app.h"
 #include "type_51.h"
 #include "18b20.h"
 #include "ATCmd.h"
@@ -23,27 +23,27 @@ void desktop()
 	LCD_Clear(White);
 	show_picture(10,20,145,67,0x00600CA0);
 //	LCD_DrawBox(10,20,145,68,0xfe41);//d1
-	Show_Str(10,71,"ÈÕÀú",16,0xffff,Nocolor);
+	Show_Str(10,71,"??",16,0xffff,Nocolor);
 	show_picture(160,20,70,67,0x00605886);
 //	LCD_DrawBox(160,20,70,68,0x051d);//d2
-	Show_Str(160,71,"ÎÂ¶È",16,0xffff,0x1111);
+	Show_Str(160,71,"??",16,0xffff,0x1111);
 	show_picture(10,93,70,68,0x00607D2A);
 //	LCD_DrawBox(10,93,70,68,0x3a39);//d3
-	Show_Str(10,145,"µç»°",16,0xffff,Nocolor);
+	Show_Str(10,145,"??",16,0xffff,Nocolor);
 	show_picture(85,93,70,68,0x0060A25A);
 //	LCD_DrawBox(85,93,70,68,0xff80);//d4
-	Show_Str(85,145,"Ïà²á",16,0xffff,Nocolor);
+	Show_Str(85,145,"??",16,0xffff,Nocolor);
 	show_picture(160,93,70,68,0x0060C78A);
 //	LCD_DrawBox(160,93,70,68,0xa254);//d5
-	Show_Str(160,145,"Ó²¼þ¼ì²â",16,0xffff,Nocolor);
+	Show_Str(160,145,"????",16,0xffff,Nocolor);
 	show_picture(10,166,70,68,0x0060ECBA);
 //	LCD_DrawBox(10,166,70,68,0x78ef);//d6
-	Show_Str(10,218,"»­°å",16,0xffff,Nocolor);
+	Show_Str(10,218,"??",16,0xffff,Nocolor);
 	show_picture(85,166,145,68,0x006111EA);
-	Show_Str(85,218,"´®¿ÚÖúÊÖ",16,0xffff,Nocolor);
+	Show_Str(85,218,"????",16,0xffff,Nocolor);
 //	LCD_DrawBox(85,166,145,68,0x8802);//d7
 	show_picture(10,239,145,65,0x00615EF2);
-	Show_Str(10,288,"SPIÖúÊÖ",16,0xffff,Nocolor);
+	Show_Str(10,288,"SPI??",16,0xffff,Nocolor);
 //	LCD_DrawBox(10,239,145,68,0xbbca);//d8
 	show_picture(160,239,70,65,0x0061A894);
 	Show_Str(160,288,"LED",16,0xffff,Nocolor);
@@ -70,22 +70,22 @@ void desktop()
 						break;
 		case 2:switch(x)
 						{
-							case 1:alert("µç»°¹¦ÄÜÎ´¿ª·Å£¡",White);break;
-							case 2:alert("Ïà²á¹¦ÄÜÎ´¿ª·Å£¡",White);break;
+							case 1:alert("???????!",White);break;
+							case 2:alert("???????!",White);break;
 							case 3:start_check();goto desktop;break;
 						}
 						break;
 		case 3:switch(x)
 						{
 							case 1:picbox();break;
-							case 2:alert("´®¿ÚÖúÊÖÎ´¿ª·Å£¡",White);break;
-							case 3:alert("´®¿ÚÖúÊÖÎ´¿ª·Å£¡",White);break;
+							case 2:alert("???????!",White);break;
+							case 3:alert("???????!",White);break;
 						}
 						break;
 		case 4:switch(x)
 						{
-							case 1:alert("SPIÖúÊÖÎ´¿ª·Å",White);break;
-							case 2:alert("SPIÖúÊÖÎ´¿ª·Å",White);break;
+							case 1:alert("SPI?????",White);break;
+							case 2:alert("SPI?????",White);break;
 							case 3:led();break;
 						}
 						break;
@@ -113,33 +113,33 @@ void start_check()
 		default:GUI_Text(0,32,"Flash Error",Red,White);delay_ms(0xfff);break;
 	}
 	delay_ms(0xff);
-	Show_Str(0,48,"****Ê±ÖÓ¼ì²â****",16,Green,Black);
-	Show_Str(0,64,"¶ÁÈ¡Ê±¼äÖÐ...",16,Red,White);
+	Show_Str(0,48,"****????****",16,Green,Black);
+	Show_Str(0,64,"?????...",16,Red,White);
 	gettime(time);
 	Show_Str(0,80,time,16,Red,White);
 	delay_ms(0xff);
-	Show_Str(0,96,"****ÎÂ¶È¼ì²â****",16,Green,Black);
-	Show_Str(0,112,"¶ÁÈ¡ÎÂ¶ÈÖÐ...",16,Red,White);
+	Show_Str(0,96,"****????****",16,Green,Black);
+	Show_Str(0,112,"?????...",16,Red,White);
 	ReadTemperature(temper);
 	delay_ms(0x7ff);
 	ReadTemperature(temper);
-	Show_Str(0,128,"µ±Ç°ÎÂ¶È£º",16,Green,Nocolor);
+	Show_Str(0,128,"????:",16,Green,Nocolor);
 	GUI_Text(80,128,temper,Red,White);
-	Show_Str(0,144,"****LED¼ì²â****",16,Green,Black);
+	Show_Str(0,144,"****LED??****",16,Green,Black);
 	LED1=0;
-	Show_Str(0,160,"LED1 ÁÁ",16,Red,White);
+	Show_Str(0,160,"LED1 ?",16,Red,White);
 	delay_ms(0x5ff);
 	LED2=0;
-	Show_Str(0,160,"LED2 ÁÁ",16,Red,White);
+	Show_Str(0,160,"LED2 ?",16,Red,White);
 	delay_ms(0x5ff);
 	LED3=0;
-	Show_Str(0,160,"LED3 ÁÁ",16,Red,White);
+	Show_Str(0,160,"LED3 ?",16,Red,White);
 	delay_ms(0x5ff);
 	InitLed();
-	Show_Str(0,160,"LED  ¹Ø",16,Red,White);
+	Show_Str(0,160,"LED  ?",16,Red,White);
 	delay_ms(0x5ff);
-	Show_Str(0,176,"****·äÃùÆ÷²âÊÔ****",16,Green,Black);
-	Show_Str(0,192,"¾¯¸æ3Éù",16,Red,White);
+	Show_Str(0,176,"****?????****",16,Green,Black);
+	Show_Str(0,192,"??3?",16,Red,White);
 	beep(3);
 	delay_ms(0xfff);
 }
@@ -179,7 +179,7 @@ void clock()
 	GUI_Text(200,0,time+11,Black,White);
 }
 /*********************
-ÈÕÀú
+??
 *********************/
 void calendar()
 {
@@ -190,7 +190,7 @@ void calendar()
 	LCD_DrawBox(60,60,120,20,Yellow);
 	LCD_DrawBox(60,80,120,104,White);
 	GUI_Text(61,61,time,Red,Nocolor);
-	Show_Str(150,61,"ÖÜ",16,Red,Nocolor);
+	Show_Str(150,61,"?",16,Red,Nocolor);
 	GUI_Text(166,61,time+20,Red,Nocolor);
 	time[10]='\0';
 	Show_Str(105,110,time+8,32,Red,Nocolor);
@@ -210,20 +210,20 @@ void calendar()
 	}
 }
 /**************
-Éè¶¨ÏµÍ³Ê±¼ä
+??????
 ***************/
 void sstmtime()
 {
 	u8 setime[7]={0,0,0,0,0,0,0},i=1;
 	gettime(time);
 	LCD_Clear(0x051d);
-	Show_Str(24,20,"Éè¶¨ÏµÍ³Ê±¼ä",32,White,Nocolor);
+	Show_Str(24,20,"??????",32,White,Nocolor);
 	GUI_Text(40,128,time,Red,White);
 	LCD_DrawBox(100,105,40,20,0xc618);
-	Show_Str(115,108,"¡ø",16,Black,Nocolor);
+	Show_Str(115,108,"?",16,Black,Nocolor);
 	LCD_DrawEBox(100,105,40,20,Blue);
 	LCD_DrawBox(100,148,40,20,0xc618);
-	Show_Str(115,153,"¨‹",16,Black,Nocolor);
+	Show_Str(115,153,"?",16,Black,Nocolor);
 	LCD_DrawEBox(100,148,40,20,Blue);
 	LCD_DrawBox(40,180,40,20,0xc618);
 	GUI_Text(42,182,"Next",Black,Nocolor);
@@ -246,9 +246,9 @@ void sstmtime()
 			case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
 		}
 		Get_Click1(&x,&y);
-		if(y>288&&y<320){guiddo(calendar,desktop,x);}//µ¼º½À¸
-		if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next ¼ü²Ù×÷
-		if((x>=150&&x<=190)&&(y>=180&&y<=200))	//Ok ¼ü²Ù×÷
+		if(y>288&&y<320){guiddo(calendar,desktop,x);}//???
+		if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next ???
+		if((x>=150&&x<=190)&&(y>=180&&y<=200))	//Ok ???
 		{
 			setime[0]=((time[17]-'0')<<4)|(time[18]-'0');
 			setime[1]=((time[14]-'0')<<4)|(time[15]-'0');
@@ -257,11 +257,11 @@ void sstmtime()
 			setime[4]=((time[5]-'0')<<4)|(time[6]-'0');
 			setime[5]=time[20]-'0';
 			setime[6]=((time[2]-'0')<<4)|(time[3]-'0');
-			Ds1302_Write_Time(setime);//Éè¶¨ÏµÍ³Ê±¼ä
-			alert("ÒÑÉè¶¨ÏµÍ³Ê±¼ä£¡",0x051d);
+			Ds1302_Write_Time(setime);//??????
+			alert("???????!",0x051d);
 			while(!PEN);
 		}	
-		if((x>=100&&x<=140)&&(y>=105&&y<=125))	//¡ø ¼ü²Ù×÷
+		if((x>=100&&x<=140)&&(y>=105&&y<=125))	//? ???
 		{
 			switch(i)
 			{
@@ -275,7 +275,7 @@ void sstmtime()
 			}
 			while(!PEN);
 		}	
-		if((x>=100&&x<=140)&&(y>=148&&y<=168))	//¨‹ ¼ü²Ù×÷
+		if((x>=100&&x<=140)&&(y>=148&&y<=168))	//? ???
 		{
 			switch(i)
 			{
@@ -294,33 +294,33 @@ void sstmtime()
 	}
 }
 /*********************
-µ¼º½À¸¹¹Ôì¼°Ö´ÐÐ
+????????
 **********************/
 void guidshow()
 {
 	LCD_DrawLine( 0, 288, 240, 288,White );
-	Show_Str(20,288,"¡û",32,White,Nocolor);
-	Show_Str(104,288,"¡ö",32,0xa254,Nocolor);
+	Show_Str(20,288,"?",32,White,Nocolor);
+	Show_Str(104,288,"¦",32,0xa254,Nocolor);
 	LCD_DrawLine( 108, 304, 131,304, White );
 	LCD_DrawLine( 120, 293, 120,315, White );
 	LCD_DrawLine( 80, 288, 80,320, White );
 	LCD_DrawLine( 160, 288, 160,320, White );
-	Show_Str(187,288,"¡þ",32,White,Nocolor);
+	Show_Str(187,288,"?",32,White,Nocolor);
 }
 /*********************
-µ¼º½À¸Ö´ÐÐ
-²ÎÊý£ºpback ·µ»Ø¼üµã»÷µ÷ÓÃº¯ÊýµÄÖ¸Õë
-pmenu ²Ëµ¥¼üµã»÷µ÷ÓÃº¯ÊýµÄÖ¸Õë
+?????
+??:pback ????????????
+pmenu ????????????
 **********************/
 void guiddo(void (*pback)(void),void (*pmenu)(void),x)
 {
-	if(x<80&&x>0) {Show_Str(20,288,"¡û",32,White,Blue);pback();}
-	if(x>80&&x<160) {Show_Str(104,288,"¡ö",32,0xa254,Blue);LCD_DrawLine( 108, 304, 131,304, White );
+	if(x<80&&x>0) {Show_Str(20,288,"?",32,White,Blue);pback();}
+	if(x>80&&x<160) {Show_Str(104,288,"¦",32,0xa254,Blue);LCD_DrawLine( 108, 304, 131,304, White );
 		LCD_DrawLine( 120, 293, 120,315, White );LCD_DrawLine( 80, 288, 80,320, White );desktop();}
-	if(x>160&&x<240){ Show_Str(187,288,"¡þ",32,White,Blue);pmenu();}
+	if(x>160&&x<240){ Show_Str(187,288,"?",32,White,Blue);pmenu();}
 }
 /**********************
-ÎÂ¶È
+??
 **********************/
 void tempert()
 {
@@ -335,7 +335,7 @@ void tempert()
 		if(i==0xff||i==0)
 		{
 			ReadTemperature(temper);
-			Show_Str(56,78,"µ±Ç°ÎÂ¶È£º",16,Red,Nocolor);
+			Show_Str(56,78,"????:",16,Red,Nocolor);
 			GUI_Text(128,78,temper,Red,White);
 			i=1;
 		}
@@ -346,7 +346,7 @@ void tempert()
 	}
 }
 /****************************************************
-»­°å
+??
 ***************************************************/
 void picbox()
 {
@@ -393,7 +393,7 @@ void led()
 {
 	unsigned char ctr=0;
 	LCD_Clear(0x051d);
-	Show_Str(65,10,"LED¿ØÖÆ",32,White,Nocolor);
+	Show_Str(65,10,"LED??",32,White,Nocolor);
 	guidshow();
 	GUI_Text(30,50,"LED1",White,Nocolor);
 	GUI_Text(30,120,"LED2",White,Nocolor);
@@ -402,24 +402,24 @@ void led()
 	{
 		if(RedLed(1)){
 			LCD_DrawBox(70,50,150,60,Blue);
-			Show_Str(30,76,"¹Ø",16,Blue,0x051d);	
+			Show_Str(30,76,"?",16,Blue,0x051d);	
 		}else{
 			LCD_DrawBox(70,50,150,60,Green);
-			Show_Str(30,76,"¿ª",16,Red,0x051d);
+			Show_Str(30,76,"?",16,Red,0x051d);
 		}
 		if(RedLed(2)){
 			LCD_DrawBox(70,120,150,60,Blue);
-			Show_Str(30,146,"¹Ø",16,Blue,0x051d);
+			Show_Str(30,146,"?",16,Blue,0x051d);
 		}else {
 			LCD_DrawBox(70,120,150,60,Red);
-			Show_Str(30,146,"¿ª",16,Red,0x051d);
+			Show_Str(30,146,"?",16,Red,0x051d);
 		}
 		if(RedLed(3)){
 			LCD_DrawBox(70,190,150,60,Blue);
-			Show_Str(30,216,"¹Ø",16,Blue,0x051d);
+			Show_Str(30,216,"?",16,Blue,0x051d);
 		}else {
 			LCD_DrawBox(70,190,150,60,Yellow);	
-			Show_Str(30,216,"¿ª",16,Red,0x051d);
+			Show_Str(30,216,"?",16,Red,0x051d);
 		}
 		Get_Click(&x,&y);
 		while(!PEN);
