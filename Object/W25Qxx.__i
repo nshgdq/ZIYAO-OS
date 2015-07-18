@@ -1,1 +1,0 @@
-"user\W25Qxx\W25Qxx.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\W25Qxx.lst) TABS (2) OBJECT(.\Object\W25Qxx.obj)

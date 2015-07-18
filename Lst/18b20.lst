@@ -1,10 +1,10 @@
-C51 COMPILER V9.00   18B20                                                                 07/13/2015 15:35:10 PAGE 1   
+C51 COMPILER V9.52.0.0   18B20                                                             07/18/2015 09:10:20 PAGE 1   
 
 
-C51 COMPILER V9.00, COMPILATION OF MODULE 18B20
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE 18B20
 OBJECT MODULE PLACED IN .\Object\18b20.obj
-COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\ds18b20\18b20.c LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND
-                    - PRINT(.\Lst\18b20.lst) TABS(2) OBJECT(.\Object\18b20.obj)
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\Driver\18b20.c LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND 
+                    -PRINT(.\Lst\18b20.lst) TABS(2) OBJECT(.\Object\18b20.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   52   1       DelayUs2x(50); //15~60us 后 接收60-240us的存在脉冲
   53   1       dat=DQ;        //如果x=0则初始化成功, x=1则初始化失败
   54   1       DelayUs2x(25); //稍作延时返回
-C51 COMPILER V9.00   18B20                                                                 07/13/2015 15:35:10 PAGE 2   
+C51 COMPILER V9.52.0.0   18B20                                                             07/18/2015 09:10:20 PAGE 2   
 
   55   1       return dat;
   56   1      }
@@ -126,7 +126,7 @@ line level    source
  114   1      }
  115          void ReadTemperature(uchar *temper)
  116          {
-C51 COMPILER V9.00   18B20                                                                 07/13/2015 15:35:10 PAGE 3   
+C51 COMPILER V9.52.0.0   18B20                                                             07/18/2015 09:10:20 PAGE 3   
 
  117   1        unsigned int temp;
  118   1        float temperature;

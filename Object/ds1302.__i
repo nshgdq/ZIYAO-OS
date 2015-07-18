@@ -1,1 +1,0 @@
-"user\ds1302\ds1302.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\ds1302.lst) TABS (2) OBJECT(.\Object\ds1302.obj)
