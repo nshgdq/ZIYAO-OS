@@ -362,9 +362,34 @@
           <GroupName>App</GroupName>
           <Files>
             <File>
-              <FileName>app.c</FileName>
+              <FileName>calendar.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\App\app.c</FilePath>
+              <FilePath>.\user\App\calendar.c</FilePath>
+            </File>
+            <File>
+              <FileName>startch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\App\startch.c</FilePath>
+            </File>
+            <File>
+              <FileName>picbox.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\App\picbox.c</FilePath>
+            </File>
+            <File>
+              <FileName>ledctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\App\ledctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>tempert.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\App\tempert.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\App\sys_app.c</FilePath>
             </File>
           </Files>
         </Group>

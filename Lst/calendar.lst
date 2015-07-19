@@ -1,4 +1,4 @@
-C51 COMPILER V9.52.0.0   CALENDAR                                                          07/18/2015 09:40:15 PAGE 1   
+C51 COMPILER V9.52.0.0   CALENDAR                                                          07/19/2015 22:01:26 PAGE 1   
 
 
 C51 COMPILER V9.52.0.0, COMPILATION OF MODULE CALENDAR
@@ -8,159 +8,149 @@ COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\App\calendar.c LARGE BROWSE IN
 
 line level    source
 
-   1          #include<stc12c5a60s2.h>
-   2          #include "w25qxx.h" 
-   3          #include "type_51.h"
-   4          #include "Touch.h"
-   5          #include "ds1302.h"
-   6          #include <string.h>
-   7          #include "timer.h"
-   8          #include "app.h"
-   9          #include "type_51.h"
-  10          #include "18b20.h"
-  11          #include "ATCmd.h"
-  12          #include "led.h"
-  13          #include "audio.h"
-  14          extern u8 time[22]={0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-  15          extern u16 x,y;
-  16          //extern bit ATC=0;
-  17          extern void Get_Click1(u16 *x,u16 *y);
-  18          /*********************
-  19          日历
-  20          *********************/
-  21          void calendar()
-  22          {
-  23   1        u16 i=0;
-  24   1        gettime(time);
-  25   1        time[7]='\0';
-  26   1        LCD_Clear(0x051d);
-  27   1        LCD_DrawBox(60,60,120,20,Yellow);
-  28   1        LCD_DrawBox(60,80,120,104,White);
-  29   1        GUI_Text(61,61,time,Red,Nocolor);
-  30   1        Show_Str(150,61,"周",16,Red,Nocolor);
-  31   1        GUI_Text(166,61,time+20,Red,Nocolor);
-  32   1        time[10]='\0';
-  33   1        Show_Str(105,110,time+8,32,Red,Nocolor);
-  34   1        guidshow();
-  35   1        while(1)
-  36   1        {
-  37   2          if(i==0xbff||i==0)
-  38   2          {
-  39   3            gettime(time);
-  40   3            time[16]='\0';
-  41   3            GUI_Text(100,150,time+11,Red,White);
-  42   3            i=1;
-  43   3          }
-  44   2          i++;
-  45   2          Get_Click(&x,&y);
-  46   2          if(y>288&&y<320) guiddo(desktop,sstmtime,x);
-  47   2        }
-  48   1      }
-  49          /**************
-  50          设定系统时间
-  51          ***************/
-  52          void sstmtime()
-  53          {
-  54   1        u8 setime[7]={0,0,0,0,0,0,0},i=1;
-C51 COMPILER V9.52.0.0   CALENDAR                                                          07/18/2015 09:40:15 PAGE 2   
+   1          /*********************
+   2          日历
+   3          *********************/
+   4          #include "app.h"
+   5          #include "Touch.h"
+   6          #include "ds1302.h"
+   7          extern u8 time[22];
+   8          extern void gettime(u8 *);
+   9          extern u16 x,y;
+  10          extern void Get_Click1(u16 *x,u16 *y);
+  11          void calendar()
+  12          {
+  13   1        u16 i=0;
+  14   1        gettime(time);
+  15   1        time[7]='\0';
+  16   1        LCD_Clear(0x051d);
+  17   1        LCD_DrawBox(60,60,120,20,Yellow);
+  18   1        LCD_DrawBox(60,80,120,104,White);
+  19   1        GUI_Text(61,61,time,Red,Nocolor);
+  20   1        Show_Str(150,61,"周",16,Red,Nocolor);
+  21   1        GUI_Text(166,61,time+20,Red,Nocolor);
+  22   1        time[10]='\0';
+  23   1        Show_Str(105,110,time+8,32,Red,Nocolor);
+  24   1        guidshow();
+  25   1        while(1)
+  26   1        {
+  27   2          if(i==0xbff||i==0)
+  28   2          {
+  29   3            gettime(time);
+  30   3            time[16]='\0';
+  31   3            GUI_Text(100,150,time+11,Red,White);
+  32   3            i=1;
+  33   3          }
+  34   2          i++;
+  35   2          Get_Click(&x,&y);
+  36   2          if(y>288&&y<320) guiddo(desktop,sstmtime,x);
+  37   2        }
+  38   1      }
+  39          /**************
+  40          设置系统时间
+  41          ***************/
+  42          void sstmtime()
+  43          {
+  44   1        u8 setime[7]={0,0,0,0,0,0,0},i=1;
+  45   1        gettime(time);
+  46   1        LCD_Clear(0x051d);
+  47   1        Show_Str(24,20,"设置系统时间",32,White,Nocolor);
+  48   1        GUI_Text(40,128,time,Red,White);
+  49   1        LCD_DrawBox(100,105,40,20,0xc618);
+  50   1        Show_Str(115,108,"▲",16,Black,Nocolor);
+  51   1        LCD_DrawEBox(100,105,40,20,Blue);
+  52   1        LCD_DrawBox(100,148,40,20,0xc618);
+  53   1        Show_Str(115,153,"▼",16,Black,Nocolor);
+  54   1        LCD_DrawEBox(100,148,40,20,Blue);
+C51 COMPILER V9.52.0.0   CALENDAR                                                          07/19/2015 22:01:26 PAGE 2   
 
-  55   1        gettime(time);
-  56   1        LCD_Clear(0x051d);
-  57   1        Show_Str(24,20,"设定系统时间",32,White,Nocolor);
-  58   1        GUI_Text(40,128,time,Red,White);
-  59   1        LCD_DrawBox(100,105,40,20,0xc618);
-  60   1        Show_Str(115,108,"▲",16,Black,Nocolor);
-  61   1        LCD_DrawEBox(100,105,40,20,Blue);
-  62   1        LCD_DrawBox(100,148,40,20,0xc618);
-  63   1        Show_Str(115,153,"▼",16,Black,Nocolor);
-  64   1        LCD_DrawEBox(100,148,40,20,Blue);
-  65   1        LCD_DrawBox(40,180,40,20,0xc618);
-  66   1        GUI_Text(42,182,"Next",Black,Nocolor);
-  67   1        LCD_DrawEBox(40,180,40,20,Blue);
-  68   1        LCD_DrawBox(170,180,40,20,0xc618);
-  69   1        GUI_Text(185,182,"Ok",Black,Nocolor);
-  70   1        LCD_DrawEBox(170,180,40,20,Blue);
-  71   1        guidshow();
-  72   1        time[4]=time[7]=time[10]=time[13]=time[16]=time[19]=0;
-  73   1        while(1)
-  74   1        {
-  75   2          switch(i)
-  76   2          {
-  77   3            case 1:GUI_Text(40,128,time,Green,Black);GUI_Text(40+8*20,128,time+20,Red,White);break;
-  78   3            case 2:GUI_Text(40+8*5,128,time+5,Green,Black);GUI_Text(40,128,time,Red,White);break;
-  79   3            case 3:GUI_Text(40+8*8,128,time+8,Green,Black);GUI_Text(40+8*5,128,time+5,Red,White);break;
-  80   3            case 4:GUI_Text(40+8*11,128,time+11,Green,Black);GUI_Text(40+8*8,128,time+8,Red,White);break;
-  81   3            case 5:GUI_Text(40+8*14,128,time+14,Green,Black);GUI_Text(40+8*11,128,time+11,Red,White);break;
-  82   3            case 6:GUI_Text(40+8*17,128,time+17,Green,Black);GUI_Text(40+8*14,128,time+14,Red,White);break;
-  83   3            case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
-  84   3          }
-  85   2          Get_Click1(&x,&y);
-  86   2          if(y>288&&y<320){guiddo(calendar,desktop,x);}//导航栏
-  87   2          if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next 键操作
-  88   2          if((x>=150&&x<=190)&&(y>=180&&y<=200))  //Ok 键操作
-  89   2          {
-  90   3            setime[0]=((time[17]-'0')<<4)|(time[18]-'0');
-  91   3            setime[1]=((time[14]-'0')<<4)|(time[15]-'0');
-  92   3            setime[2]=((time[11]-'0')<<4)|(time[12]-'0');
-  93   3            setime[3]=((time[8]-'0')<<4)|(time[9]-'0');
-  94   3            setime[4]=((time[5]-'0')<<4)|(time[6]-'0');
-  95   3            setime[5]=time[20]-'0';
-  96   3            setime[6]=((time[2]-'0')<<4)|(time[3]-'0');
-  97   3            Ds1302_Write_Time(setime);//设定系统时间
-  98   3            alert("已设定系统时间！",0x051d);
-  99   3            while(!PEN);
- 100   3          } 
- 101   2          if((x>=100&&x<=140)&&(y>=105&&y<=125))  //▲ 键操作
- 102   2          {
- 103   3            switch(i)
- 104   3            {
- 105   4              case 1:time[3]++;if(time[3]>'9') {time[3]='0';time[2]++;}if(time[2]>'9') time[2]='0';break;
- 106   4              case 2:time[6]++;if(time[6]>'2'&&time[5]=='1') {time[6]='1';time[5]='0';}if(time[6]>'9') {time[5]++;ti
+  55   1        LCD_DrawBox(40,180,40,20,0xc618);
+  56   1        GUI_Text(42,182,"Next",Black,Nocolor);
+  57   1        LCD_DrawEBox(40,180,40,20,Blue);
+  58   1        LCD_DrawBox(170,180,40,20,0xc618);
+  59   1        GUI_Text(185,182,"Ok",Black,Nocolor);
+  60   1        LCD_DrawEBox(170,180,40,20,Blue);
+  61   1        guidshow();
+  62   1        time[4]=time[7]=time[10]=time[13]=time[16]=time[19]=0;
+  63   1        while(1)
+  64   1        {
+  65   2          switch(i)
+  66   2          {
+  67   3            case 1:GUI_Text(40,128,time,Green,Black);GUI_Text(40+8*20,128,time+20,Red,White);break;
+  68   3            case 2:GUI_Text(40+8*5,128,time+5,Green,Black);GUI_Text(40,128,time,Red,White);break;
+  69   3            case 3:GUI_Text(40+8*8,128,time+8,Green,Black);GUI_Text(40+8*5,128,time+5,Red,White);break;
+  70   3            case 4:GUI_Text(40+8*11,128,time+11,Green,Black);GUI_Text(40+8*8,128,time+8,Red,White);break;
+  71   3            case 5:GUI_Text(40+8*14,128,time+14,Green,Black);GUI_Text(40+8*11,128,time+11,Red,White);break;
+  72   3            case 6:GUI_Text(40+8*17,128,time+17,Green,Black);GUI_Text(40+8*14,128,time+14,Red,White);break;
+  73   3            case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
+  74   3          }
+  75   2          Get_Click1(&x,&y);
+  76   2          if(y>288&&y<320){guiddo(calendar,desktop,x);}//???
+  77   2          if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next ???
+  78   2          if((x>=150&&x<=190)&&(y>=180&&y<=200))  //Ok ???
+  79   2          {
+  80   3            setime[0]=((time[17]-'0')<<4)|(time[18]-'0');
+  81   3            setime[1]=((time[14]-'0')<<4)|(time[15]-'0');
+  82   3            setime[2]=((time[11]-'0')<<4)|(time[12]-'0');
+  83   3            setime[3]=((time[8]-'0')<<4)|(time[9]-'0');
+  84   3            setime[4]=((time[5]-'0')<<4)|(time[6]-'0');
+  85   3            setime[5]=time[20]-'0';
+  86   3            setime[6]=((time[2]-'0')<<4)|(time[3]-'0');
+  87   3            Ds1302_Write_Time(setime);//??????
+  88   3            alert("已设定系统时间!",0x051d);
+  89   3            while(!PEN);
+  90   3          } 
+  91   2          if((x>=100&&x<=140)&&(y>=105&&y<=125))  //? ???
+  92   2          {
+  93   3            switch(i)
+  94   3            {
+  95   4              case 1:time[3]++;if(time[3]>'9') {time[3]='0';time[2]++;}if(time[2]>'9') time[2]='0';break;
+  96   4              case 2:time[6]++;if(time[6]>'2'&&time[5]=='1') {time[6]='1';time[5]='0';}if(time[6]>'9') {time[5]++;ti
              -me[6]='0';}break;
- 107   4              case 3:time[9]++;if(time[9]>'1'&&time[8]=='3') {time[9]='1';time[8]='0';}if(time[9]>'9') {time[8]++;ti
+  97   4              case 3:time[9]++;if(time[9]>'1'&&time[8]=='3') {time[9]='1';time[8]='0';}if(time[9]>'9') {time[8]++;ti
              -me[9]='0';}break;
- 108   4              case 4:time[12]++;if(time[12]>'3'&&time[11]=='2') {time[12]='0';time[11]='0';}if(time[12]>'9') {time[1
+  98   4              case 4:time[12]++;if(time[12]>'3'&&time[11]=='2') {time[12]='0';time[11]='0';}if(time[12]>'9') {time[1
              -1]++;time[12]='0';}break;
- 109   4              case 5:time[15]++;if(time[15]>'9'&&time[14]=='5') {time[15]='0';time[14]='0';}if(time[15]>'9') {time[1
+  99   4              case 5:time[15]++;if(time[15]>'9'&&time[14]=='5') {time[15]='0';time[14]='0';}if(time[15]>'9') {time[1
              -4]++;time[15]='0';}break;
- 110   4              case 6:time[18]++;if(time[18]>'9'&&time[17]=='5') {time[18]='0';time[17]='0';}if(time[18]>'9') {time[1
+ 100   4              case 6:time[18]++;if(time[18]>'9'&&time[17]=='5') {time[18]='0';time[17]='0';}if(time[18]>'9') {time[1
              -7]++;time[18]='0';}break;
- 111   4              case 7:time[20]++;if(time[20]>'7') time[20]='1';
-C51 COMPILER V9.52.0.0   CALENDAR                                                          07/18/2015 09:40:15 PAGE 3   
-
- 112   4            }
- 113   3            while(!PEN);
- 114   3          } 
- 115   2          if((x>=100&&x<=140)&&(y>=148&&y<=168))  //▼ 键操作
- 116   2          {
- 117   3            switch(i)
- 118   3            {
- 119   4              case 1:if(time[3]=='0'&&time[2]=='0') {time[3]='9';time[2]='9';} if(time[3]=='0'&&time[2]!='0') {time[
+ 101   4              case 7:time[20]++;if(time[20]>'7') time[20]='1';
+ 102   4            }
+ 103   3            while(!PEN);
+ 104   3          } 
+ 105   2          if((x>=100&&x<=140)&&(y>=148&&y<=168))  //? ???
+ 106   2          {
+ 107   3            switch(i)
+ 108   3            {
+ 109   4              case 1:if(time[3]=='0'&&time[2]=='0') {time[3]='9';time[2]='9';} if(time[3]=='0'&&time[2]!='0') {time[
              -3]='9'+1;time[2]--;} time[3]--;break;
- 120   4              case 2:if(time[6]=='1'&&time[5]=='0') {time[6]='2'+1;time[5]='1';} if(time[6]=='0'&&time[5]!='0') {tim
+ 110   4              case 2:if(time[6]=='1'&&time[5]=='0') {time[6]='2'+1;time[5]='1';} if(time[6]=='0'&&time[5]!='0') {tim
+C51 COMPILER V9.52.0.0   CALENDAR                                                          07/19/2015 22:01:26 PAGE 3   
+
              -e[6]='9'+1;time[5]--;} time[6]--;break;
- 121   4              case 3:if(time[9]=='1'&&time[8]=='0') {time[9]='1'+1;time[8]='3';} if(time[9]=='0'&&time[8]!='0') {tim
+ 111   4              case 3:if(time[9]=='1'&&time[8]=='0') {time[9]='1'+1;time[8]='3';} if(time[9]=='0'&&time[8]!='0') {tim
              -e[9]='9'+1;time[8]--;} time[9]--;break;
- 122   4              case 4:if(time[12]=='0'&&time[11]=='0') {time[12]='3'+1;time[11]='2';} if(time[12]=='0'&&time[11]!='0'
+ 112   4              case 4:if(time[12]=='0'&&time[11]=='0') {time[12]='3'+1;time[11]='2';} if(time[12]=='0'&&time[11]!='0'
              -) {time[12]='9'+1;time[11]--;} time[12]--;break;
- 123   4              case 5:if(time[15]=='0'&&time[14]=='0') {time[15]='9'+1;time[14]='5';} if(time[15]=='0'&&time[14]!='0'
+ 113   4              case 5:if(time[15]=='0'&&time[14]=='0') {time[15]='9'+1;time[14]='5';} if(time[15]=='0'&&time[14]!='0'
              -) {time[15]='9'+1;time[14]--;} time[15]--;break;
- 124   4              case 6:if(time[18]=='0'&&time[17]=='0') {time[18]='9'+1;time[17]='5';} if(time[18]=='0'&&time[17]!='0'
+ 114   4              case 6:if(time[18]=='0'&&time[17]=='0') {time[18]='9'+1;time[17]='5';} if(time[18]=='0'&&time[17]!='0'
              -) {time[18]='9'+1;time[17]--;} time[18]--;break;
- 125   4              case 7:if(time[20]=='1')time[20]='7'+1;time[20]--;
- 126   4            }
- 127   3            
- 128   3            while(!PEN);
- 129   3          }
- 130   2          if (i>7) i=1;
- 131   2        }
- 132   1      }
+ 115   4              case 7:if(time[20]=='1')time[20]='7'+1;time[20]--;
+ 116   4            }
+ 117   3            
+ 118   3            while(!PEN);
+ 119   3          }
+ 120   2          if (i>7) i=1;
+ 121   2        }
+ 122   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   2624    ----
-   CONSTANT SIZE    =     54    ----
-   XDATA SIZE       =     22      10
+   CONSTANT SIZE    =     53    ----
+   XDATA SIZE       =   ----      10
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

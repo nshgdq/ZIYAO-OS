@@ -1,4 +1,4 @@
-C51 COMPILER V9.52.0.0   TEMPERT                                                           07/18/2015 09:29:11 PAGE 1   
+C51 COMPILER V9.52.0.0   TEMPERT                                                           07/19/2015 22:01:27 PAGE 1   
 
 
 C51 COMPILER V9.52.0.0, COMPILATION OF MODULE TEMPERT
@@ -8,12 +8,42 @@ COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\App\tempert.c LARGE BROWSE INC
 
 line level    source
 
+   1          /**********************
+   2          温度
+   3          **********************/
+   4          #include "app.h"
+   5          #include "hx8347d.h"
+   6          #include "18b20.h"
+   7          extern u16 x,y;
+   8          void tempert()
+   9          {
+  10   1        u16 i=0;
+  11   1        u8 temper[7];
+  12   1        LCD_Clear(0x051d);
+  13   1        LCD_DrawBox(45,60,152,50,Blue);
+  14   1        LCD_DrawEBox(55,70,132,30,Red);
+  15   1        guidshow();
+  16   1        while(1)
+  17   1        {
+  18   2          if(i==0xff||i==0)
+  19   2          {
+  20   3            ReadTemperature(temper);
+  21   3            Show_Str(56,78,"当前温度:",16,Red,Nocolor);
+  22   3            GUI_Text(128,78,temper,Red,White);
+  23   3            i=1;
+  24   3          }
+  25   2          i++;
+  26   2          if(i>0xff) i=0;
+  27   2          Get_Click(&x,&y);
+  28   2          if(y>288&&y<320) guiddo(desktop,desktop,x);
+  29   2        }
+  30   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   ----    ----
-   CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
+   CODE SIZE        =    304    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----       9
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

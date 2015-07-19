@@ -1,4 +1,4 @@
-C51 COMPILER V9.52.0.0   TOUCH                                                             07/18/2015 09:10:22 PAGE 1   
+C51 COMPILER V9.52.0.0   TOUCH                                                             07/19/2015 22:01:28 PAGE 1   
 
 
 C51 COMPILER V9.52.0.0, COMPILATION OF MODULE TOUCH
@@ -62,7 +62,7 @@ line level    source
   52   2        }             
   53   1      }   
   54          
-C51 COMPILER V9.52.0.0   TOUCH                                                             07/18/2015 09:10:22 PAGE 2   
+C51 COMPILER V9.52.0.0   TOUCH                                                             07/19/2015 22:01:28 PAGE 2   
 
   55          
   56          //SPI读数据 
@@ -126,7 +126,7 @@ line level    source
  114   1        temp=sum/(READ_TIMES-2*LOST_VAL);
  115   1        return temp;   
  116   1      } 
-C51 COMPILER V9.52.0.0   TOUCH                                                             07/18/2015 09:10:22 PAGE 3   
+C51 COMPILER V9.52.0.0   TOUCH                                                             07/19/2015 22:01:28 PAGE 3   
 
  117          //读取x,y坐标
  118          //最小值不能少于100.
@@ -190,7 +190,7 @@ line level    source
  176   1        LCD_SetPoint(x+1,y,color);
  177   1        LCD_SetPoint(x,y+1,color);
  178   1        LCD_SetPoint(x+1,y+1,color);        
-C51 COMPILER V9.52.0.0   TOUCH                                                             07/18/2015 09:10:22 PAGE 4   
+C51 COMPILER V9.52.0.0   TOUCH                                                             07/19/2015 22:01:28 PAGE 4   
 
  179   1      }
  180          
@@ -254,7 +254,7 @@ line level    source
  238   2          { 
  239   3            tp_dev.sta&=~(1<<6);//标记按键已经被处理过了.                
  240   3            pos_temp[cnt][0]=tp_dev.x;
-C51 COMPILER V9.52.0.0   TOUCH                                                             07/18/2015 09:10:22 PAGE 5   
+C51 COMPILER V9.52.0.0   TOUCH                                                             07/19/2015 22:01:28 PAGE 5   
 
  241   3            pos_temp[cnt][1]=tp_dev.y;
  242   3            cnt++;    
@@ -318,7 +318,7 @@ line level    source
  300   4                tem1*=tem1;
  301   4                tem2*=tem2;
  302   4                d1=sqrt(tem1+tem2);//得到1,4的距离
-C51 COMPILER V9.52.0.0   TOUCH                                                             07/18/2015 09:10:22 PAGE 6   
+C51 COMPILER V9.52.0.0   TOUCH                                                             07/19/2015 22:01:28 PAGE 6   
 
  303   4        
  304   4                tem1=abs(pos_temp[0][0]-pos_temp[3][0]);//x2-x4
@@ -382,7 +382,7 @@ line level    source
  362   1      //    {
  363   1            CMD_RDX=0X90;
  364   1            CMD_RDY=0XD0; 
-C51 COMPILER V9.52.0.0   TOUCH                                                             07/18/2015 09:10:22 PAGE 7   
+C51 COMPILER V9.52.0.0   TOUCH                                                             07/19/2015 22:01:28 PAGE 7   
 
  365   1            tp_dev.xoff=-12;
  366   1            tp_dev.xfac=0.121803;

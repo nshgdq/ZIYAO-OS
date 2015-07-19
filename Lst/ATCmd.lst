@@ -1,4 +1,4 @@
-C51 COMPILER V9.52.0.0   ATCMD                                                             07/18/2015 10:06:52 PAGE 1   
+C51 COMPILER V9.52.0.0   ATCMD                                                             07/19/2015 22:01:27 PAGE 1   
 
 
 C51 COMPILER V9.52.0.0, COMPILATION OF MODULE ATCMD
@@ -62,7 +62,7 @@ line level    source
   52   1        at_str=at_str+3;//清除指令头3个字符"AT+"
   53   1        for(i=0;i<=ATNUM;i++)
   54   1        {
-C51 COMPILER V9.52.0.0   ATCMD                                                             07/18/2015 10:06:52 PAGE 2   
+C51 COMPILER V9.52.0.0   ATCMD                                                             07/19/2015 22:01:27 PAGE 2   
 
   55   2          if(i==ATNUM) {ATErr();break;}
   56   2          if(strcmp(at_str,at[i].at_name)==0) {at[i].at_fun();break;}
@@ -126,7 +126,7 @@ line level    source
  114          *************************/
  115          void SWLED1()
  116          {
-C51 COMPILER V9.52.0.0   ATCMD                                                             07/18/2015 10:06:52 PAGE 3   
+C51 COMPILER V9.52.0.0   ATCMD                                                             07/19/2015 22:01:27 PAGE 3   
 
  117   1        SetLed(1,!RedLed(1));
  118   1      }

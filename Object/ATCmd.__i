@@ -1,1 +1,0 @@
-"user\Driver\ATCmd.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\ATCmd.lst) TABS (2) OBJECT(.\Object\ATCmd.obj)

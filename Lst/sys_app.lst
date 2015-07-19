@@ -1,10 +1,10 @@
-C51 COMPILER V9.52.0.0   APP                                                               07/19/2015 22:01:26 PAGE 1   
+C51 COMPILER V9.52.0.0   SYS_APP                                                           07/19/2015 22:15:03 PAGE 1   
 
 
-C51 COMPILER V9.52.0.0, COMPILATION OF MODULE APP
-OBJECT MODULE PLACED IN .\Object\app.obj
-COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\App\app.c LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT
-                    -(.\Lst\app.lst) TABS(2) OBJECT(.\Object\app.obj)
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE SYS_APP
+OBJECT MODULE PLACED IN .\Object\sys_app.obj
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE user\App\sys_app.c LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND P
+                    -RINT(.\Lst\sys_app.lst) TABS(2) OBJECT(.\Object\sys_app.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   52   1        TR0=1;
   53   1        while(1)
   54   1        {
-C51 COMPILER V9.52.0.0   APP                                                               07/19/2015 22:01:26 PAGE 2   
+C51 COMPILER V9.52.0.0   SYS_APP                                                           07/19/2015 22:15:03 PAGE 2   
 
   55   2          x=0;y=0;
   56   2          if(i==0x0bff) {clock();i=0;}
@@ -126,7 +126,7 @@ line level    source
  114   1        if(ATC){ATC=0;AT_DO(temp);}
  115   1      }
  116          void Get_Click1(u16 *x,u16 *y)
-C51 COMPILER V9.52.0.0   APP                                                               07/19/2015 22:01:26 PAGE 3   
+C51 COMPILER V9.52.0.0   SYS_APP                                                           07/19/2015 22:15:03 PAGE 3   
 
  117          {
  118   1        TP_Read_XY2(x,y); 
@@ -190,7 +190,7 @@ line level    source
  176              {
  177                ReadTemperature(temper);
  178                Show_Str(56,78,"µ±Ç°ÎÂ¶È:",16,Red,Nocolor);
-C51 COMPILER V9.52.0.0   APP                                                               07/19/2015 22:01:26 PAGE 4   
+C51 COMPILER V9.52.0.0   SYS_APP                                                           07/19/2015 22:15:03 PAGE 4   
 
  179                GUI_Text(128,78,temper,Red,White);
  180                i=1;
