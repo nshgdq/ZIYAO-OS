@@ -1,0 +1,1 @@
+"user\App\calendar.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\calendar.lst) TABS (2) OBJECT(.\Object\calendar.obj)

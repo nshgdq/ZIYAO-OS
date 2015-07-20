@@ -4,10 +4,16 @@
 #include "app.h"
 #include "Touch.h"
 #include "ds1302.h"
+//*****************************
 extern u8 time[22];
 extern void gettime(u8 *);
 extern u16 x,y;
 extern void Get_Click1(u16 *x,u16 *y);
+void t_menu();
+void t_alert();
+//*********************************
+//日历
+//*********************************
 void calendar()
 {
 	u16 i=0;
@@ -33,7 +39,23 @@ void calendar()
 		}
 		i++;
 		Get_Click(&x,&y);
-		if(y>288&&y<320) guiddo(desktop,sstmtime,x);
+		if(y>288&&y<320) guiddo(desktop,t_menu,x);
+	}
+}
+void t_menu()//菜单
+{
+	LCD_Clear(0x051d);
+	Show_Str(56,0,"时间选项",32,White,Nocolor);
+	LCD_DrawLine(0,35,240,35,White);
+	Show_Str(0,38,"◆设定系统时间",24,White,Nocolor);
+	Show_Str(0,67,"◆闹钟",24,White,Nocolor);
+	guidshow();
+	while(1)
+	{
+		Get_Click(&x,&y);
+		if(y>288&&y<320) guiddo(calendar,t_menu,x);
+		if(y>38&&y<(38+24)) {Show_Str(0,38,"◆设定系统时间",24,White,Blue);sstmtime();}
+		if(y>(38+24)&&y<(38+24+24)) {Show_Str(0,67,"◆闹钟",24,White,Blue);t_alert();}
 	}
 }
 /**************
@@ -73,7 +95,7 @@ void sstmtime()
 			case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
 		}
 		Get_Click1(&x,&y);
-		if(y>288&&y<320){guiddo(calendar,desktop,x);}//???
+		if(y>288&&y<320){guiddo(t_menu,desktop,x);}//???
 		if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next ???
 		if((x>=150&&x<=190)&&(y>=180&&y<=200))	//Ok ???
 		{
@@ -118,5 +140,18 @@ void sstmtime()
 			while(!PEN);
 		}
 		if (i>7) i=1;
+	}
+}
+/***************
+闹钟
+***************/
+void t_alert()
+{
+	LCD_Clear(0x051d);
+	guidshow();
+	while(1)
+	{
+		Get_Click(&x,&y);
+		if(y>288&&y<320) guiddo(t_menu,t_menu,x);
 	}
 }
