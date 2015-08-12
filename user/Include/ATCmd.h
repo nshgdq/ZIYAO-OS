@@ -1,4 +1,4 @@
-#ifndef _ATCmd_H
+﻿#ifndef _ATCmd_H
 #define _ATCmd_H
 #include "stc12c5a60s2.h"
 #include "type_51.h"

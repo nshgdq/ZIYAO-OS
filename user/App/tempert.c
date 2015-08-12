@@ -1,5 +1,5 @@
-/**********************
-Œ¬∂»
+Ôªø/**********************
+Ê∏©Â∫¶
 **********************/
 #include "app.h"
 #include "hx8347d.h"
@@ -18,7 +18,7 @@ void tempert()
 		if(i==0xff||i==0)
 		{
 			ReadTemperature(temper);
-			Show_Str(56,78,"µ±«∞Œ¬∂»:",16,Red,Nocolor);
+			Show_Str(56,78,"ÂΩìÂâçÊ∏©Â∫¶:",16,Red,Nocolor);
 			GUI_Text(128,78,temper,Red,White);
 			i=1;
 		}

@@ -1,7 +1,7 @@
-/******************************************************************
-**´Ë×Ö¿âĞ¾Æ¬°üº¬µÄ×Ö¿âÎªGBKºÍASCII£»
-**ĞèÒª×Ö¿âĞ¾Æ¬¿É½øµêÆÌ£ºhttp://shop105602061.taobao.com/
-**¼¼Êõ½»Á÷ÇëÁªÏµQQ£º765109842
+ï»¿/******************************************************************
+**æ­¤å­—åº“èŠ¯ç‰‡åŒ…å«çš„å­—åº“ä¸ºGBKå’ŒASCIIï¼›
+**éœ€è¦å­—åº“èŠ¯ç‰‡å¯è¿›åº—é“ºï¼šhttp://shop105602061.taobao.com/
+**æŠ€æœ¯äº¤æµè¯·è”ç³»QQï¼š765109842
 *******************************************************************/
 
 #ifndef W25Qxx_H
@@ -12,34 +12,35 @@
 #include "HX8347D.h" 
 
 /*****************************************************************
-ÓÃ»§ĞèÒª¸ù¾İÊµÖÊĞèÒªĞŞ¸ÄµÄµØ·½£º
-//Í·ÎÄ¼ş
-//Òº¾§ÆÁÏà¹Øºê¶¨Òå
-//IO¿Ú¶¨Òå
+ç”¨æˆ·éœ€è¦æ ¹æ®å®è´¨éœ€è¦ä¿®æ”¹çš„åœ°æ–¹ï¼š
+//å¤´æ–‡ä»¶
+//æ¶²æ™¶å±ç›¸å…³å®å®šä¹‰
+//IOå£å®šä¹‰
 *****************************************************************/
-//Í·ÎÄ¼ş
+//å¤´æ–‡ä»¶
 #include "string.h"		
 
-//Òº¾§ÆÁÏà¹Øºê¶¨Òå
-#define max_x 240	//Òº¾§ÆÁXÖá×î´ó³ß´ç
-#define max_y 320	//Òº¾§ÆÁYÖá×î´ó³ß´ç
-//°ÑLCD_SetPoint¸ÄÎª¶ÔÓ¦µÄ´òµãº¯ÊıÃû£¬º¯ÊıÔ­ĞÍ£ºvoid LCD_SetPoint(uint16_t Xpos,uint16_t Ypos,uint16_t point);
+//æ¶²æ™¶å±ç›¸å…³å®å®šä¹‰
+#define max_x 240	//æ¶²æ™¶å±Xè½´æœ€å¤§å°ºå¯¸
+#define max_y 320	//æ¶²æ™¶å±Yè½´æœ€å¤§å°ºå¯¸
+//æŠŠLCD_SetPointæ”¹ä¸ºå¯¹åº”çš„æ‰“ç‚¹å‡½æ•°åï¼Œå‡½æ•°åŸå‹ï¼švoid LCD_SetPoint(uint16_t Xpos,uint16_t Ypos,uint16_t point);
 #define SHOW_POINT_FUNC		LCD_SetPoint 
 
-//µ¥Æ¬»úIO¿Ú¶¨Òå
+//å•ç‰‡æœºIOå£å®šä¹‰
 sbit	W25Qxx_CS =	P2^4; 
 sbit	W25Qxx_DO =	P0^3;   
 sbit	W25Qxx_DI =	P0^2;
 sbit	W25Qxx_CLK = P0^1;
 
 
-//W25QÏµÁĞĞ¾Æ¬IDÁĞ±í	   
+//W25Qç³»åˆ—èŠ¯ç‰‡IDåˆ—è¡¨	   
 #define W25Q80 	0XEF13 	
 #define W25Q16 	0XEF14
 #define W25Q32 	0XEF15
 #define W25Q64 	0XEF16
+#define W25Q128 0XEF17
 
-//Ö¸Áî±í
+//æŒ‡ä»¤è¡¨
 #define W25X_WriteEnable		0x06 
 #define W25X_WriteDisable		0x04 
 #define W25X_ReadStatusReg		0x05 
@@ -58,41 +59,41 @@ sbit	W25Qxx_CLK = P0^1;
 #define W25X_JedecDeviceID		0x9F 
 
 
-//ÏÔÊ¾Ïà¹Øº¯Êı£¨ÏÈµ÷ÓÃ font_init();½øĞĞ³õÊ¼»¯£¬ÔÙµ÷ÓÃÏÔÊ¾º¯Êı£©
+//æ˜¾ç¤ºç›¸å…³å‡½æ•°ï¼ˆå…ˆè°ƒç”¨ font_init();è¿›è¡Œåˆå§‹åŒ–ï¼Œå†è°ƒç”¨æ˜¾ç¤ºå‡½æ•°ï¼‰
 u8 	 font_init(void);
-void Show_Str(u16 x,u16 y,u8 *str,u8 size,u16 p_color,u16 b_color);	//ÔÚÖ¸¶¨Î»ÖÃÏÔÊ¾Ò»¸ö×Ö·û´® 
-void Show_number(u16 x,u16 y,u32 num,u8 len,u8 gbsize,u16 p_color,u16 b_color);//ÔÚÔÚÖ¸¶¨Î»ÖÃÏÔÊ¾Ò»¸öÊı×Ö 
+void Show_Str(u16 x,u16 y,u8 *str,u8 size,u16 p_color,u16 b_color);	//åœ¨æŒ‡å®šä½ç½®æ˜¾ç¤ºä¸€ä¸ªå­—ç¬¦ä¸² 
+void Show_number(u16 x,u16 y,u32 num,u8 len,u8 gbsize,u16 p_color,u16 b_color);//åœ¨åœ¨æŒ‡å®šä½ç½®æ˜¾ç¤ºä¸€ä¸ªæ•°å­— 
 u16 W25Qxx_ReadID(void);
 u8 W25Qxx_Read_Byte(void);
 void W25Qxx_Write_Byte(u8 value);
-//×ÖÌåĞÅÏ¢±£´æµØÖ·Õ¼100¸ö×Ö½Ú,µÚ4¸ö×Ö½ÚÓÃÓÚ±ê¼Ç×Ö¿âÊÇ·ñ´æÔÚ.ºóĞøÃ¿8¸ö×Ö½ÚÒ»×é,·Ö±ğ±£´æÆğÊ¼µØÖ·ºÍÎÄ¼ş´óĞ¡														   
-//×Ö¿âĞÅÏ¢½á¹¹Ìå¶¨Òå
-//ÓÃÀ´±£´æ×Ö¿â»ù±¾ĞÅÏ¢£¬µØÖ·£¬´óĞ¡µÈ
+//å­—ä½“ä¿¡æ¯ä¿å­˜åœ°å€å 100ä¸ªå­—èŠ‚,ç¬¬4ä¸ªå­—èŠ‚ç”¨äºæ ‡è®°å­—åº“æ˜¯å¦å­˜åœ¨.åç»­æ¯8ä¸ªå­—èŠ‚ä¸€ç»„,åˆ†åˆ«ä¿å­˜èµ·å§‹åœ°å€å’Œæ–‡ä»¶å¤§å°														   
+//å­—åº“ä¿¡æ¯ç»“æ„ä½“å®šä¹‰
+//ç”¨æ¥ä¿å­˜å­—åº“åŸºæœ¬ä¿¡æ¯ï¼Œåœ°å€ï¼Œå¤§å°ç­‰
 typedef struct 
 {
-	u32 fontok;				//×Ö¿â´æÔÚ±êÖ¾£¬0XAA£¬×Ö¿âÕı³££»ÆäËû£¬×Ö¿â²»´æÔÚ
-	u32 asc68addr; 			//ascii6*8µÄµØÖ·
-	u32 asc68size;			//ascii6*8µÄ´óĞ¡
+	u32 fontok;				//å­—åº“å­˜åœ¨æ ‡å¿—ï¼Œ0XAAï¼Œå­—åº“æ­£å¸¸ï¼›å…¶ä»–ï¼Œå­—åº“ä¸å­˜åœ¨
+	u32 asc68addr; 			//ascii6*8çš„åœ°å€
+	u32 asc68size;			//ascii6*8çš„å¤§å°
 	
-	u32 gbk12addr;		//gbk12µØÖ·	
-	u32 gbk12size;		//gbk12µÄ´óĞ¡	
-	u32 asc12addr;			//ascii12µØÖ·
-	u32 asc12size;			//ascii12µÄ´óĞ¡
+	u32 gbk12addr;		//gbk12åœ°å€	
+	u32 gbk12size;		//gbk12çš„å¤§å°	
+	u32 asc12addr;			//ascii12åœ°å€
+	u32 asc12size;			//ascii12çš„å¤§å°
 	
-	u32 gbk16addr;		//gbk16µØÖ·
-	u32 gbk16size;		//gbk16µÄ´óĞ¡
-	u32 asc16addr;			//ascii16µØÖ·
-	u32 asc16size;			//ascii16µÄ´óĞ¡
+	u32 gbk16addr;		//gbk16åœ°å€
+	u32 gbk16size;		//gbk16çš„å¤§å°
+	u32 asc16addr;			//ascii16åœ°å€
+	u32 asc16size;			//ascii16çš„å¤§å°
 	
-	u32 gbk24addr;		//gbk24µØÖ·
-	u32 gbk24size;		//gbk24µÄ´óĞ¡
-	u32 asc24addr;			//ascii24µØÖ·
-	u32 asc24size;			//ascii24µÄ´óĞ¡
+	u32 gbk24addr;		//gbk24åœ°å€
+	u32 gbk24size;		//gbk24çš„å¤§å°
+	u32 asc24addr;			//ascii24åœ°å€
+	u32 asc24size;			//ascii24çš„å¤§å°
 	
-	u32 gbk32addr;		//gbk32µØÖ·
-	u32 gbk32size;		//gbk32µÄ´óĞ¡
-	u32 asc32addr;			//ascii32µØÖ·
-	u32 asc32size;			//ascii32µÄ´óĞ¡
+	u32 gbk32addr;		//gbk32åœ°å€
+	u32 gbk32size;		//gbk32çš„å¤§å°
+	u32 asc32addr;			//ascii32åœ°å€
+	u32 asc32size;			//ascii32çš„å¤§å°
 }_font_info;																   
 
 #endif

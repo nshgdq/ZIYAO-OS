@@ -1,4 +1,4 @@
-#include "timer.h"
+﻿#include "timer.h"
 #include "hx8347d.h"
 #include "app.h"
 #include "uart.h"

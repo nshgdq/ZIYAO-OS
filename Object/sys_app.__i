@@ -1,1 +1,0 @@
-"user\App\sys_app.c" LARGE BROWSE INCDIR(.\user\Include) DEBUG OBJECTEXTEND PRINT(.\Lst\sys_app.lst) TABS (2) OBJECT(.\Object\sys_app.obj)

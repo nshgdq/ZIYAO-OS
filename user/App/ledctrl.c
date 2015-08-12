@@ -1,4 +1,4 @@
-/*****
+ï»¿/*****
 LED
 *****/
 #include "touch.h"
@@ -9,7 +9,7 @@ void led()
 {
 	unsigned char ctr=0;
 	LCD_Clear(0x051d);
-	Show_Str(65,10,"LED¿ØÖÆ",32,White,Nocolor);
+	Show_Str(65,10,"LEDæŽ§åˆ¶",32,White,Nocolor);
 	guidshow();
 	GUI_Text(30,50,"LED1",White,Nocolor);
 	GUI_Text(30,120,"LED2",White,Nocolor);
@@ -18,24 +18,24 @@ void led()
 	{
 		if(RedLed(1)){
 			LCD_DrawBox(70,50,150,60,Blue);
-			Show_Str(30,76,"¹Ø",16,Blue,0x051d);	
+			Show_Str(30,76,"å…³",16,Blue,0x051d);	
 		}else{
 			LCD_DrawBox(70,50,150,60,Green);
-			Show_Str(30,76,"¿ª",16,Red,0x051d);
+			Show_Str(30,76,"å¼€",16,Red,0x051d);
 		}
 		if(RedLed(2)){
 			LCD_DrawBox(70,120,150,60,Blue);
-			Show_Str(30,146,"¹Ø",16,Blue,0x051d);
+			Show_Str(30,146,"å…³",16,Blue,0x051d);
 		}else {
 			LCD_DrawBox(70,120,150,60,Red);
-			Show_Str(30,146,"¿ª",16,Red,0x051d);
+			Show_Str(30,146,"å¼€",16,Red,0x051d);
 		}
 		if(RedLed(3)){
 			LCD_DrawBox(70,190,150,60,Blue);
-			Show_Str(30,216,"¹Ø",16,Blue,0x051d);
+			Show_Str(30,216,"å…³",16,Blue,0x051d);
 		}else {
 			LCD_DrawBox(70,190,150,60,Yellow);	
-			Show_Str(30,216,"¿ª",16,Red,0x051d);
+			Show_Str(30,216,"å¼€",16,Red,0x051d);
 		}
 		Get_Click(&x,&y);
 		while(!PEN);

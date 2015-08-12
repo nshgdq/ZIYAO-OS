@@ -1,8 +1,8 @@
-#include <stc12c5a60s2.h>
+ï»¿#include <stc12c5a60s2.h>
 #include <intrins.h>
 #define uchar unsigned char
 #define uint  unsigned int
-sbit  BEEP=P2^1;//·äÃùÆ÷Òý½Å¶¨Òå
+sbit  BEEP=P2^1;//èœ‚é¸£å™¨å¼•è„šå®šä¹‰
 void delay500us()		//@32MHz
 {
 	unsigned char i, j;
@@ -22,14 +22,14 @@ void beep(int t)
   {
     for(j=200;j>0;j--)
 	{
-	  BEEP=~BEEP;       //Êä³öÆµÂÊ1KHz
-	  delay500us();       //ÑÓÊ±500us
+	  BEEP=~BEEP;       //è¾“å‡ºé¢‘çŽ‡1KHz
+	  delay500us();       //å»¶æ—¶500us
 	}
 
 	for(j=200;j>0;j--)
 	{
-	  BEEP=~BEEP;       //Êä³öÆµÂÊ500Hz
-	  delay500us();       //ÑÓÊ±1ms
+	  BEEP=~BEEP;       //è¾“å‡ºé¢‘çŽ‡500Hz
+	  delay500us();       //å»¶æ—¶1ms
 	  delay500us();
 	}
 	t--;

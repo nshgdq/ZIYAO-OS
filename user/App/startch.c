@@ -1,4 +1,4 @@
-#include "app.h"
+Ôªø#include "app.h"
 #include "hx8347d.h"
 #include "ds1302.h"
 #include "18b20.h"
@@ -18,36 +18,37 @@ void start_check()
 		case W25Q16:Show_Str(0,32,"W25Q16",16,Red,White);break;
 		case W25Q32:Show_Str(0,32,"W25Q32",16,Red,White);break;
 		case W25Q64:Show_Str(0,32,"W25Q64",16,Red,White);break;	
+		case W25Q128:Show_Str(0,32,"W25Q128",16,Red,White);break;	
 		default:GUI_Text(0,32,"Flash Error",Red,White);delay_ms(0xfff);break;
 	}
 	delay_ms(0xff);
-	Show_Str(0,48,"**** ±÷”ºÏ≤‚****",16,Green,Black);
-	Show_Str(0,64,"∂¡»° ±º‰÷–...",16,Red,White);
+	Show_Str(0,48,"****Êó∂ÈíüÊ£ÄÊµã****",16,Green,Black);
+	Show_Str(0,64,"ËØªÂèñÊó∂Èó¥‰∏≠...",16,Red,White);
 	gettime(time);
 	Show_Str(0,80,time,16,Red,White);
 	delay_ms(0xff);
-	Show_Str(0,96,"****Œ¬∂»ºÏ≤‚****",16,Green,Black);
-	Show_Str(0,112,"∂¡»°Œ¬∂»÷–...",16,Red,White);
+	Show_Str(0,96,"****Ê∏©Â∫¶Ê£ÄÊµã****",16,Green,Black);
+	Show_Str(0,112,"ËØªÂèñÊ∏©Â∫¶‰∏≠...",16,Red,White);
 	ReadTemperature(temper);
 	delay_ms(0x7ff);
 	ReadTemperature(temper);
-	Show_Str(0,128,"µ±«∞Œ¬∂»:",16,Green,Nocolor);
+	Show_Str(0,128,"ÂΩìÂâçÊ∏©Â∫¶:",16,Green,Nocolor);
 	GUI_Text(80,128,temper,Red,White);
-	Show_Str(0,144,"****LEDºÏ≤‚****",16,Green,Black);
+	Show_Str(0,144,"****LEDÊ£ÄÊµã****",16,Green,Black);
 	LED1=0;
-	Show_Str(0,160,"LED1 ¡¡",16,Red,White);
+	Show_Str(0,160,"LED1 ‰∫Æ",16,Red,White);
 	delay_ms(0x5ff);
 	LED2=0;
-	Show_Str(0,160,"LED2 ¡¡",16,Red,White);
+	Show_Str(0,160,"LED2 ‰∫Æ",16,Red,White);
 	delay_ms(0x5ff);
 	LED3=0;
-	Show_Str(0,160,"LED3 ¡¡",16,Red,White);
+	Show_Str(0,160,"LED3 ‰∫Æ",16,Red,White);
 	delay_ms(0x5ff);
 	InitLed();
-	Show_Str(0,160,"LED  πÿ",16,Red,White);
+	Show_Str(0,160,"LED  ÂÖ≥",16,Red,White);
 	delay_ms(0x5ff);
-	Show_Str(0,176,"****∑‰√˘∆˜ºÏ≤‚****",16,Green,Black);
-	Show_Str(0,192,"æØ±®3…˘",16,Red,White);
+	Show_Str(0,176,"****ËúÇÈ∏£Âô®Ê£ÄÊµã****",16,Green,Black);
+	Show_Str(0,192,"Ë≠¶Êä•3Â£∞",16,Red,White);
 	beep(3);
 	delay_ms(0xfff);
 }

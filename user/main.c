@@ -11,9 +11,6 @@
 #include "18b20.h"
 #include "uart.h"
 #include "led.h"
-//函数声明
-
-
 
 void main()
 {
@@ -28,11 +25,6 @@ void main()
 //	Ds1302_Write_Time(setime);//设定系统时间
 	start_check();
 	start_logo();
-//	while(1)
-//	{
-//		
-//	}
-	
 	desktop();
 }
 

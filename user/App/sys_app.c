@@ -1,4 +1,4 @@
-#include<stc12c5a60s2.h>
+ï»¿#include<stc12c5a60s2.h>
 #include "w25qxx.h" 
 #include "type_51.h"
 #include "Touch.h"
@@ -23,27 +23,27 @@ void desktop()
 	LCD_Clear(White);
 	show_picture(10,20,145,67,0x00600CA0);
 //	LCD_DrawBox(10,20,145,68,0xfe41);//d1
-	Show_Str(10,71,"ÈÕÀú",16,0xffff,Nocolor);
+	Show_Str(10,71,"æ—¥å†",16,0xffff,Nocolor);
 	show_picture(160,20,70,67,0x00605886);
 //	LCD_DrawBox(160,20,70,68,0x051d);//d2
-	Show_Str(160,71,"ÎÂ¶È",16,0xffff,0x1111);
+	Show_Str(160,71,"æ¸©åº¦",16,0xffff,0x1111);
 	show_picture(10,93,70,68,0x00607D2A);
 //	LCD_DrawBox(10,93,70,68,0x3a39);//d3
-	Show_Str(10,145,"µç»°",16,0xffff,Nocolor);
+	Show_Str(10,145,"ç”µè¯",16,0xffff,Nocolor);
 	show_picture(85,93,70,68,0x0060A25A);
 //	LCD_DrawBox(85,93,70,68,0xff80);//d4
-	Show_Str(85,145,"Ïà²á",16,0xffff,Nocolor);
+	Show_Str(85,145,"ç›¸å†Œ",16,0xffff,Nocolor);
 	show_picture(160,93,70,68,0x0060C78A);
 //	LCD_DrawBox(160,93,70,68,0xa254);//d5
-	Show_Str(160,145,"Ó²¼ş¼ì²â",16,0xffff,Nocolor);
+	Show_Str(160,145,"ç¡¬ä»¶æ£€æµ‹",16,0xffff,Nocolor);
 	show_picture(10,166,70,68,0x0060ECBA);
 //	LCD_DrawBox(10,166,70,68,0x78ef);//d6
-	Show_Str(10,218,"»­°å",16,0xffff,Nocolor);
+	Show_Str(10,218,"ç”»æ¿",16,0xffff,Nocolor);
 	show_picture(85,166,145,68,0x006111EA);
-	Show_Str(85,218,"´®¿ÚÖúÊÖ",16,0xffff,Nocolor);
+	Show_Str(85,218,"ä¸²å£åŠ©æ‰‹",16,0xffff,Nocolor);
 //	LCD_DrawBox(85,166,145,68,0x8802);//d7
 	show_picture(10,239,145,65,0x00615EF2);
-	Show_Str(10,288,"SPIÖúÊÖ",16,0xffff,Nocolor);
+	Show_Str(10,288,"äº”å­æ£‹",16,0xffff,Nocolor);
 //	LCD_DrawBox(10,239,145,68,0xbbca);//d8
 	show_picture(160,239,70,65,0x0061A894);
 	Show_Str(160,288,"LED",16,0xffff,Nocolor);
@@ -70,22 +70,22 @@ void desktop()
 						break;
 		case 2:switch(x)
 						{
-							case 1:alert("Î´¿ª·Å!",White);break;
-							case 2:alert("Î´¿ª·Å!",White);break;
+							case 1:alert("æœªå¼€æ”¾!",White);break;
+							case 2:alert("æœªå¼€æ”¾!",White);break;
 							case 3:start_check();goto desktop;break;
 						}
 						break;
 		case 3:switch(x)
 						{
 							case 1:picbox();break;
-							case 2:alert("Î´¿ª·Å!",White);break;
-							case 3:alert("Î´¿ª·Å!",White);break;
+							case 2:alert("æœªå¼€æ”¾!",White);break;
+							case 3:alert("æœªå¼€æ”¾!",White);break;
 						}
 						break;
 		case 4:switch(x)
 						{
-							case 1:alert("Î´¿ª·Å!",White);break;
-							case 2:alert("Î´¿ª·Å!",White);break;
+							case 1:alert("æœªå¼€æ”¾!",White);break;
+							case 2:alert("æœªå¼€æ”¾!",White);break;
 							case 3:led();break;
 						}
 						break;
@@ -134,33 +134,33 @@ void clock()
 	GUI_Text(200,0,time+11,Black,White);
 }
 /*********************
-µ¼º½À¸¹¹Ôì
+å¯¼èˆªæ æ„é€ 
 **********************/
 void guidshow()
 {
 	LCD_DrawLine( 0, 288, 240, 288,White );
-	Show_Str(20,288,"¡û",32,White,Nocolor);
-	Show_Str(104,288,"¨€",32,0xa254,Nocolor);
+	Show_Str(20,288,"â†",32,White,Nocolor);
+	Show_Str(104,288,"â–ˆ",32,0xa254,Nocolor);
 	LCD_DrawLine( 108, 304, 131,304, White );
 	LCD_DrawLine( 120, 293, 120,315, White );
 	LCD_DrawLine( 80, 288, 80,320, White );
 	LCD_DrawLine( 160, 288, 160,320, White );
-	Show_Str(187,288,"¡ş",32,White,Nocolor);
+	Show_Str(187,288,"ã€“",32,White,Nocolor);
 }
 /*********************
-µ¼º½À¸Ö´ĞĞ
-²ÎÊı:pback ·µ»Ø¼üº¯ÊıÖ¸Õë
-pmenu ²Ëµ¥¼üº¯ÊıÖ¸Õë
+å¯¼èˆªæ æ‰§è¡Œ
+å‚æ•°:pback è¿”å›é”®å‡½æ•°æŒ‡é’ˆ
+pmenu èœå•é”®å‡½æ•°æŒ‡é’ˆ
 **********************/
 void guiddo(void (*pback)(void),void (*pmenu)(void),x)
 {
-	if(x<80&&x>0) {Show_Str(20,288,"¡û",32,White,Blue);pback();}
-	if(x>80&&x<160) {Show_Str(104,288,"¨€",32,0xa254,Blue);LCD_DrawLine( 108, 304, 131,304, White );
+	if(x<80&&x>0) {Show_Str(20,288,"â†",32,White,Blue);pback();}
+	if(x>80&&x<160) {Show_Str(104,288,"â–ˆ",32,0xa254,Blue);LCD_DrawLine( 108, 304, 131,304, White );
 		LCD_DrawLine( 120, 293, 120,315, White );LCD_DrawLine( 80, 288, 80,320, White );desktop();}
-	if(x>160&&x<240){ Show_Str(187,288,"¡ş",32,White,Blue);pmenu();}
+	if(x>160&&x<240){ Show_Str(187,288,"ã€“",32,White,Blue);pmenu();}
 }
 /**********************
-ÎÂ¶È
+æ¸©åº¦
 **********************/
 /*void tempert()
 {
@@ -175,7 +175,7 @@ void guiddo(void (*pback)(void),void (*pmenu)(void),x)
 		if(i==0xff||i==0)
 		{
 			ReadTemperature(temper);
-			Show_Str(56,78,"µ±Ç°ÎÂ¶È:",16,Red,Nocolor);
+			Show_Str(56,78,"å½“å‰æ¸©åº¦:",16,Red,Nocolor);
 			GUI_Text(128,78,temper,Red,White);
 			i=1;
 		}
