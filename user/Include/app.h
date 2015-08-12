@@ -1,4 +1,4 @@
-﻿#ifndef _APP_H
+#ifndef _APP_H
 #define _APP_H
 #include "stc12c5a60s2.h"
 #include "type_51.h"

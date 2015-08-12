@@ -1,4 +1,4 @@
-ï»¿#ifndef HX8347D_H 
+#ifndef HX8347D_H 
 #define HX8347D_H
 
 /* Includes ------------------------------------------------------------------*/
@@ -8,13 +8,13 @@
 #include <stdlib.h>
 
 
-sbit	LCD_CS		= P1^4;  //ç‰‡é€‰ç«¯å£  	    
-sbit	LCD_RS		= P1^5;   //æ•°æ®/å‘½ä»¤        
-sbit	LCD_WR		= P1^6;   //å†™æ•°æ®			    
-sbit	LCD_RD		= P1^7;   //è¯»æ•°æ®			 		
+sbit	LCD_CS		= P1^4;  //Æ¬Ñ¡¶Ë¿Ú  	    
+sbit	LCD_RS		= P1^5;   //Êı¾İ/ÃüÁî        
+sbit	LCD_WR		= P1^6;   //Ğ´Êı¾İ			    
+sbit	LCD_RD		= P1^7;   //¶ÁÊı¾İ			 		
 
-//æ•°æ®çº¿
-#define DATA_Port P3 //æ•°æ®
+//Êı¾İÏß
+#define DATA_Port P3 //Êı¾İ
 
 /* Private define ------------------------------------------------------------*/
 #define DISP_ORIENTATION  0  /* angle 0 90 */ 
@@ -48,12 +48,12 @@ sbit	LCD_RD		= P1^7;   //è¯»æ•°æ®
 
 /******************************************************************************
 * Function Name  : RGB565CONVERT
-* Description    : 24ä½è½¬æ¢16ä½
+* Description    : 24Î»×ª»»16Î»
 * Input          : - red: R
 *                  - green: G 
 *				   - blue: B
 * Output         : None
-* Return         : RGB é¢œè‰²å€¼
+* Return         : RGB ÑÕÉ«Öµ
 * Attention		 : None
 *******************************************************************************/
 #define RGB565CONVERT(red, green, blue)\

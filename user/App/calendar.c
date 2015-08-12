@@ -1,5 +1,5 @@
-ï»¿/*********************
-æ—¥åŽ†
+/*********************
+ÈÕÀú
 *********************/
 #include "app.h"
 #include "Touch.h"
@@ -12,7 +12,7 @@ extern void Get_Click1(u16 *x,u16 *y);
 void t_menu();
 void t_alert();
 //*********************************
-//æ—¥åŽ†
+//ÈÕÀú
 //*********************************
 void calendar()
 {
@@ -23,7 +23,7 @@ void calendar()
 	LCD_DrawBox(60,60,120,20,Yellow);
 	LCD_DrawBox(60,80,120,104,White);
 	GUI_Text(61,61,time,Red,Nocolor);
-	Show_Str(150,61,"å‘¨",16,Red,Nocolor);
+	Show_Str(150,61,"ÖÜ",16,Red,Nocolor);
 	GUI_Text(166,61,time+20,Red,Nocolor);
 	time[10]='\0';
 	Show_Str(105,110,time+8,32,Red,Nocolor);
@@ -42,37 +42,37 @@ void calendar()
 		if(y>288&&y<320) guiddo(desktop,t_menu,x);
 	}
 }
-void t_menu()//èœå•
+void t_menu()//²Ëµ¥
 {
 	LCD_Clear(0x051d);
-	Show_Str(56,0,"æ—¶é—´é€‰é¡¹",32,White,Nocolor);
+	Show_Str(56,0,"Ê±¼äÑ¡Ïî",32,White,Nocolor);
 	LCD_DrawLine(0,35,240,35,White);
-	Show_Str(0,38,"â—†è®¾å®šç³»ç»Ÿæ—¶é—´",24,White,Nocolor);
-	Show_Str(0,67,"â—†é—¹é’Ÿ",24,White,Nocolor);
+	Show_Str(0,38,"¡ôÉè¶¨ÏµÍ³Ê±¼ä",24,White,Nocolor);
+	Show_Str(0,67,"¡ôÄÖÖÓ",24,White,Nocolor);
 	guidshow();
 	while(1)
 	{
 		Get_Click(&x,&y);
 		if(y>288&&y<320) guiddo(calendar,t_menu,x);
-		if(y>38&&y<(38+24)) {Show_Str(0,38,"â—†è®¾å®šç³»ç»Ÿæ—¶é—´",24,White,Blue);sstmtime();}
-		if(y>(38+24)&&y<(38+24+24)) {Show_Str(0,67,"â—†é—¹é’Ÿ",24,White,Blue);t_alert();}
+		if(y>38&&y<(38+24)) {Show_Str(0,38,"¡ôÉè¶¨ÏµÍ³Ê±¼ä",24,White,Blue);sstmtime();}
+		if(y>(38+24)&&y<(38+24+24)) {Show_Str(0,67,"¡ôÄÖÖÓ",24,White,Blue);t_alert();}
 	}
 }
 /**************
-è®¾ç½®ç³»ç»Ÿæ—¶é—´
+ÉèÖÃÏµÍ³Ê±¼ä
 ***************/
 void sstmtime()
 {
 	u8 setime[7]={0,0,0,0,0,0,0},i=1;
 	gettime(time);
 	LCD_Clear(0x051d);
-	Show_Str(24,20,"è®¾ç½®ç³»ç»Ÿæ—¶é—´",32,White,Nocolor);
+	Show_Str(24,20,"ÉèÖÃÏµÍ³Ê±¼ä",32,White,Nocolor);
 	GUI_Text(40,128,time,Red,White);
 	LCD_DrawBox(100,105,40,20,0xc618);
-	Show_Str(115,108,"â–²",16,Black,Nocolor);
+	Show_Str(115,108,"¡ø",16,Black,Nocolor);
 	LCD_DrawEBox(100,105,40,20,Blue);
 	LCD_DrawBox(100,148,40,20,0xc618);
-	Show_Str(115,153,"â–¼",16,Black,Nocolor);
+	Show_Str(115,153,"¨‹",16,Black,Nocolor);
 	LCD_DrawEBox(100,148,40,20,Blue);
 	LCD_DrawBox(40,180,40,20,0xc618);
 	GUI_Text(42,182,"Next",Black,Nocolor);
@@ -107,7 +107,7 @@ void sstmtime()
 			setime[5]=time[20]-'0';
 			setime[6]=((time[2]-'0')<<4)|(time[3]-'0');
 			Ds1302_Write_Time(setime);//??????
-			alert("å·²è®¾å®šç³»ç»Ÿæ—¶é—´!",0x051d);
+			alert("ÒÑÉè¶¨ÏµÍ³Ê±¼ä!",0x051d);
 			while(!PEN);
 		}	
 		if((x>=100&&x<=140)&&(y>=105&&y<=125))	//? ???
@@ -143,7 +143,7 @@ void sstmtime()
 	}
 }
 /***************
-é—¹é’Ÿ
+ÄÖÖÓ
 ***************/
 void t_alert()
 {

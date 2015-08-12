@@ -1,25 +1,25 @@
-ï»¿#include"uart.h"
-#define S2RI 0x01	//ä¸²å£2æ¥æ”¶ä¸­æ–­è¯·æ±‚æ ‡å¿—ä½
-#define S2TI 0x02	//ä¸²å£2å‘é€ä¸­æ–­è¯·æ±‚æ ‡å¿—ä½
+#include"uart.h"
+#define S2RI 0x01	//´®¿Ú2½ÓÊÕÖĞ¶ÏÇëÇó±êÖ¾Î»
+#define S2TI 0x02	//´®¿Ú2·¢ËÍÖĞ¶ÏÇëÇó±êÖ¾Î»
 unsigned char temp[20];
 bit flag=0;
 unsigned char *p=temp;
-/****************ä¸²è¡Œå£åˆå§‹åŒ–å‡½æ•°****************/
+/****************´®ĞĞ¿Ú³õÊ¼»¯º¯Êı****************/
 void InitUART(bit bite)//9600/115200@32MHZ
 {
-	AUXR &= 0xF7;		//æ³¢ç‰¹ç‡ä¸å€é€Ÿ
-	S2CON = 0x50;		//8ä½æ•°æ®,å¯å˜æ³¢ç‰¹ç‡
-	AUXR |= 0x04;		//ç‹¬ç«‹æ³¢ç‰¹ç‡å‘ç”Ÿå™¨æ—¶é’Ÿä¸ºFosc,å³1T
+	AUXR &= 0xF7;		//²¨ÌØÂÊ²»±¶ËÙ
+	S2CON = 0x50;		//8Î»Êı¾İ,¿É±ä²¨ÌØÂÊ
+	AUXR |= 0x04;		//¶ÀÁ¢²¨ÌØÂÊ·¢ÉúÆ÷Ê±ÖÓÎªFosc,¼´1T
 	if(!bite)	BRT = 0x98;		//9600
 	if(bite) BRT = 0xf7;		//115200
-	AUXR |= 0x10;		//å¯åŠ¨ç‹¬ç«‹æ³¢ç‰¹ç‡å‘ç”Ÿå™¨
-	EA =1;	//å¼€æ€»ä¸­æ–­
-  IE2 =0x01;	//å¼€ä¸²å£2ä¸­æ–­  ES2=1
+	AUXR |= 0x10;		//Æô¶¯¶ÀÁ¢²¨ÌØÂÊ·¢ÉúÆ÷
+	EA =1;	//¿ª×ÜÖĞ¶Ï
+  IE2 =0x01;	//¿ª´®¿Ú2ÖĞ¶Ï  ES2=1
 }
 void UART_SendOneByte(unsigned char c)
 {
     S2BUF = c;
-    while(!(S2CON&S2TI));  //è‹¥S2TI=0ï¼Œåœ¨æ­¤ç­‰å¾…
+    while(!(S2CON&S2TI));  //ÈôS2TI=0£¬ÔÚ´ËµÈ´ı
     S2CON&=~S2TI;	  //S2TI=0
 }
 void UART_SendStr(unsigned char *str)
@@ -30,7 +30,7 @@ void UART_SendStr(unsigned char *str)
 		str++;	
 	}
 }
-/************ä¸²è¡Œå£2ä¸­æ–­å¤„ç†å‡½æ•°*************/
+/************´®ĞĞ¿Ú2ÖĞ¶Ï´¦Àíº¯Êı*************/
 void UART_Interrupt(void) interrupt 8
 {
 	if(flag==0) p=temp;

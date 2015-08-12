@@ -1,4 +1,4 @@
-ï»¿/* Includes ------------------------------------------------------------------*/
+/* Includes ------------------------------------------------------------------*/
 #include "HX8347D.h" 
 #include "font.h"
 #include "w25qxx.h"
@@ -9,10 +9,10 @@
 u16 LCD_id;
 
 
-//å†™å¯„å­˜å™¨å‡½æ•°
+//Ğ´¼Ä´æÆ÷º¯Êı
 void LCD_WR_REG(u8 dat)
 { 
-	LCD_RS=0;//å†™åœ°å€  
+	LCD_RS=0;//Ğ´µØÖ·  
  	LCD_CS=0; 
 	DATA_Port = dat; 
 	LCD_WR=0; 
@@ -236,7 +236,7 @@ void LCD_Initializtion(void)
 
 /*******************************************************************************
 * Function Name  : LCD_Clear
-* Description    : å°†å±å¹•å¡«å……æˆæŒ‡å®šçš„é¢œè‰²ï¼Œå¦‚æ¸…å±ï¼Œåˆ™å¡«å…… 0xffff
+* Description    : ½«ÆÁÄ»Ìî³ä³ÉÖ¸¶¨µÄÑÕÉ«£¬ÈçÇåÆÁ£¬ÔòÌî³ä 0xffff
 * Input          : - Color: Screen Color
 * Output         : None
 * Return         : None
@@ -260,11 +260,11 @@ void LCD_Clear(uint16_t Color)
 
 /******************************************************************************
 * Function Name  : LCD_BGR2RGB
-* Description    : RRRRRGGGGGGBBBBB æ”¹ä¸º BBBBBGGGGGGRRRRR æ ¼å¼
-* Input          : - color: BRG é¢œè‰²å€¼  
+* Description    : RRRRRGGGGGGBBBBB ¸ÄÎª BBBBBGGGGGGRRRRR ¸ñÊ½
+* Input          : - color: BRG ÑÕÉ«Öµ  
 * Output         : None
-* Return         : RGB é¢œè‰²å€¼
-* Attention		 : å†…éƒ¨å‡½æ•°è°ƒç”¨
+* Return         : RGB ÑÕÉ«Öµ
+* Attention		 : ÄÚ²¿º¯Êıµ÷ÓÃ
 *******************************************************************************/
 /*
 static __attribute__((always_inline)) uint16_t LCD_BGR2RGB(uint16_t color)
@@ -283,7 +283,7 @@ static __attribute__((always_inline)) uint16_t LCD_BGR2RGB(uint16_t color)
 
 /******************************************************************************
 * Function Name  : LCD_SetPoint
-* Description    : åœ¨æŒ‡å®šåº§æ ‡ç”»ç‚¹
+* Description    : ÔÚÖ¸¶¨×ù±ê»­µã
 * Input          : - Xpos: Row Coordinate
 *                  - Ypos: Line Coordinate 
 * Output         : None
@@ -305,79 +305,79 @@ void LCD_SetPoint(uint16_t Xpos,uint16_t Ypos,uint16_t point)
 /******************************************************************************
 * Function Name  : LCD_DrawLine
 * Description    : Bresenham's line algorithm
-* Input          : - x1: Aç‚¹è¡Œåº§æ ‡
-*                  - y1: Aç‚¹åˆ—åº§æ ‡ 
-*				   - x2: Bç‚¹è¡Œåº§æ ‡
-*				   - y2: Bç‚¹åˆ—åº§æ ‡ 
-*				   - color: çº¿é¢œè‰²
+* Input          : - x1: AµãĞĞ×ù±ê
+*                  - y1: AµãÁĞ×ù±ê 
+*				   - x2: BµãĞĞ×ù±ê
+*				   - y2: BµãÁĞ×ù±ê 
+*				   - color: ÏßÑÕÉ«
 * Output         : None
 * Return         : None
 * Attention		 : None
 *******************************************************************************/	 
 void LCD_DrawLine( uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1 , uint16_t color )
 {
-    short dx,dy;      /* å®šä¹‰X Yè½´ä¸Šå¢åŠ çš„å˜é‡å€¼ */
-    short temp;       /* èµ·ç‚¹ ç»ˆç‚¹å¤§å°æ¯”è¾ƒ äº¤æ¢æ•°æ®æ—¶çš„ä¸­é—´å˜é‡ */
+    short dx,dy;      /* ¶¨ÒåX YÖáÉÏÔö¼ÓµÄ±äÁ¿Öµ */
+    short temp;       /* Æğµã ÖÕµã´óĞ¡±È½Ï ½»»»Êı¾İÊ±µÄÖĞ¼ä±äÁ¿ */
 
-    if( x0 > x1 )     /* Xè½´ä¸Šèµ·ç‚¹å¤§äºç»ˆç‚¹ äº¤æ¢æ•°æ® */
+    if( x0 > x1 )     /* XÖáÉÏÆğµã´óÓÚÖÕµã ½»»»Êı¾İ */
     {
 	    temp = x1;
 		x1 = x0;
 		x0 = temp;   
     }
-    if( y0 > y1 )     /* Yè½´ä¸Šèµ·ç‚¹å¤§äºç»ˆç‚¹ äº¤æ¢æ•°æ® */
+    if( y0 > y1 )     /* YÖáÉÏÆğµã´óÓÚÖÕµã ½»»»Êı¾İ */
     {
 		temp = y1;
 		y1 = y0;
 		y0 = temp;   
     }
   
-	dx = x1-x0;       /* Xè½´æ–¹å‘ä¸Šçš„å¢é‡ */
-	dy = y1-y0;       /* Yè½´æ–¹å‘ä¸Šçš„å¢é‡ */
+	dx = x1-x0;       /* XÖá·½ÏòÉÏµÄÔöÁ¿ */
+	dy = y1-y0;       /* YÖá·½ÏòÉÏµÄÔöÁ¿ */
 
-    if( dx == 0 )     /* Xè½´ä¸Šæ²¡æœ‰å¢é‡ ç”»å‚ç›´çº¿ */ 
+    if( dx == 0 )     /* XÖáÉÏÃ»ÓĞÔöÁ¿ »­´¹Ö±Ïß */ 
     {
         do
         { 
-            LCD_SetPoint(x0, y0, color);   /* é€ç‚¹æ˜¾ç¤º æå‚ç›´çº¿ */
+            LCD_SetPoint(x0, y0, color);   /* ÖğµãÏÔÊ¾ Ãè´¹Ö±Ïß */
             y0++;
         }
         while( y1 >= y0 ); 
 		return; 
     }
-    if( dy == 0 )     /* Yè½´ä¸Šæ²¡æœ‰å¢é‡ ç”»æ°´å¹³ç›´çº¿ */ 
+    if( dy == 0 )     /* YÖáÉÏÃ»ÓĞÔöÁ¿ »­Ë®Æ½Ö±Ïß */ 
     {
         do
         {
-            LCD_SetPoint(x0, y0, color);   /* é€ç‚¹æ˜¾ç¤º ææ°´å¹³çº¿ */
+            LCD_SetPoint(x0, y0, color);   /* ÖğµãÏÔÊ¾ ÃèË®Æ½Ïß */
             x0++;
         }
         while( x1 >= x0 ); 
 		return;
     }
-	/* å¸ƒå…°æ£®æ±‰å§†(Bresenham)ç®—æ³•ç”»çº¿ */
-    if( dx > dy )                         /* é è¿‘Xè½´ */
+	/* ²¼À¼É­ººÄ·(Bresenham)Ëã·¨»­Ïß */
+    if( dx > dy )                         /* ¿¿½üXÖá */
     {
-	    temp = 2 * dy - dx;               /* è®¡ç®—ä¸‹ä¸ªç‚¹çš„ä½ç½® */         
+	    temp = 2 * dy - dx;               /* ¼ÆËãÏÂ¸öµãµÄÎ»ÖÃ */         
         while( x0 != x1 )
         {
-	        LCD_SetPoint(x0,y0,color);    /* ç”»èµ·ç‚¹ */ 
-	        x0++;                         /* Xè½´ä¸ŠåŠ 1 */
-	        if( temp > 0 )                /* åˆ¤æ–­ä¸‹ä¸‹ä¸ªç‚¹çš„ä½ç½® */
+	        LCD_SetPoint(x0,y0,color);    /* »­Æğµã */ 
+	        x0++;                         /* XÖáÉÏ¼Ó1 */
+	        if( temp > 0 )                /* ÅĞ¶ÏÏÂÏÂ¸öµãµÄÎ»ÖÃ */
 	        {
-	            y0++;                     /* ä¸ºå³ä¸Šç›¸é‚»ç‚¹ï¼Œå³ï¼ˆx0+1,y0+1ï¼‰ */ 
+	            y0++;                     /* ÎªÓÒÉÏÏàÁÚµã£¬¼´£¨x0+1,y0+1£© */ 
 	            temp += 2 * dy - 2 * dx; 
 	 	    }
             else         
             {
-			    temp += 2 * dy;           /* åˆ¤æ–­ä¸‹ä¸‹ä¸ªç‚¹çš„ä½ç½® */  
+			    temp += 2 * dy;           /* ÅĞ¶ÏÏÂÏÂ¸öµãµÄÎ»ÖÃ */  
 			}       
         }
         LCD_SetPoint(x0,y0,color);
     }  
     else
     {
-	    temp = 2 * dx - dy;                      /* é è¿‘Yè½´ */       
+	    temp = 2 * dx - dy;                      /* ¿¿½üYÖá */       
         while( y0 != y1 )
         {
 	 	    LCD_SetPoint(x0,y0,color);     
@@ -399,12 +399,12 @@ void LCD_DrawLine( uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1 , uint16_t
 
 /******************************************************************************
 * Function Name  : PutChar
-* Description    : å°†Lcdå±ä¸Šä»»æ„ä½ç½®æ˜¾ç¤ºä¸€ä¸ªå­—ç¬¦
-* Input          : - Xpos: æ°´å¹³åæ ‡ 
-*                  - Ypos: å‚ç›´åæ ‡  
-*				   - ASCI: æ˜¾ç¤ºçš„å­—ç¬¦
-*				   - charColor: å­—ç¬¦é¢œè‰²   
-*				   - bkColor: èƒŒæ™¯é¢œè‰² 
+* Description    : ½«LcdÆÁÉÏÈÎÒâÎ»ÖÃÏÔÊ¾Ò»¸ö×Ö·û
+* Input          : - Xpos: Ë®Æ½×ø±ê 
+*                  - Ypos: ´¹Ö±×ø±ê  
+*				   - ASCI: ÏÔÊ¾µÄ×Ö·û
+*				   - charColor: ×Ö·ûÑÕÉ«   
+*				   - bkColor: ±³¾°ÑÕÉ« 
 * Output         : None
 * Return         : None
 * Attention		 : None
@@ -419,23 +419,23 @@ void PutChar(u16 x,u16 y,u8 num,u16 p_color,u16 b_color)
 	
 	for(t=0;t<16;t++)
 	{   
-		temp=asc2_1608[num][t];;  //è°ƒç”¨å­—ä½“æ•°ç»„
+		temp=asc2_1608[num][t];;  //µ÷ÓÃ×ÖÌåÊı×é
 		for(t1=0;t1<8;t1++)
 		{			    
 			if(temp&0x80)
-				LCD_SetPoint(x,y,p_color);//åœ¨æŒ‡å®šä½ç½®æ‰“æŒ‡å®šé¢œè‰²çš„ç‚¹
+				LCD_SetPoint(x,y,p_color);//ÔÚÖ¸¶¨Î»ÖÃ´òÖ¸¶¨ÑÕÉ«µÄµã
 			else 
-				if(b_color!=0x1111)LCD_SetPoint(x,y,b_color);//åœ¨æŒ‡å®šä½ç½®æ‰“æŒ‡å®šé¢œè‰²çš„ç‚¹
+				if(b_color!=0x1111)LCD_SetPoint(x,y,b_color);//ÔÚÖ¸¶¨Î»ÖÃ´òÖ¸¶¨ÑÕÉ«µÄµã
 									
 			temp<<=1;
 			y++;
-			if(x >= 240){return;}//è¶…åŒºåŸŸäº†
+			if(x >= 240){return;}//³¬ÇøÓòÁË
 			
 			if((y-y0)==16)
 			{
 				y=y0;
 				x++;
-				if(x >= 320){return;}//è¶…åŒºåŸŸäº†
+				if(x >= 320){return;}//³¬ÇøÓòÁË
 				break;
 			}
 		}  	 
@@ -444,12 +444,12 @@ void PutChar(u16 x,u16 y,u8 num,u16 p_color,u16 b_color)
 
 /******************************************************************************
 * Function Name  : GUI_Text
-* Description    : åœ¨æŒ‡å®šåº§æ ‡æ˜¾ç¤ºå­—ç¬¦ä¸²
-* Input          : - Xpos: è¡Œåº§æ ‡
-*                  - Ypos: åˆ—åº§æ ‡ 
-*				   - str: å­—ç¬¦ä¸²
-*				   - charColor: å­—ç¬¦é¢œè‰²   
-*				   - bkColor: èƒŒæ™¯é¢œè‰² 
+* Description    : ÔÚÖ¸¶¨×ù±êÏÔÊ¾×Ö·û´®
+* Input          : - Xpos: ĞĞ×ù±ê
+*                  - Ypos: ÁĞ×ù±ê 
+*				   - str: ×Ö·û´®
+*				   - charColor: ×Ö·ûÑÕÉ«   
+*				   - bkColor: ±³¾°ÑÕÉ« 
 * Output         : None
 * Return         : None
 * Attention		 : None
@@ -479,9 +479,9 @@ void GUI_Text(uint16_t Xpos, uint16_t Ypos, uint8_t *str,uint16_t Color, uint16_
     while ( *str != 0 );
 }
 /************************************************
-**å‡½æ•°åŠŸèƒ½ï¼šåœ¨æŒ‡å®šä½ç½®æ˜¾ç¤ºæŒ‡å®šå¤§å°çš„å›¾ç‰‡
-**å‡½æ•°å‚æ•°ï¼šx,yä¸ºæ˜¾ç¤ºçš„ä½ç½®åæ ‡ï¼›widthä¸ºå›¾ç‰‡çš„å®½åº¦ï¼Œhighä¸ºå›¾ç‰‡çš„é«˜åº¦ã€‚
-**ReadAddrä¸ºå›¾ç‰‡å­˜å‚¨åœ¨flashä¸­çš„èµ·å§‹ä½ç½®åœ°å€
+**º¯Êı¹¦ÄÜ£ºÔÚÖ¸¶¨Î»ÖÃÏÔÊ¾Ö¸¶¨´óĞ¡µÄÍ¼Æ¬
+**º¯Êı²ÎÊı£ºx,yÎªÏÔÊ¾µÄÎ»ÖÃ×ø±ê£»widthÎªÍ¼Æ¬µÄ¿í¶È£¬highÎªÍ¼Æ¬µÄ¸ß¶È¡£
+**ReadAddrÎªÍ¼Æ¬´æ´¢ÔÚflashÖĞµÄÆğÊ¼Î»ÖÃµØÖ·
 *************************************************/
 void show_picture(u16 x,u16 y,u16 width,u16 high,u32 ReadAddr)
 {
@@ -489,9 +489,9 @@ void show_picture(u16 x,u16 y,u16 width,u16 high,u32 ReadAddr)
 	uint32_t i,j = 0;
 	LCD_SetCursor(x,y);
   LCD_WriteRAM_Prepare();
-	W25Qxx_CS=0;                            //ä½¿èƒ½å™¨ä»¶   
-  W25Qxx_Write_Byte(W25X_ReadData);         //å‘é€è¯»å–å‘½ä»¤   
-  W25Qxx_Write_Byte((u8)((ReadAddr)>>16));  //å‘é€24bitåœ°å€    
+	W25Qxx_CS=0;                            //Ê¹ÄÜÆ÷¼ş   
+  W25Qxx_Write_Byte(W25X_ReadData);         //·¢ËÍ¶ÁÈ¡ÃüÁî   
+  W25Qxx_Write_Byte((u8)((ReadAddr)>>16));  //·¢ËÍ24bitµØÖ·    
   W25Qxx_Write_Byte((u8)((ReadAddr)>>8));   
   W25Qxx_Write_Byte((u8)ReadAddr);
 	for( i = 0; i < high; i++ )
@@ -500,8 +500,8 @@ void show_picture(u16 x,u16 y,u16 width,u16 high,u32 ReadAddr)
 		{
 			temp2=W25Qxx_Read_Byte();
 			temp1=W25Qxx_Read_Byte();
-			LCD_WR_DATA(temp1); //é«˜å…«ä½
-			LCD_WR_DATA(temp2); //ä½å…«ä½
+			LCD_WR_DATA(temp1); //¸ß°ËÎ»
+			LCD_WR_DATA(temp2); //µÍ°ËÎ»
 		}
 		LCD_SetCursor(x,y+i+1);
 		LCD_WriteRAM_Prepare();
@@ -509,10 +509,10 @@ void show_picture(u16 x,u16 y,u16 width,u16 high,u32 ReadAddr)
 	W25Qxx_CS=1;
 }
 /*
-**å‡½æ•°åŠŸèƒ½ï¼Œåœ¨å±å¹•ä¸Šç”»å®å¿ƒæ–¹æ¡†
-**å‚æ•°ï¼šx yæ–¹æ¡†çš„å·¦ä¸Šè§’
-width highæ–¹æ¡†çš„å®½é«˜
-color æ–¹æ¡†çš„é¢œè‰²
+**º¯Êı¹¦ÄÜ£¬ÔÚÆÁÄ»ÉÏ»­ÊµĞÄ·½¿ò
+**²ÎÊı£ºx y·½¿òµÄ×óÉÏ½Ç
+width high·½¿òµÄ¿í¸ß
+color ·½¿òµÄÑÕÉ«
 */
 void LCD_DrawBox(u16 x,u16 y,u16 width,u16 high,uint16_t color)
 {
@@ -523,8 +523,8 @@ void LCD_DrawBox(u16 x,u16 y,u16 width,u16 high,uint16_t color)
 	{
 		for(j = 0; j < width; j++)
 		{
-			LCD_WR_DATA(color>>8); //é«˜å…«ä½
-			LCD_WR_DATA(color); //ä½å…«ä½
+			LCD_WR_DATA(color>>8); //¸ß°ËÎ»
+			LCD_WR_DATA(color); //µÍ°ËÎ»
 		}
 		LCD_SetCursor(x,y+i+1);
 		LCD_WriteRAM_Prepare();
@@ -532,10 +532,10 @@ void LCD_DrawBox(u16 x,u16 y,u16 width,u16 high,uint16_t color)
 	
 }
 /*
-**å‡½æ•°åŠŸèƒ½ï¼Œåœ¨å±å¹•ä¸Šç”»ç©ºå¿ƒæ–¹æ¡†
-**å‚æ•°ï¼šx yæ–¹æ¡†çš„å·¦ä¸Šè§’
-width highæ–¹æ¡†çš„å®½é«˜
-color æ–¹æ¡†çš„é¢œè‰²
+**º¯Êı¹¦ÄÜ£¬ÔÚÆÁÄ»ÉÏ»­¿ÕĞÄ·½¿ò
+**²ÎÊı£ºx y·½¿òµÄ×óÉÏ½Ç
+width high·½¿òµÄ¿í¸ß
+color ·½¿òµÄÑÕÉ«
 */
 void LCD_DrawEBox(u16 x,u16 y,u16 width,u16 high,uint16_t color)
 {

@@ -1,4 +1,4 @@
-ï»¿#include "INTRINS.H"
+#include "INTRINS.H"
 #include "ds1302.h"
 void Delay1ms()		//@32MHz
 {
@@ -16,27 +16,27 @@ void gettime(u8 *buf)
 {
 	u8 temp[7];
 	Ds1302_Read_Time(temp);
-	buf[0]='2'; //å¹´
+	buf[0]='2'; //Äê
 	buf[1]='0';
 	buf[2]=(temp[6]>>4)+'0';
 	buf[3]=(temp[6]&0x0f)+'0';
 	buf[4]='/';
-	buf[5]=(temp[4]>>4)+'0';//æœˆ
+	buf[5]=(temp[4]>>4)+'0';//ÔÂ
 	buf[6]=(temp[4]&0x0f)+'0';
 	buf[7]='/';
-	buf[8]=(temp[3]>>4)+'0';//æ—¥
+	buf[8]=(temp[3]>>4)+'0';//ÈÕ
 	buf[9]=(temp[3]&0x0f)+'0';
 	buf[10]='/';
-	buf[11]=(temp[2]>>4)+'0';//æ—¶
+	buf[11]=(temp[2]>>4)+'0';//Ê±
 	buf[12]=(temp[2]&0x0f)+'0';
 	buf[13]=':';
-	buf[14]=(temp[1]>>4)+'0';//åˆ†
+	buf[14]=(temp[1]>>4)+'0';//·Ö
 	buf[15]=(temp[1]&0x0f)+'0';
 	buf[16]=':';
-	buf[17]=(temp[0]>>4)+'0';//ç§’
+	buf[17]=(temp[0]>>4)+'0';//Ãë
 	buf[18]=(temp[0]&0x0f)+'0';
 	buf[19]='/';
-	buf[20]=(temp[5]&0x0f)+'0';//å‘¨
+	buf[20]=(temp[5]&0x0f)+'0';//ÖÜ
 	buf[21]='\0';
 }
 void delay40us()		//@32MHz
@@ -51,30 +51,30 @@ void delay40us()		//@32MHz
 	} while (--i);
 }
 /**************************************
-å¾€DS1302çš„æŸä¸ªåœ°å€å†™å…¥æ•°æ®
+ÍùDS1302µÄÄ³¸öµØÖ·Ğ´ÈëÊı¾İ
 **************************************/
 void Write1302 (unsigned char addr,unsigned char dat)
       { 
        unsigned char i,temp; 
-       CE=0; 				//CE å¼•è„šä¸ºä½ï¼Œ æ•°æ®ä¼ é€ä¸­æ­¢ 
+       CE=0; 				//CE Òı½ÅÎªµÍ£¬ Êı¾İ´«ËÍÖĞÖ¹ 
 				Delay1ms();
-       SCLK=0;                       //æ¸…é›¶æ—¶é’Ÿæ€»çº¿ 
+       SCLK=0;                       //ÇåÁãÊ±ÖÓ×ÜÏß 
 				Delay1ms();
-       CE = 1;                       //CE å¼•è„šä¸ºé«˜ï¼Œé€»è¾‘æ§åˆ¶æœ‰æ•ˆ 
-	Delay1ms();                  //ååŠ çš„
-       for ( i=8; i>0; i-- )         //å¾ªç¯8æ¬¡ç§»ä½å‘é€åœ°å€  
+       CE = 1;                       //CE Òı½ÅÎª¸ß£¬Âß¼­¿ØÖÆÓĞĞ§ 
+	Delay1ms();                  //ºó¼ÓµÄ
+       for ( i=8; i>0; i-- )         //Ñ­»·8´ÎÒÆÎ»·¢ËÍµØÖ·  
        {      
-              SCLK = 0; 				  //sclkä¸Šå‡æ²¿è§¦å‘
+              SCLK = 0; 				  //sclkÉÏÉıÑØ´¥·¢
 							Delay1ms();
               temp = addr; 
-              DIO = (bit)(temp&0x01);    //æ¯æ¬¡ä¼ è¾“ä½å­—èŠ‚ 
+              DIO = (bit)(temp&0x01);    //Ã¿´Î´«ÊäµÍ×Ö½Ú 
 							Delay1ms();
-              addr >>= 1;                //å³ç§»ä¸€ä½ 
-			  Delay1ms();				 //ååŠ çš„
+              addr >>= 1;                //ÓÒÒÆÒ»Î» 
+			  Delay1ms();				 //ºó¼ÓµÄ
               SCLK = 1; 
-			 Delay1ms();				 //ååŠ çš„
+			 Delay1ms();				 //ºó¼ÓµÄ
        } 
-//å‘é€æ•°æ® 
+//·¢ËÍÊı¾İ 
        for ( i=8; i>0; i-- ) 
        {      
               SCLK = 0; 
@@ -83,15 +83,15 @@ void Write1302 (unsigned char addr,unsigned char dat)
               DIO = (bit)(temp&0x01);  
 							Delay1ms();		         
               dat >>= 1;                    
-			  Delay1ms();				 //ååŠ çš„
+			  Delay1ms();				 //ºó¼ÓµÄ
               SCLK = 1; 
-			  Delay1ms();				 //ååŠ çš„
+			  Delay1ms();				 //ºó¼ÓµÄ
        } 
               CE = 0;          
 			  } 
    									
 /**************************************
-è¯»DS1302æŸåœ°å€çš„çš„æ•°æ®
+¶ÁDS1302Ä³µØÖ·µÄµÄÊı¾İ
 **************************************/
 unsigned char Read1302 ( unsigned char addr ) 
 { 
@@ -101,29 +101,29 @@ unsigned char Read1302 ( unsigned char addr )
        SCLK=0; 
 				Delay1ms();
        CE = 1;   
-			  Delay1ms();				 //ååŠ çš„
-       //å‘é€åœ°å€ 
-	for ( i=8; i>0; i-- )             //å¾ªç¯8æ¬¡ç§»ä½ 
+			  Delay1ms();				 //ºó¼ÓµÄ
+       //·¢ËÍµØÖ· 
+	for ( i=8; i>0; i-- )             //Ñ­»·8´ÎÒÆÎ» 
        {      
               SCLK = 0; 
 							Delay1ms();
 //              temp = addr; 
-              DIO = (bit)(addr&0x01);    //æ¯æ¬¡ä¼ è¾“ä½å­—èŠ‚ 
+              DIO = (bit)(addr&0x01);    //Ã¿´Î´«ÊäµÍ×Ö½Ú 
 							Delay1ms();
-              addr >>= 1;                //å³ç§»ä¸€ä½ 
-			  Delay1ms();				 //ååŠ çš„
-              SCLK = 1; 				 //å‘é€åœ°å€æ—¶SCLKä¸Šå‡æ²¿è§¦å‘
-			  Delay1ms();				 //ååŠ çš„
+              addr >>= 1;                //ÓÒÒÆÒ»Î» 
+			  Delay1ms();				 //ºó¼ÓµÄ
+              SCLK = 1; 				 //·¢ËÍµØÖ·Ê±SCLKÉÏÉıÑØ´¥·¢
+			  Delay1ms();				 //ºó¼ÓµÄ
        } 
-       //è¯»å–æ•°æ® 								 
+       //¶ÁÈ¡Êı¾İ 								 
        for ( i=8; i>0; i-- ) 
        { 
               SCLK = 1; 
 				 Delay1ms();
 		temp = temp >> 1;
-			  Delay1ms();				 //ååŠ çš„
-              SCLK = 0; 			     //è¯»å–æ•°æ®æ—¶SCLKä¸‹é™æ²¿è§¦å‘
-			  Delay1ms();				 //ååŠ çš„
+			  Delay1ms();				 //ºó¼ÓµÄ
+              SCLK = 0; 			     //¶ÁÈ¡Êı¾İÊ±SCLKÏÂ½µÑØ´¥·¢
+			  Delay1ms();				 //ºó¼ÓµÄ
 		if (DIO){temp |= 0x80;}   else{temp &= 0x7F;}
        }      
        CE=0; 
@@ -131,71 +131,71 @@ unsigned char Read1302 ( unsigned char addr )
        return (temp); 
 } 
 /**************************************
-           å†™å…¥åˆå§‹æ—¶é—´
+           Ğ´Èë³õÊ¼Ê±¼ä
 **************************************/
 void Ds1302_Write_Time(unsigned char *buf)   
 {
-	Write1302(0x8e,0x00);			//å…³é—­å†™ä¿æŠ¤ 
+	Write1302(0x8e,0x00);			//¹Ø±ÕĞ´±£»¤ 
 	delay40us();
-	Write1302(0x80,buf[0]); //ç§’
+	Write1302(0x80,buf[0]); //Ãë
 	delay40us();
-	Write1302(0x82,buf[1]);//åˆ†
+	Write1302(0x82,buf[1]);//·Ö
 	delay40us();
-	Write1302(0x84,buf[2]);//æ—¶
+	Write1302(0x84,buf[2]);//Ê±
 	delay40us();
-	Write1302(0x86,buf[3]);//æ—¥
+	Write1302(0x86,buf[3]);//ÈÕ
 	delay40us();
-	Write1302(0x88,buf[4]);//æœˆ
+	Write1302(0x88,buf[4]);//ÔÂ
 	delay40us();
-	Write1302(0x8a,buf[5]);//å‘¨
+	Write1302(0x8a,buf[5]);//ÖÜ
 	delay40us();
-	Write1302(0x8c,buf[6]);//å¹´
+	Write1302(0x8c,buf[6]);//Äê
 	delay40us();
-	Write1302(0x8e,0x80);			//æ‰“å¼€å†™ä¿æŠ¤ 
+	Write1302(0x8e,0x80);			//´ò¿ªĞ´±£»¤ 
 	
 }
 
 /**************************************
-           è¯»å–å½“å‰æ—¶é—´
+           ¶ÁÈ¡µ±Ç°Ê±¼ä
 **************************************/
 void Ds1302_Read_Time(unsigned char *buf)		
 { 
 	Read1302(0x00);
 	delay40us();
-	buf[6]=Read1302(0x8d);//å¹´
+	buf[6]=Read1302(0x8d);//Äê
 	delay40us();
 	Read1302(0x00);
 	delay40us();
-	buf[5]=Read1302(0x8b);//å‘¨
+	buf[5]=Read1302(0x8b);//ÖÜ
 	delay40us();
 	Read1302(0x00);
 	delay40us();
-	buf[4]=Read1302(0x89);//æœˆ
+	buf[4]=Read1302(0x89);//ÔÂ
 	Read1302(0x00);
 	delay40us();
-	buf[3]=Read1302(0x87);//æ—¥
-	delay40us();
-	Read1302(0x00);
-	delay40us();
-	buf[2]=Read1302(0x85);//æ—¶
+	buf[3]=Read1302(0x87);//ÈÕ
 	delay40us();
 	Read1302(0x00);
 	delay40us();
-	buf[1]=Read1302(0x83);//åˆ†
+	buf[2]=Read1302(0x85);//Ê±
 	delay40us();
 	Read1302(0x00);
 	delay40us();
-	buf[0]=Read1302(0x81);//ç§’
+	buf[1]=Read1302(0x83);//·Ö
+	delay40us();
+	Read1302(0x00);
+	delay40us();
+	buf[0]=Read1302(0x81);//Ãë
 }
 
 /**************************************
-åˆå§‹åŒ–DS1302
+³õÊ¼»¯DS1302
 **************************************/
 void Ds1302_Init(void)
 {
     CE = 0;
     SCLK = 0;
-    Write1302 (0x8e,0X00);        //ç¦æ­¢å†™ä¿æŠ¤ 
-//    Write1302 (ds1302_charger_add, 0xab);   //ä¸€ä¸ªäºŒæç®¡ï¼‹4Kç”µé˜»å……ç”µ
-    Write1302 (0x8e,0x80);        //å…è®¸å†™ä¿æŠ¤ 
+    Write1302 (0x8e,0X00);        //½ûÖ¹Ğ´±£»¤ 
+//    Write1302 (ds1302_charger_add, 0xab);   //Ò»¸ö¶ş¼«¹Ü£«4Kµç×è³äµç
+    Write1302 (0x8e,0x80);        //ÔÊĞíĞ´±£»¤ 
 }
