@@ -23,7 +23,7 @@ void main()
 	InitUART(0);
 	InitLed();
 //	Ds1302_Write_Time(setime);//设定系统时间
-	start_check();
+//	start_check();
 	start_logo();
 	desktop();
 }

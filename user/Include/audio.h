@@ -1,4 +1,5 @@
 #ifndef _audio_h
 #define _audio_h
-void beep(int t);
+void nbeep(int t);
+void beep();
 #endif

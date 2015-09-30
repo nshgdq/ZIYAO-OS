@@ -49,6 +49,6 @@ void start_check()
 	delay_ms(0x5ff);
 	Show_Str(0,176,"****·äÃùÆ÷¼ì²â****",16,Green,Black);
 	Show_Str(0,192,"¾¯±¨3Éù",16,Red,White);
-	beep(3);
+	nbeep(3);
 	delay_ms(0xfff);
 }

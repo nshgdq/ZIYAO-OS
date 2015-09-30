@@ -94,7 +94,7 @@ void sstmtime()
 			case 6:GUI_Text(40+8*17,128,time+17,Green,Black);GUI_Text(40+8*14,128,time+14,Red,White);break;
 			case 7:GUI_Text(40+8*20,128,time+20,Green,Black);GUI_Text(40+8*17,128,time+17,Red,White);break;
 		}
-		Get_Click1(&x,&y);
+		Get_Click(&x,&y);
 		if(y>288&&y<320){guiddo(t_menu,desktop,x);}//???
 		if((x>=40&&x<=80)&&(y>=180&&y<=200)){i++;while(!PEN);}  //Next ???
 		if((x>=150&&x<=190)&&(y>=180&&y<=200))	//Ok ???

@@ -15,6 +15,7 @@ u8 time[22]={0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 u16 x,y;
 bit ATC=0;
 extern unsigned char temp[20];
+void Get_Click1(u16 *x,u16 *y);
 void desktop()
 {
 	u16 i=0;
@@ -55,40 +56,40 @@ void desktop()
 		x=0;y=0;
 		if(i==0x0bff) {clock();i=0;}
 		i++;
-	Get_Click(&x,&y);
-	if(x>=10&&x<=80) x=1;if(x>=85&&x<=155) x=2;if(x>=160&&x<=220) x=3;
-	if(y>=30&&y<=88) y=1;if(y>=93&&y<=161) y=2;
-	if(y>=166&&y<=234) y=3;if(y>=239&&y<=307) y=4;
-	switch(y)
-	{
-		case 1: switch(x)
-						{
-							case 1:calendar();break;
-							case 2:calendar();break;
-							case 3:tempert();break;
-						}
-						break;
-		case 2:switch(x)
-						{
-							case 1:alert("未开放!",White);break;
-							case 2:alert("未开放!",White);break;
-							case 3:start_check();goto desktop;break;
-						}
-						break;
-		case 3:switch(x)
-						{
-							case 1:picbox();break;
-							case 2:alert("未开放!",White);break;
-							case 3:alert("未开放!",White);break;
-						}
-						break;
-		case 4:switch(x)
-						{
-							case 1:alert("未开放!",White);break;
-							case 2:alert("未开放!",White);break;
-							case 3:led();break;
-						}
-						break;
+		Get_Click1(&x,&y);
+		if(x>=10&&x<=80) x=1;if(x>=85&&x<=155) x=2;if(x>=160&&x<=220) x=3;
+		if(y>=30&&y<=88) y=1;if(y>=93&&y<=161) y=2;
+		if(y>=166&&y<=234) y=3;if(y>=239&&y<=307) y=4;
+		switch(y)
+		{
+			case 1: switch(x)
+							{
+								case 1:calendar();break;
+								case 2:calendar();break;
+								case 3:tempert();break;
+							}
+							break;
+			case 2:switch(x)
+							{
+								case 1:alert("请连接SIM900A模块！",White);break;
+								case 2:alert("未开放!",White);break;
+								case 3:start_check();goto desktop;break;
+							}
+							break;
+			case 3:switch(x)
+							{
+								case 1:picbox();break;
+								case 2:alert("未开放!",White);break;
+								case 3:alert("未开放!",White);break;
+							}
+							break;
+			case 4:switch(x)
+							{
+								case 1:alert("需要额外下载",White);break;
+								case 2:alert("需要额外下载",White);break;
+								case 3:led();break;
+							}
+							break;
 	}
 }
 }
@@ -108,16 +109,17 @@ void alert(char *s,u16 bcolor)
 }
 void Get_Click(u16 *x,u16 *y)
 {
+	while(PEN) if(ATC){ATC=0;AT_DO(temp);}
 	TP_Read_XY2(x,y); 
 	//TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
 	*x=*x/15.03-14.85;*y=*y/10.81-17.52;
-	if(ATC){ATC=0;AT_DO(temp);}
 }
 void Get_Click1(u16 *x,u16 *y)
 {
 	TP_Read_XY2(x,y); 
 	//TP_Draw_Big_Point(*x=*x/Touch_X,*y=*y/Touch_Y,Red);
 	*x=*x/15.03-14.85;*y=*y/10.81-17.52;
+	if(ATC){ATC=0;AT_DO(temp);}
 }
 void delay_ms(u16 ms)    
 { 

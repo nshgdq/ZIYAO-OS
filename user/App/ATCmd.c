@@ -4,8 +4,9 @@
 #include "uart.h"
 #include "18b20.h"
 #include "led.h"
+#include "audio.h"
 #include<string.h>
-#define ATNUM 12		//AT指令的数量
+#define ATNUM 13		//AT指令的数量
 //私有函数
 void stime();
 void stempert();
@@ -39,7 +40,8 @@ at_cmd code at[ATNUM]=			//AT指令列表
 	{"swled1",SWLED1},
 	{"swled2",SWLED2},
 	{"swled3",SWLED3},
-	{"offled",OFFLed}
+	{"offled",OFFLed},
+	{"beep",beep}
 };
 /******************************
 函数名：AT_DO

@@ -7,6 +7,7 @@ LED
 extern u16 x,y;
 void led()
 {
+	unsigned char stat=0x00,statc;
 	unsigned char ctr=0;
 	LCD_Clear(0x051d);
 	Show_Str(65,10,"LED¿ØÖÆ",32,White,Nocolor);
@@ -37,11 +38,21 @@ void led()
 			LCD_DrawBox(70,190,150,60,Yellow);	
 			Show_Str(30,216,"¿ª",16,Red,0x051d);
 		}
-		Get_Click(&x,&y);
-		while(!PEN);
-		if(y>288&&y<320) guiddo(desktop,desktop,x);
-		if((x>30&&x<210)&&(y>50&&y<110)) SetLed(1,!RedLed(1));
-		if((x>30&&x<210)&&(y>120&&y<180)) SetLed(2,!RedLed(2));
-		if((x>30&&x<210)&&(y>190&&y<250)) SetLed(3,!RedLed(3));
+		stat=stat|RedLed(3);
+		stat=(stat<<1)|RedLed(2);
+		stat=(stat<<1)|RedLed(1);
+		while(1)
+		{
+			Get_Click(&x,&y);
+			while(!PEN);
+			if(y>288&&y<320) guiddo(desktop,desktop,x);
+			if((x>30&&x<210)&&(y>50&&y<110)) SetLed(1,!RedLed(1));
+			if((x>30&&x<210)&&(y>120&&y<180)) SetLed(2,!RedLed(2));
+			if((x>30&&x<210)&&(y>190&&y<250)) SetLed(3,!RedLed(3));
+			statc=stat|RedLed(3);
+			statc=(stat<<1)|RedLed(2);
+			statc=(stat<<1)|RedLed(1);
+			if(stat!=statc) break;
+		}
 	}
 }

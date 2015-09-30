@@ -14,13 +14,10 @@ void delay500us()		//@32MHz
 		while (--j);
 	} while (--i);
 }
-
-void beep(int t)
+void beep()
 {
-  uchar j;
-  while(t)
-  {
-    for(j=200;j>0;j--)
+	uchar j;
+	for(j=200;j>0;j--)
 	{
 	  BEEP=~BEEP;       //输出频率1KHz
 	  delay500us();       //延时500us
@@ -32,7 +29,13 @@ void beep(int t)
 	  delay500us();       //延时1ms
 	  delay500us();
 	}
-	t--;
+}
+void nbeep(int t)
+{
+  while(t)
+  {
+		beep();
+		t--;
   }
 }
 

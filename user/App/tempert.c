@@ -4,6 +4,7 @@
 #include "app.h"
 #include "hx8347d.h"
 #include "18b20.h"
+void Get_Click1(u16 *x,u16 *y);
 extern u16 x,y;
 void tempert()
 {
@@ -24,7 +25,7 @@ void tempert()
 		}
 		i++;
 		if(i>0xff) i=0;
-		Get_Click(&x,&y);
+		Get_Click1(&x,&y);
 		if(y>288&&y<320) guiddo(desktop,desktop,x);
 	}
 }
