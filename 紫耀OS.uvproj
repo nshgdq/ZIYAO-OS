@@ -396,6 +396,11 @@
               <FileType>1</FileType>
               <FilePath>.\user\App\tempert.c</FilePath>
             </File>
+            <File>
+              <FileName>about.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\App\about.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

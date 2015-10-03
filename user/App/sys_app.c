@@ -30,7 +30,7 @@ void desktop()
 	Show_Str(160,71,"温度",16,0xffff,0x1111);
 	show_picture(10,93,70,68,0x00607D2A);
 //	LCD_DrawBox(10,93,70,68,0x3a39);//d3
-	Show_Str(10,145,"电话",16,0xffff,Nocolor);
+	Show_Str(10,145,"LED",16,0xffff,Nocolor);
 	show_picture(85,93,70,68,0x0060A25A);
 //	LCD_DrawBox(85,93,70,68,0xff80);//d4
 	Show_Str(85,145,"相册",16,0xffff,Nocolor);
@@ -47,7 +47,7 @@ void desktop()
 	Show_Str(10,288,"五子棋",16,0xffff,Nocolor);
 //	LCD_DrawBox(10,239,145,68,0xbbca);//d8
 	show_picture(160,239,70,65,0x0061A894);
-	Show_Str(160,288,"LED",16,0xffff,Nocolor);
+	Show_Str(160,288,"关于",16,0xffff,Nocolor);
 //	LCD_DrawBox(160,239,70,68,0x2586);//d9
 	clock();
 	TR0=1;
@@ -71,7 +71,7 @@ void desktop()
 							break;
 			case 2:switch(x)
 							{
-								case 1:alert("请连接SIM900A模块！",White);break;
+								case 1:led();break;
 								case 2:alert("未开放!",White);break;
 								case 3:start_check();goto desktop;break;
 							}
@@ -87,7 +87,7 @@ void desktop()
 							{
 								case 1:alert("需要额外下载",White);break;
 								case 2:alert("需要额外下载",White);break;
-								case 3:led();break;
+								case 3:SMsg();break;
 							}
 							break;
 	}

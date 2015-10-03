@@ -16,4 +16,5 @@ void tempert();
 void sstmtime();
 void picbox();
 void led();
+void SMsg();
 #endif
